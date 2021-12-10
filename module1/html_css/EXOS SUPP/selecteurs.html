@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section [target="_blank"] {
+            color: red;
+        }
+        li {
+            color: blue;
+        }
+        li li {
+            color: green;
+        }
+        section>p {
+            color: orange;
+        }
+        /* section * p {
+            color: blue;
+        } */
+        section>p strong {
+            color: purple;
+        }
+        .testList li:nth-child(3n+2) {
+            background-color: rgb(179, 157, 199);
+        }
+        .sectionTest h3:nth-of-type(2){
+            color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>tout savoir sur les selecteurs</h1>
+        <h2>définition</h2>
+        <p>un sélécteur cible un ou plusieurs élements html</p>
+        <ul>
+            <li>nom de balise</li>
+            <li>nom de classe</li>
+            <li>nom de id</li>
+            <li>nom de la pseudo classe :
+                <ul>
+                    <li>:visited, :hover, :link</li>
+                    <li>:nth-child</li>
+                    <li>:nth-of-type</li>
+                    <li>:first-child</li>
+                    <li>:last-child</li>
+                    <li>...</li>
+                </ul></li>
+        </ul>
+        <section class="sectionTest">
+            <h1>bibi</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, earum.</p>
+            <h2>bobo</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, earum.</p>
+            <h3>bubu</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, earum.</p>
+            <h1>bibi</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, earum.</p>
+            <h2>bobo</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, earum.</p>
+            <h3>bubu</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, earum.</p>
+        </section>
+        <h2>utilisation</h2>
+        <p>pour combiner les composants d'un sélecteur on a plusieurs caractères :</p>
+        <ul>
+            <li>espace (descendant)</li>
+            <li>> (enfant de premier niveau)</li>
+            <li>+ (le premier des éléments suivants)</li>
+            <li>~ (tous les éléments suivants)</li>
+            <li>* (tout)</li>
+        </ul>
+        <a href="#">Lien relatif</a>
+        <a href="#" target="_blank">Lien absolu</a>
+        <p>Pour préciser un composant de selecteur, on peut lui adjoindre (coller) des infos supplémentaires comme :</p>
+        <ul>
+            <li>une classe</li>
+            <li>un id</li>
+            <li>une pseudo classe</li>
+            <li>[target="_blank"] (sélection par attribut)</li>
+        </ul>
+    </header>
+    <ul class="testList">
+        <li><a href="page1.html">item de liste 01</a></li>
+        <li><a href="page2.html">item de liste 02</a></li>
+        <li><a href="page3.html">item de liste 03</a></li>
+        <li><a href="page4.html">item de liste 04</a></li>
+        <li><a href="page5.html">item de liste 05</a></li>
+        <li><a href="page6.html">item de liste 06</a></li>
+        <li><a href="page7.html">item de liste 07</a></li>
+        <li><a href="page8.html">item de liste 08</a></li>
+        <li><a href="page9.html">item de liste 09</a></li>
+        <li><a href="page10.html">item de liste 10</a></li>
+        <li><a href="page11.html">item de liste 11</a></li>
+        <li><a href="page12.html">item de liste 12</a></li>
+    </ul>
+    <section>
+        <h2>titre de section 1</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus alias magnam corporis asperiores reiciendis, ipsam nihil, laudantium rerum obcaecati, cum itaque eius dolore nam adipisci animi libero praesentium ullam ab.</p>
+        <a href="#">Lien relatif</a>
+        <a href="#" target="_blank">Lien absolu</a>
+        <p>Eos et veniam incidunt cum perferendis voluptatibus vitae voluptatem est nihil perspiciatis enim culpa, magnam dolore dicta placeat dignissimos aspernatur laborum in maiores. Atque a vitae odio suscipit delectus omnis.</p>
+        <p>Omnis ipsam veritatis reprehenderit provident velit. Voluptatem, placeat non fugit doloremque, sit tenetur, in natus illo eaque dignissimos quia veniam asperiores et veritatis repellendus modi beatae totam porro quibusdam commodi?</p>
+    </section>
+    <section>
+        <h2>titre de section 2</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut possimus sunt, praesentium molestias ea laboriosam? Incidunt, aspernatur debitis aperiam consequuntur facere labore rem adipisci, <strong>excepturi</strong>, quidem voluptatum animi fugiat architecto?</p>
+        <p>Dicta aut nulla totam quis nisi. Tempora commodi harum voluptatum temporibus cumque tenetur dicta, officia iusto, rerum minus sed non in quos, obcaecati nesciunt illum consequuntur. Iste possimus aperiam facilis.</p>
+        <blockquote>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut possimus sunt, praesentium molestias ea laboriosam? Incidunt, aspernatur debitis aperiam consequuntur facere labore rem adipisci, <strong>excepturi</strong>, quidem voluptatum animi fugiat architecto?</p>
+        </blockquote>
+        <p>Obcaecati nostrum adipisci, esse sapiente qui ullam iusto neque repellendus distinctio doloremque deserunt sint. Nobis non quisquam suscipit natus eos voluptate soluta dignissimos, illo nam inventore esse autem recusandae sed.</p>
+        <div>
+            <p><strong>Lorem</strong> ipsum dolor sit amet.</p>
+        </div>
+    </section>
+    <section>
+        <h2>titre de section 3</h2>
+        <a href="#">Lien relatif</a>
+        <a href="#" target="_blank">Lien absolu</a>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor aut iste deleniti. At unde fugiat, facere blanditiis ipsa veniam excepturi ullam nesciunt suscipit ratione inventore quisquam sed nisi, ipsam a?</p>
+        <p>Nesciunt sint maiores saepe, beatae laboriosam tempora consectetur aperiam, aliquid dolor necessitatibus fugit mollitia doloremque a odit illum, labore nulla qui ut magni eum. Veniam quibusdam possimus beatae illum sunt.</p>
+        <p>Rerum nostrum sapiente iusto illo molestiae porro, vel dolorem repudiandae non tempore quidem labore provident, velit nobis. Fugit, debitis est quaerat dolorem saepe maxime sequi quod molestiae modi impedit a!</p>
+    </section>
+</body>
+</html>

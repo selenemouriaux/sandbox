@@ -1,0 +1,118 @@
+
+/* CSS GLOBAL */
+/* Css général */
+
+body {
+    /* background-image: url(../img/fd-montagne-e4ecfa.jpg);
+    background-repeat: no-repeat;
+    background-color: #e4ecfa;
+    background-position: top center; */
+    background: url(../img/fd-montagne-e4ecfa.jpg) no-repeat top center #e4ecfa;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+header {
+    padding-bottom: 150px;
+    text-align: center;
+}
+header h1 {
+    margin-top: 20px;
+    /* color: white; */
+    text-shadow: #333 2px 2px 15px;
+}
+section {
+    background-color: rgba(255, 253, 253, 0.392);
+    margin: 12px auto 50px;
+    max-width: 500px;
+    border-radius: 0 50px 0 0;
+    box-shadow: #333 4px 4px 10px;
+    padding: 20px;
+    overflow: hidden;
+}
+section h2 {
+    /* color: #333; */
+    text-transform: uppercase;
+    background: url(../img/puce-h1.png) no-repeat top left;
+    padding-left: 120px;
+    background-size: contain;
+}
+section figure {
+    width: 30%;
+    border: solid 3px #333;
+    background-color: #BBB;
+    text-transform: uppercase;
+    font-size: .6em;
+    float: right;
+    margin: 0 0 0 1em;
+}
+section img {
+    width: 100%;
+}
+section figcaption {
+    padding: .3em;
+}
+section p {
+    text-align: justify;
+}
+
+.info {
+    background: url(../img/info.png) no-repeat top left;
+    background-color: blue;
+    background-size: 50px;
+    color: cornsilk;
+    padding-left: 50px;
+    min-height: 50px;
+}
+h2.info, h3.info, h4.info {
+    line-height: 50px;
+}
+
+#massifs {
+    background-color: rgb(0, 0, 201);
+    color: white;
+}
+#massifs a:any-link {
+    color: #333;
+}
+#massifs figure {
+    background-color: palegreen;
+    color: purple;
+}
+
+a:link {
+    color: rgb(179, 0, 179);
+}
+a:visited {
+    color: rgb(75, 0, 75);;
+}
+a:hover {
+    color: teal;
+}
+nav a:link, nav a:visited{
+    color: #333;
+    text-decoration: none;
+}
+nav a:hover {
+    color: rgb(129, 129, 129);
+    text-decoration: none;
+}
+
+header nav a:link, header nav:visited {
+    border-radius: 20px;
+    background-color: rgb(0, 0, 201);
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+header nav a:hover {
+    border-radius: 20px;
+    background-color: white;
+    color: rgb(0, 0, 201);
+    font-weight: bold;
+    padding: 10px;
+}

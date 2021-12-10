@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La fusion des marges</title>
+    <style>
+        div {
+            background-color: pink;
+            border-top: 2px solid rgb(139, 103, 109);
+        }
+        div:nth-child(odd) {
+            color: crimson;
+        }
+        header {
+            background-color: blueviolet;
+            border-top: 2px solid rgb(61, 20, 100);
+        }
+        h1 {
+            background-color: blue;
+            border-top: 2px solid rgb(0, 0, 97);
+        }
+        .imbrique {
+            margin-top: 10px;
+        }
+        .imbrique header {
+            margin-top: 50px;
+        }
+        .imbrique header h1 {
+            margin-top: 100px;
+        }
+        .suivant {
+            padding: 10px;
+            /* margin-top: 25px;
+            margin-bottom: 50px; */
+        }
+    </style>
+</head>
+<body>
+    <h1>La fusion des marges</h1>
+    la fusion des marges consiste à fusionner des marges d'éléments imbrtiqués ou suivants
+    <h2>avec les éléments imbriqués</h2>
+    <div class="imbrique">
+        <header>
+            <h1>titre du header</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo nisi in nostrum nemo ex repellat provident laboriosam eius aliquam, quae maxime impedit veniam quas dicta alias aspernatur, autem, delectus optio.</p>
+        </header>
+    </div>
+    <h2>avec les éléments suivants</h2>
+    <div class="suivant">
+        <header>
+            <h1>titre du h1 : 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo illum iusto, non dicta nisi porro officiis, dolores doloribus consectetur harum id pariatur quasi, quod nostrum quaerat amet quisquam incidunt corrupti?</p>
+        </header>
+    </div>
+    <div class="suivant">
+        <header>
+            <h1>titre du h1 : 2</h1>
+            <p>Consequatur voluptatem illo veniam harum cum, officia tenetur possimus cumque, similique iusto molestias earum dolorem atque ducimus laborum eos id incidunt et ad quia impedit quos, itaque laboriosam? Sint, ut.</p>
+        </header>
+    </div>
+    <div class="suivant">
+        <header>
+            <h1>titre du h1 : 3</h1>
+            <p>Quia, error nemo. Facilis veritatis, possimus blanditiis, dignissimos eveniet odit error quod, mollitia maiores corrupti velit. Quo porro exercitationem, voluptatibus aspernatur totam beatae repellat fugiat ratione, voluptates error quasi at.</p>
+        </header>
+    </div>
+</body>
+</html>

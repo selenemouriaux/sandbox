@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box sizing</title>
+    <style>
+        section{
+            width: 500px;
+            margin: 30px;
+            background-color: red;
+        }
+        .default {
+            padding: 50px;
+            border: 5px solid green;
+        }
+        .boxsized {
+            border: 5px solid blue;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <section class="default">
+        <h1>titre de section</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius id placeat, nihil perspiciatis, illum vero voluptate sunt ipsam quod voluptatem distinctio obcaecati veritatis, soluta quasi numquam inventore blanditiis. Ratione, necessitatibus!</p>
+    </section>
+    <section class="reference">
+        <h1>titre de section</h1>
+        <p>Officia cupiditate magnam nesciunt, maxime laudantium velit temporibus nihil accusamus quas amet eveniet cumque provident libero eaque id? Doloribus iste voluptatum maiores, minus laboriosam nemo officiis saepe tempora vel officia.</p>
+    </section>
+    <section class="boxsized">
+        <h1>titre de section</h1>
+        <p>Ducimus earum atque quia, eius vitae recusandae eos impedit accusamus dolor omnis, libero illo deserunt accusantium consequatur? Molestiae doloremque ad dolore, ea accusamus amet temporibus aliquid mollitia possimus, dolores ab.</p>
+    </section>
+</body>
+</html>

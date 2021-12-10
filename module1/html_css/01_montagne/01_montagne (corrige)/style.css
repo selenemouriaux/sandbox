@@ -1,0 +1,139 @@
+/*Le code CSS général pour l'ensemble de la page*/
+body{
+	background-image: url('images/fd-montagne-e4ecfa.jpg');
+	background-repeat: no-repeat;
+	background-position:center top;
+	background-color: #e4ecfa;
+	font-family: "Century Gothic", helvetica, arial, sans-serif;
+}
+
+h1,h2,h3,h4{
+	font-family: 'Bookman Old Style', serif;
+}
+a:link{
+	color:orange;
+	text-decoration:none;
+}
+a:visited{
+	color:tomato;
+}
+a:hover{
+	color:#1c50bf;
+}
+
+
+/*Le code CSS du Header*/
+header{
+	height:300px;	
+	text-align: center;
+	/*text-align:center;*/
+}
+header h1{
+	color:white;
+	/* decalage horizontal | decalage vertical |  flou | couleur */
+	text-shadow: 2px 2px 4px black;
+	font-size: 2.3em;
+}
+/*nav,ul,li,a{
+	background-color: rgba(0,0,0,0.5);
+	margin:10px;
+}*/
+/*Réinitialiser une liste dont la finalité est un menu*/
+header nav ul,header nav li{
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
+header ul{
+	display:flex;
+	justify-content: center;
+}
+header nav a:link,header nav a:visited{
+	background-color: #1c50bf;
+	color:white;
+	border-radius: 15px;
+	margin:20px;
+	padding:10px;
+}
+header nav a:hover{
+	background-color: orange;
+}
+
+
+
+/* ############################################
+Le code css pour le main
+#############################################"*/
+section{
+	background-color: rgba(255,255,255,0.8);
+	max-width: 650px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+	padding:20px;
+	/* decalage horizontal | decalage vertical |  flou | couleur */
+	box-shadow: 2px 2px 4px #555;
+	/*haut-gauche | haut droite | bas droite | bas gauche*/
+	border-radius: 0 75px 0 0;
+	overflow: hidden;
+}
+nav a:link,nav a:visited{
+	color:#666;
+}
+nav a:hover{
+	color: #1c50bf;
+}
+
+section h1{
+	text-transform: uppercase;
+	color: #666;
+	background-image: url('images/puce-h1.png');
+	background-repeat: no-repeat;
+	padding-left: 120px;
+	background-size: contain;
+}
+section figure{
+	background-color:silver;
+	width:30%;
+	padding-bottom: 7px;
+/*	margin-left: 0;
+	margin-top:0;
+	margin-right:0;*/
+	/*haut | droite | bas | gauche*/
+	margin:0 0 15px 0;
+	float:right;
+/*	border-style: solid;
+	border-color: #333;
+	border-width:3px;*/
+	border:solid 3px #666;
+
+}
+section h3,section h2,section h4{
+	clear:left;
+}
+section figure img{
+	width:100%;
+}
+section figcaption{
+	text-transform: uppercase;
+	font-size: 0.55em;
+	margin: 7px;
+
+}
+#massifs{
+	background-color: dodgerblue;
+	color:white;
+}
+
+
+
+
+#massifs h1{
+	color: white;
+	text-shadow: 2px 2px 4px #1c50bf;
+}
+#massifs figure{
+	background-color: #1c50bf;
+	border-color:#1c50bf;
+}
+

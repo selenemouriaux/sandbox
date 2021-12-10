@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber's Shop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i><span>Accueil</span></a>
+            <a href="#"><i class="fas fa-calendar"></i><span>Rendez-vous</span></a>
+            <a href="#"><i class="fas fa-book"></i><span>L'équipe</span></a>
+            <a href="#"><i class="fas fa-image"></i><span>Album Photo</span></a>
+            <a href="#"><i class="fas fa-envelope"></i><span>Nous contacter</span></a>
+        </nav>
+        <em>OFFRE covid-19 : une coupe achetée, une autre pas gratuite !</em>
+        <h1>Bienvenue chez Bernie's Barber Shop</h1>
+    </header>
+    <section class="taros">
+        <h2>Quelques uns de nos prix</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Entretien</th>
+                </tr>
+                <tr>
+                    <td>Taille de barbe</td>
+                    <td>10 minutes</td>
+                    <td>80 €</td>
+                </tr>
+                <tr>
+                    <td>Couple classique</td>
+                    <td>40 minutes</td>
+                    <td>120 €</td>
+                </tr>
+                <tr>
+                    <td>Changer rien</td>
+                    <td>0 minute</td>
+                    <td>50 €</td>
+                </tr>
+                <tr>
+                    <td>Couleur unie</td>
+                    <td>2 minutes</td>
+                    <td>100 €</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Relooking</th>
+                </tr>
+                <tr>
+                    <td>La nuque longue de Wadel</td>
+                    <td>2 minutes</td>
+                    <td>1000 €</td>
+                </tr>
+                <tr>
+                    <td>La moustache de Dali</td>
+                    <td>10 minutes</td>
+                    <td>7500 €</td>
+                </tr>
+                <tr>
+                    <td>Trou dans les cheveux</td>
+                    <td>5 minutes</td>
+                    <td>C'est cadeau !</td>
+                </tr>
+                <tr>
+                    <td>Couleur "Tie And Die"</td>
+                    <td>40 minutes</td>
+                    <td>1 million d'€</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Pour réserver un créneau horaire, compléter ce formulaire</h3>
+    </section>
+    <section class="formulaire">
+        <form action="./traitement.php" method="get">
+            <fieldset>
+                <legend>Vos coordonnées</legend>
+                <label for="prenom">Votre prénom : </label><input type="text" name="prenom_user" id="prenom" autofocus>
+                <label for="nom">Votre nom : </label><input type="text" name="nom_user" id="nom">
+                <label for="email">Votre email : </label><input type="email" name="mail_user" id="mail">
+            </fieldset>
+            <fieldset>
+                <legend>Quelles sont les raisons de votre venue ?</legend>
+                <label for="vieux">J'ai pris un coup de vieux</label><input type="checkbox" name="vieux" id="vieux" value="trop vieux">
+                <label for="riche">J'ai trop d'argent</label><input type="checkbox" name="riche" id="riche" value="trop de flouze">
+                <label for="accident">J'ai eu un accident de tondeuse</label><input type="checkbox" name="accident" id="accident" value="eu un accident">
+            </fieldset>
+            <fieldset>
+                <legend>Voulez-vous vous abonner à la newsletter ?</legend>
+                <label for="wantsIn">Oui</label><input type="radio" name="newsletter" id="wantsIn" value="veut s'inscrire à la newsletter">
+                <label for="wantsOut">Non</label><input type="radio" name="newsletter" id="wantsOut" value="ne veut pas recevoir de mail">
+            </fieldset>
+            <fieldset>
+                <legend>Comment avez-vous connu le salon ?</legend>
+                <select name="provenance" id="provenance">
+                    <option value="google">Google</option>
+                    <option value="de-bouche-à-oreille">De bouche à oreille</option>
+                    <option value="newsletter">La newsletter</option>
+                    <optgroup label="Dans un autre pays ?"> 
+                        <option value="ouzbékistan">en Ouzbékistan</option>
+                        <option value="hongrie">en Hongrie</option>
+                    </optgroup>
+                </select>
+            </fieldset>
+            <input type="submit" value="Envoyer">
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2017</p>
+    </footer>
+    <script src="https://kit.fontawesome.com/c6a24866e1.js" crossorigin="anonymous"></script>
+</body>
+</html>

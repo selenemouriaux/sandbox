@@ -1,0 +1,17 @@
+body {
+    width: 500px;
+    margin: 0 auto;
+    border: 2px blueviolet solid;
+    border-radius: 10px;
+}
+
+p {
+    background: burlywood;
+    padding: 10px;
+    margin: 5px;
+}
+
+span {
+    background: aquamarine;
+    border: blue 1px dotted;
+}

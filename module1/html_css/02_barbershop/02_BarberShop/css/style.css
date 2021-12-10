@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+}
+header {
+    background: url(../img/coiffeur-fond.jpg) no-repeat top center;
+    background-size: cover;
+    width: 100%;
+    text-align: center;
+    font-family: 'Lobster';
+    color: white;
+    text-shadow: 5px 5px 5px rgba(51, 51, 51, 0.644);
+    height: 100vh;
+}
+header nav a {
+    margin: 20px;
+    display: inline-block;
+    text-align: center;
+}
+header nav a span {
+    display: block;
+}
+header nav a:any-link {
+    color: white;
+    text-decoration: none;
+    transition: 1s ease-out;
+}
+header nav a:hover {
+    text-decoration: underline;
+    text-shadow: none;
+    color: rgb(196, 56, 196);
+    font-size: 2em;
+}
+
+header h1 {
+    margin-top: 30vh;
+}
+
+header em {
+    display: block;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.452);
+}
+
+header nav {
+    background-color: rgba(255, 255, 255, 0.329);
+}
+
+/**
+/* Formulaires
+**/ 
+
+form {
+    text-align: center;
+}
+fieldset {
+    color: rgb(110, 110, 110);
+    background-color: rgb(223, 223, 223);
+    border-radius: 5px;
+    margin: 10px;
+    border: none;
+    padding: 20px;
+}
+
+legend {
+    text-align: start;
+}
+input {
+    margin: 0 4em 0 .6em;
+}
+input[type="text"], input[type="email"] {
+    border: none;
+    background-color: transparent;
+    border-bottom: solid grey 1px;
+}
+select {
+    display: inline-block;
+    width: 80%;
+    padding: .5em;
+}
+input[type="text"]:focus, input[type="email"]:focus {
+    background-color: white;
+}
+fieldset:focus-within {
+    border: solid darkslategrey 2px;
+}
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: rgb(180, 177, 177);
+    color: white;
+    font-size: 1.4em;
+    border: none;
+    border-radius: 10px 0 10px 0;
+    margin: 20px auto;
+}
+
+footer {
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+    color: white;
+    background-color: rgb(180, 177, 177);
+}
+
+.taros {
+    font-family: 'Lobster';
+    text-align: center;
+    color: rgb(71, 70, 70);
+}
+
+table {
+    border-collapse: collapse;
+    width: 80vw;
+    margin: 20px auto;
+}
