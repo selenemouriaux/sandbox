@@ -1,0 +1,8 @@
+
+@mixin commonBox {
+  margin: $commonSpace auto $largeSpace;
+  padding: $largeSpace $commonSpace;
+  border-radius: $largeSpace;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 15px black;
+}

@@ -1,0 +1,79 @@
+@import "variables";
+@import "layouts";
+
+
+body{
+    margin:0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #999;
+    /**
+    les fonts et les couleurs peuvent passer en variables SASS
+    les margins et padding aussi
+    de même que les contrastes stables
+     */
+}
+.PageWrapper{
+    margin:0 auto;
+    padding:1em;
+    max-width:1100px;
+    background-color: white;
+    box-shadow: 3px 3px 6px #666;
+}
+.SiteHeader{
+    padding:2em;
+    background-color: $firstColor;
+    &-titles{
+        //@include commonBox;
+        color:white;
+        text-decoration:none;
+        &:link, &:visited{
+            text-decoration: none;
+        }
+        &:hover{
+            text-shadow: 4px 4px 15px brown;
+        }
+    }
+    &-h1{
+        font-size: 3em;
+        margin-bottom:.5em;
+    }
+    &-h2{
+        font-size:1.8em;
+        font-weight: normal;
+    }
+}
+.BodyLayout{
+    padding:1em 0;
+    display:flex;
+    //grid-template-columns: 1fr 250px;
+    //gap:20px;
+    &-mainContent{
+        width: 68%;
+        margin-right: 3%;
+    }
+    &-sidebar{
+        width: 29%;
+    }
+}
+.MainContent{
+    color: black;
+    padding-left:1em;
+}
+.Sidebar{
+    background-color: silver;
+    padding:1em;
+    border:4px solid #aaa;
+    &-item{
+        background-color: $secondColor;
+        padding:.5em;
+        margin-bottom:1em;
+    }
+}
+.SiteFooter{
+    background-color: $firstColor;
+    padding:3em;
+}
+.sticky{
+    position: sticky;
+    //top: 10px;
+}

@@ -1,0 +1,150 @@
+/*
+rgb(153, 108, 165);
+rgb(220, 68, 93);
+rgb(69, 112, 92);
+rgb(138, 55, 39);
+rgb(36, 20, 5);
+*/
+/*################################
+Ceci est le css dit "Global"
+##################################*/
+header, main, footer{
+	box-sizing:border-box;
+}
+body{
+	background-image: url(../img/floral-fond.jpg);
+	background-size: cover;
+	font-family: "Century Gothic", helvetica, arial, sans-serif;
+}
+header{
+	background-color: white;
+	padding:0.4em;
+	padding-bottom: 0;
+}
+header ul,header li{
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
+header ul{
+	display:flex;
+	text-align: center;
+	flex-direction: column;
+	margin:0 -0.4rem;
+}
+header h1{
+	color:rgb(153, 108, 165);
+	text-align: center;
+	/*text-shadow: 2px 2px 4px black;*/
+}
+header ul a:link, header ul a:visited{
+	background-color: rgb(36, 20, 5);
+	color:white;
+	display: block;
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+	text-decoration: none;
+}
+header ul a:hover{
+	background-color: orange;
+}
+article{
+	background-color: rgb(220, 68, 93);
+	color:white;
+	padding:0.4em;
+}
+main h2{
+	font-size:1.6em;
+	text-align: center;
+}
+aside{
+	background-color: rgb(153, 108, 165);
+	color:white;
+	padding:0.4em;
+}
+aside img{
+	width:100%;
+}
+
+footer{
+	background-color:rgb(36, 20, 5);
+	padding:0.4em;
+}
+
+footer a:link, a:visited{
+	color:white;
+}
+footer p{
+	display:flex;
+	justify-content: space-around;
+}
+
+/*
+################################
+Ceci est le premier point de rupture à 550px
+##################################*/
+
+@media screen AND (min-width:550px){
+	header h1{
+		text-align: left;
+	}
+	aside{
+		overflow:hidden;
+	}
+	aside img{
+		width:40%;
+		float:left;
+		margin-right: 0.4em;
+	}
+	header ul{
+		flex-direction: row;
+		justify-content: space-around;
+		background-color:rgb(36, 20, 5);
+	}
+	header li{
+		width:100%;
+	}
+
+
+} /*Ceci est la fin de ma media querie ( min 550px)*/
+@media screen AND (min-width:800px){
+	main{
+		display: flex;
+	}
+	article, aside{
+		background-color: white;
+		color:#333;
+		padding-top: 0;
+	}
+	article{
+		width:70%;
+	}
+	aside{
+		width:30%;
+	}
+	article h2{
+		color:white;
+		background-color: rgb(220, 68, 93);
+		margin:0 -0.4rem;
+	}
+	aside h2{
+		color:white;
+		background-color: rgb(153, 108, 165);
+		margin:0 -0.4rem;
+	}
+	aside img{
+		width:100%;
+	}
+}/*Attention fin de media query*/
+@media screen AND (min-width:950px){
+	main, header, footer{
+		width:950px;
+		margin-left: auto;
+		margin-right: auto;
+		border-right:10px solid rgb(153, 108, 165);
+		border-left:10px solid rgb(153, 108, 165);
+	}
+
+
+}/*Attention fin de media query*/
+

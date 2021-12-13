@@ -1,0 +1,52 @@
+.pageWrapper {
+  margin: 0;
+}
+
+.BodyLayout {
+  max-width: 1200px;
+  margin: auto;
+  border: black 1px solid;
+  font-family: "Roboto";
+}
+
+.SiteHeader {
+  text-align: center;
+}
+.SiteHeader-title {
+  color: mediumpurple;
+  background-color: white;
+  padding: 10px;
+  font-weight: bolder;
+}
+.SiteHeader-menu {
+  padding: 10px 0;
+}
+
+.Menu {
+  list-style-type: none;
+  background-color: #501b00;
+}
+.Menu-item {
+  line-height: 1.3em;
+}
+.Menu-item-link:link, .Menu-item-link:visited {
+  color: white;
+}
+.Menu-item-link:hover {
+  color: mediumpurple;
+  font-weight: bold;
+}
+
+.MainContent {
+  color: white;
+}
+.MainContent-textContent {
+  background-color: hotpink;
+}
+.MainContent-title {
+  background-color: hotpink;
+  color: white;
+  text-align: center;
+}
+
+/*# sourceMappingURL=alt_styles.css.map */

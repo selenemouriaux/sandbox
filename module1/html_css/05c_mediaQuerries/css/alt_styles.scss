@@ -1,0 +1,61 @@
+// Importation des variables SASS définies dans un fichier _variables.scss
+@import "variables";
+
+
+.pageWrapper {
+  margin: 0;
+}
+
+.BodyLayout {
+  max-width: 1200px;
+  margin: auto;
+  border: black 1px solid;
+  font-family: $fontFirst;
+}
+
+.SiteHeader {
+  text-align: center;
+
+  &-title {
+    color: mediumpurple;
+    background-color: white;
+    padding: 10px;
+    font-weight: bolder;
+  }
+
+  &-menu {
+    padding: 10px 0;
+  }
+}
+
+.Menu {
+  list-style-type: none;
+  background-color: #501b00;
+
+  &-item {
+    line-height: 1.3em;
+
+    &-link {
+      &:link, &:visited {
+        color: white;
+      }
+
+      &:hover {
+        color: mediumpurple;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.MainContent {
+  color: white;
+  &-textContent {
+    background-color: hotpink;
+  }
+  &-title {
+    background-color: hotpink;
+    color: white;
+    text-align: center;
+  }
+}
