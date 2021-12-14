@@ -1,0 +1,76 @@
+@mixin make-button($size: $font-size-base, $color: theme-color('sax-white')){
+    background: none;
+    border: none;
+    font-size: $size;
+    color: $color;
+}
+
+@mixin reset{
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: $font-size-base;
+	font: inherit;
+	vertical-align: baseline;
+    list-style: none;
+}
+
+@mixin breakpoint-up($name){
+    @media screen and (min-width: #{map-get($breakpoints, $name)}){
+        @content;
+    }
+}
+@mixin breakpoint-down($name){
+    @media screen and (max-width: #{map-get($breakpoints, $name)}){
+        @content;
+    }
+}
+@mixin folder(){
+    a{
+        text-decoration: none;
+        figure{
+            @include reset();
+            height: 100%;
+            display: grid;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }//end figure img
+            figcaption{
+                box-sizing: content-box;
+                font-family: $sax-title-font;
+                align-self: end;
+                padding: space();
+                color: theme-color('sax-white');
+                height: $font-size-base + .2rem;
+                transition: height $tr-fast;
+            }
+            > *{
+                grid-column: 1;
+                grid-row: 1;
+            }
+        }//end figure
+        &:hover{
+            figure{
+                figcaption{
+                    height: 50%;
+                }//end figcaption in :hover    
+            }//end figure in :hover
+        }//end :hover
+    }//end ul li a
+}
+@mixin alternateBackgrounds($selector, $subSelector: ''){
+    @each $c in $alternate-colors{
+        #{$selector}:nth-of-type(#{length($alternate-colors)}n + #{index($alternate-colors, $c)}) #{$subSelector}{
+            background: nth($c, 2);
+        }
+    }
+}
+@mixin alternateColors($selector, $subSelector: ''){
+    @each $c in $alternate-colors{
+        #{$selector}:nth-of-type(#{length($alternate-colors)}n + #{index($alternate-colors, $c)}) #{$subSelector}{
+            color: nth($c, 2);
+        }
+    }
+}

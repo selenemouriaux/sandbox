@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flex-item</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/layout-style.css">
+	<link rel="stylesheet" type="text/css" href="css/flex-style.css">
+	<meta name="viewport" content="width-device-width" initial-scale="1">
+</head>
+<body>
+	<h1>Propriétés des flex-items</h1>
+	<h2>flex-grow:grow</h2>
+	<section class="first">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+<h2>aioli (order:-1 / salade (order:2) / tomate (order:1) oignons (order:1)</h2>
+<h3>aioli (flex-grow:0) / salade (flex-grow:3) / tomate (flex-grow:2) oignons (flex-grow:2)/ )</h3>
+	<section class="second">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+<h2>tomate (align-self:center)</h2>
+	<section class="third">
+	 <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+<h2>Proprieté Shrink (tomate/ flex:1 0 50% / jamais moins que 50%) </h2>
+	<section class="fourth">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+<h2>Proprieté flex-basis (aioli / flex :0 0 250px /exactement 250px)</h2>
+<h3>Tous les autres peuvent grandir</h3>
+	<section class="fifth">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+<h2>Proprieté Flex (tomate/flex:0 1 50% / jamais plus que 50%)</h2>
+	<section class="sixth">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+</body>
+</html>

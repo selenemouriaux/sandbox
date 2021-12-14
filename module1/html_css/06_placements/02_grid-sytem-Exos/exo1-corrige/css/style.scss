@@ -1,0 +1,12 @@
+@import 'mixins';
+.Box{
+    display: grid;
+    grid-template-columns: minmax(0px, 300px) 1fr minmax(0px, 200px);
+    grid-template-rows: 250px 150px;
+    gap:20px;
+    padding:20px;
+    &-item.special{
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+    }
+}

@@ -1,0 +1,122 @@
+form{
+	display:flex;
+	flex-direction: row;
+}
+form>div{	
+	width:50%;
+}
+form div:first-child{
+	margin-right: 10px;
+}
+form div p{
+	display:flex;
+}
+/*aligne à droite tous les  paragraphes du premier div*/
+div:first-child p {
+	justify-content: flex-end;
+}
+/*Authorise les inputs (sauf submit) a s'agrandir*/
+form input:not([type="submit"]){
+	flex:1;
+}
+form div+div{
+	display: flex;
+	flex-direction:column;
+}
+div+div textarea{
+		flex:1;
+}
+
+/* Decoration */
+
+body {
+	max-width: 1000px;
+	margin: auto;
+	padding: 1em;
+	background:rgba(0,0,0,.1);
+	color: #333;
+	font-size: 1.4em;
+	font-family: georgia, "trebuchet ms", arial, serif;
+}
+
+h1 {
+	margin-top: 20px;
+	margin-bottom: 40px;
+	color: #345;
+	text-shadow: 1px 1px 1px #fff;
+}
+form > div {
+	padding: 1em;
+	background: #fff;
+	border: 1px solid gray;
+	border-radius: 4px;
+}
+input,
+textarea {
+	padding: .3em;
+	border: 1px solid #555;
+	border-radius: 4px;
+	font-family: inherit;
+	font-size: inherit;
+  background: rgba(0,0,0,.02);
+}
+input:focus,
+textarea:focus {
+	outline: none;
+}
+input[type="submit"] {
+	padding: .3em 1em;
+	background: #555;
+	border: none;
+	color: #fff;   
+	border-radius: 4px;
+	cursor: pointer;
+}
+label {
+	width: 5em;
+	margin-right: .5em;
+	text-align: right;
+}
+input[type="submit"] {
+	margin-left: auto;
+}
+
+textarea {
+	resize: vertical;
+	color: #aaa;
+}
+div > p:first-child {margin-top: 0;}
+div > p:last-child {margin-bottom: 0;}
+small {
+	font-size: 0.8rem;
+	color: #aaa;
+}
+@media (max-width:800px)
+{
+
+	body{
+		margin:0;
+		padding:0;
+	}
+	h1{
+		width:100%;
+		margin-left: auto;
+		margin-right:auto;
+	}
+	form{
+		flex-direction:column;
+		width:100%;
+		margin:0 auto;
+	}
+	form div,form div:first-child{
+		width:auto;
+		margin-right:0;	
+	}
+	form div+div{
+		order:-1;
+		margin-bottom:10px;
+	}
+	label{
+		text-align: left;
+	}
+}

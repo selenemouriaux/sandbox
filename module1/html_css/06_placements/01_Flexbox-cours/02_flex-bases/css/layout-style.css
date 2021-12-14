@@ -1,0 +1,56 @@
+/*Mise en forme des conteneurs pour la lisibilité : gestion des couleurs des div successifs */
+
+section {
+	background: beige;
+	border: 3px dotted orange;
+	margin: 2em;
+	/*padding:20px;*/
+	height: 300px;
+	width: 300px;
+}
+.sept,.huit,.neuf,.dix,.onze,.douze,.treize,.quatorze{
+	width: 650px;
+
+}
+section > * {
+	/*width: 500px;*/
+}
+
+/* Decoration */
+* {box-sizing: border-box}
+body {
+	margin: 20px;
+	background: #fff;
+	font-family: "Century Gothic", helvetica, arial, sans-serif;
+	font-size: 1.2em;
+}
+div {
+	padding: 10px;
+	color: #fff;
+}
+div:first-of-type {
+	background: dodgerblue;
+}
+div:nth-of-type(2) {
+	background: orange;
+}
+div:nth-of-type(3) {
+	background: olivedrab;
+}
+div:nth-of-type(4) {
+	background: hotpink;
+}
+div:nth-of-type(5) {
+	background: slategray;
+}
+
+nav a {
+  display: block;
+  padding: .7em;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  white-space: nowrap;
+}
+
+

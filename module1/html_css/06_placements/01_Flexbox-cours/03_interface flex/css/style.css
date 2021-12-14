@@ -1,0 +1,17 @@
+main{
+	display:flex;
+}
+main nav{
+	order: -1;
+	flex:1 0 250px;
+}
+main aside{
+	flex:1 0 250px;
+}
+
+@media screen and (max-width:800px){
+	main{
+		flex-direction: column;
+	}
+
+}

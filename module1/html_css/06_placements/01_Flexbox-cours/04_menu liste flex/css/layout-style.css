@@ -1,0 +1,50 @@
+/*Mise en forme des conteneurs pour la lisibilité : gestion des couleurs des div successifs */
+
+header ul, header li{
+	padding:0;
+	margin:0;
+	list-style-type: none;
+}
+
+
+/* Decoration */
+* {box-sizing: border-box}
+body {
+	margin: 20px;
+	background: #fff;
+	font-family: "Century Gothic", helvetica, arial, sans-serif;
+	font-size: 1.2em;
+}
+header li {
+	padding: 10px;
+	margin:0;
+	color: #fff;
+	/*width:120px;*/
+	text-align:center;
+}
+header li:first-of-type {
+	background: dodgerblue;
+}
+header li:nth-of-type(2) {
+	background: orange;
+}
+header li:nth-of-type(3) {
+	background: olivedrab;
+}
+header li:nth-of-type(4) {
+	background: hotpink;
+}
+header li:nth-of-type(5) {
+	background: slategray;
+}
+
+/*nav a {
+  display: block;
+  padding: .7em;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  white-space: nowrap;
+}
+*/
+

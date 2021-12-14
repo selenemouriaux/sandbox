@@ -1,0 +1,22 @@
+#mainContent.folder{
+    display: grid;
+    grid-gap: space();
+    grid-auto-rows:300px;
+    grid-template-rows: auto;
+    @include alternateBackgrounds('article', 'figcaption');
+    > article{
+        @include folder();
+        &:first-child{
+            display: block;
+            padding: space();
+        }
+    }//end > article
+}//end #mainContent.folder
+@include breakpoint-up('md'){
+    #mainContent.folder{
+        grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+        > article:first-child{
+            grid-column: span 2;
+        }
+    }//end #mainContent.folder in sm query 
+}//end sm query

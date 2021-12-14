@@ -1,0 +1,17 @@
+body{
+    font-family: $sax-text-font;
+    font-size: $font-size-base;
+    background-color: theme-color('sax-white');
+    padding: 65px 0; //accomodate fixed header and footer
+}//end body
+
+// Create Color classes
+@each $i in $theme-colors{
+	.#{nth($i, 1)}-background {
+		background: nth($i, 2);
+	}
+	.#{nth($i, 1)}-color {
+		color:nth($i, 2);
+	}
+}
+

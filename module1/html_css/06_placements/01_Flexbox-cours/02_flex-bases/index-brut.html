@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bases flexbox</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/layout-style.css">
+	<style>
+		.first{
+			display: flex;
+		}
+		.second{
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-end;
+		}
+		.third{
+			display: flex;
+			flex-direction: column-reverse;
+		}
+		.fourth{
+			display: flex;
+		}
+		.fifth{
+			display: flex;
+			flex-wrap: wrap;
+			width: 100px;
+		}
+		.sixth{
+			display: flex;
+			flex-wrap: wrap-reverse;
+			width: 100px;
+		}
+		.sept{
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+		}
+		.huit{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.neuf{
+			display: flex;
+			justify-content: flex-end;
+		}
+		.dix{
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+		}
+		.onze{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-end;
+		}
+		.douze{
+			display: flex;
+			justify-content: flex-start;
+		}
+		.treize{
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+		}
+		.quatorze{
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+		}
+		.quinze{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>1- En row (par défaut)</h1>
+	<section class="first">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	</section>
+<h1>2- En column et à droite (axe Hrz.)</h1>
+	<section class="second">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	</section>
+<h1>3- En column-reverse</h1>
+	<section class="third">
+	 <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	</section>
+<h1>4 - En nowrap (par défaut)</h1>
+	<section class="fourth">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+<h1>5 - wrap</h1>
+	<section class="fifth">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+<h1>6 - En wrap-reverse</h1>
+	<section class="sixth">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+	<h1>7 - Alignés répartis(axe Hrz.) et en bas(axe Vert.)</h1>
+	<section class="sept">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+<h1>8 - Alignés centré(axe Hrz.) et en bas(axe Vert.)</h1>
+	<section class="huit">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+<h1>9 - Alignés droite (axe Hrz.) et stretch(axe Vert.)</h1>
+	<section class="neuf">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+	<h1>10 - Alignés en bas(axe Vert.) et stretch (axe Hrz.)</h1>
+	<section class="dix">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+	<h1>11 - Alignés droite(axe Hrz.) et répartis (axe Vert.)</h1>
+	<section class="onze">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+	<h1>12 - Alignés gauche (axe Hrz.) et stretch (axe Vert.)</h1>
+	<section class="douze">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+	<h1>13 - Alignés stretch (axe Hrz.) et Bas (axe Vert.)</h1>
+	<section class="treize">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+	<h1>14 - Alignés droite (axe Hrz.) et centrés(axe Vert.)</h1>
+	<section class="quatorze">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+	<h1>15 - Alignés centré (axe Hrz.) et repartis (axe Vert.)</h1>
+	<section class="quinze">
+	  <div class="salade">Salade</div>
+	  <div class="tomate">Tomate</div>
+	  <div class="oignons">Oignon frit</div>
+	  <div class="aioli">Aïoli</div>
+	  <div class="navette">Navette</div>
+	</section>
+</body>
+</html>

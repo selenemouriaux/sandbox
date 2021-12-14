@@ -1,0 +1,50 @@
+/* Placer tous les conteneurs section en contexte flexbox et*/
+section{
+	display: flex;
+	flex-flow:wrap row;
+}
+.first div{
+	flex-grow: 1;
+	margin:5px;
+}
+.second .aioli{
+	order:-1; 	
+	flex-grow:0;
+}
+.second .salade{
+	order:2; 
+	flex-grow:3;
+}
+.second .tomate{
+	order:1; 
+	flex-grow:2;
+}
+.second .oignons{
+	order:1;
+	flex-grow:2; 
+}
+
+.third .tomate{
+	align-self: center;
+}
+
+.fourth .tomate{
+	/*Mesure au moins 50%*/
+		flex-grow:1;
+		flex-shrink:0;
+		flex-basis:50%;
+}
+.fifth>div{
+		/*tous les div peuvent grandir*/
+		flex:1;
+}
+.fifth .aioli{
+		/*Mesure exactements 250px*/
+		flex:0 0 250px;		
+}
+.sixth .tomate{
+	/*Ne mesure jamais plus que 50%*/
+	flex:0 1 50%;
+	/*min-width est toujours prioritaire sur flex-basis
+	min-width:100%;*/
+}

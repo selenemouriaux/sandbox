@@ -1,0 +1,8 @@
+.parent{
+	min-height:100vh;
+	display:flex;	
+}
+.enfant{
+	width:90%;
+	margin:auto;
+}

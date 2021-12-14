@@ -1,0 +1,95 @@
+#pageHeader{
+    background-color: theme-color('sax-light-green');
+    display: grid;
+    grid-template-columns: 100px 1fr 60px;
+    justify-items: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    figure{
+        padding: space(2);
+        margin: 0;
+        justify-self: stretch;
+    }
+    h1{
+        color: theme-color('sax-dark-green');
+        font-size: $font-size-xl;
+        margin: 0;
+    }
+    nav{
+        grid-row: 2;
+        grid-column: 1 / -1;
+        justify-self: stretch;
+        display: none;
+        ul{
+            @include reset();
+            display: grid;
+            grid-template-columns: space() 1fr space();
+            width: 100%;
+            li{
+                grid-column: 2/3;
+                a{
+                    color: theme-color('sax-white');
+                    display: block;
+                    padding: space(1) space(2);
+                    font-size: $font-size-lg;
+                    font-family: $sax-title-font;
+                    text-decoration: none;
+                    &:hover{
+                        color: theme-color('sax-dark-green');
+                    }
+                }//end nav ul li a
+                &.active a{
+                     color: theme-color('sax-dark-green');
+                }
+            }//end nav ul li
+        }//end nav ul
+    }//end nav
+    button{
+        @include make-button($font-size-xl);
+        transition: color $tr-fast;
+        &:hover{
+            color: theme-color('sax-dark-green');
+        }//end button:hover
+        &:focus{
+            outline: none;
+        }
+    }//end button
+}//end #pageHeader
+@include breakpoint-up('md'){
+    #pageHeader{
+        grid-template-columns: repeat(2, 100px) 1fr;
+        h1{
+           font-size: $font-size-sm; 
+        }
+        nav{
+            display: block !important;
+            padding-right: space();
+            grid-row: auto;
+            grid-column: auto;
+            justify-self: end;
+            ul{
+                display: flex;
+                li{
+                    a{
+                        font-size: $font-size-sm;
+                    }
+                }
+            }//end nav ul
+        }//end nav
+        button{
+            display: none;
+        }//end button
+    }//end #pageHeader
+}//end md Media Query
+@include breakpoint-up('lg'){
+    #pageHeader{
+        h1{
+            font-size: $font-size-lg; 
+        }
+        nav ul li a{
+            font-size: $font-size-base;
+        }
+    }
+}//end lg media query

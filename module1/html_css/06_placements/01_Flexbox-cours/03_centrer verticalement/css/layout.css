@@ -1,0 +1,16 @@
+header, main, footer{
+	border-radius: 12px;
+	margin: 10px auto;
+	padding: 10px; 
+		font-family: "Century Gothic", helvetica, arial, sans-serif;
+		color:white; 
+}
+header{
+	background-color: darkorange;
+}
+main{
+	background-color:orangered;
+}
+footer{
+	background-color: brown;
+}

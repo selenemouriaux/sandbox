@@ -1,0 +1,66 @@
+//////////////////
+//Saxifrage Colors
+//////////////////
+$theme-colors: (
+  "sax-red": #BF322F,
+  "sax-black": #1F1812,
+  "sax-dark-green": #66733D,
+  "sax-light-green": #CCCC96,
+  "sax-white": #FFFFFF,
+  "sax-light-grey" : #a0a0a0,
+  "sax-dark-grey" : #535353
+);
+$alternate-colors:(
+  "sax-red": #BF322F,
+  "sax-black": #1F1812,
+  "sax-dark-green": #66733D,
+  "sax-light-green": #CCCC96,
+);
+
+
+///////////////
+//Fonts
+///////////////
+
+//font-sizes
+$font-size-base:              1.2rem; // Assumes the browser default, typically `16px`
+$font-size-xl:                ($font-size-base * 1.5);
+$font-size-lg:                ($font-size-base * 1.25) ;
+$font-size-sm:                ($font-size-base * .875) ;
+$font-size-xs:                ($font-size-base * .550);
+
+//saxifrage Fonts
+$sax-title-font: "Open Sans", Verdana, sans-serif;
+$sax-text-font: "PT Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$sax-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+
+/////////////
+//spacers
+/////////////
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3)
+);
+
+//////////////
+//transitions
+//////////////
+$tr-fast: .2s;
+
+/////////////
+//Responsive
+/////////////
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1950px
+);

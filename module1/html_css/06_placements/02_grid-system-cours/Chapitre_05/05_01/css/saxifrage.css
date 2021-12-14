@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans");
+body {
+  font-family: "PT Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1.2rem;
+  background-color: #FFFFFF;
+  padding: 65px 0;
+}
+#pageHeader {
+  background-color: #CCCC96;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+#pageHeader figure {
+  padding: 0.5rem;
+  margin: 0;
+}
+#pageHeader h1 {
+  color: #66733D;
+  font-size: 1.8rem;
+  margin: 0;
+}
+#pageHeader nav ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+  font: inherit;
+  vertical-align: baseline;
+  list-style: none;
+  width: 100%;
+}
+#pageHeader nav ul li a {
+  color: #FFFFFF;
+  display: block;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.5rem;
+  font-family: "Open Sans", Verdana, sans-serif;
+  text-decoration: none;
+}
+#pageHeader nav ul li a:hover {
+  color: #66733D;
+}
+#pageHeader nav ul li.active a {
+  color: #66733D;
+}
+#pageHeader button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #FFFFFF;
+  transition: color 0.2s;
+}
+#pageHeader button:hover {
+  color: #66733D;
+}
+#pageHeader button:focus {
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  #pageHeader h1 {
+    font-size: 1.05rem;
+  }
+  #pageHeader nav {
+    display: block !important;
+    padding-right: 1rem;
+  }
+  #pageHeader nav ul {
+    display: flex;
+  }
+  #pageHeader nav ul li a {
+    font-size: 1.05rem;
+  }
+  #pageHeader button {
+    display: none;
+  }
+}
+@media screen and (min-width: 992px) {
+  #pageHeader h1 {
+    font-size: 1.5rem;
+  }
+  #pageHeader nav ul li a {
+    font-size: 1.2rem;
+  }
+}
+#mainFooter {
+  background: #66733D;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  font-size: 0.66rem;
+  color: #FFFFFF;
+}
+#mainFooter p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+  font: inherit;
+  vertical-align: baseline;
+  list-style: none;
+}
+#mainFooter nav ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.2rem;
+  font: inherit;
+  vertical-align: baseline;
+  list-style: none;
+}
+#mainFooter nav ul li {
+  padding-left: 1rem;
+}
+#mainFooter nav ul li a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+#mainFooter nav ul li a:hover {
+  color: #CCCC96;
+}
+

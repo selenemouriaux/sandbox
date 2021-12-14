@@ -1,0 +1,42 @@
+// COLORS
+$firstColor1:rgb(0, 115, 209);
+$firstColor2: rgba(95, 188, 250, 0.808);
+$secondColor1:rgb(0, 115, 209);
+$secondColor2: rgba(95, 188, 250, 0.808);
+$altColor1:rgb(255, 166, 0);
+$altColor2:rgb(255, 201, 102);
+$textColor:#333;
+$bgColor:black;
+$bgColorLight:rgb(27, 31, 32);
+$bgColorUltraLight:rgb(246, 246, 246);
+$defonceColor:white;
+$transparentColor:transparent;
+
+// POSITIONNEMENT FLEX
+@mixin XYcenteredBlock{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin XYcenteredFullHeightBlock{
+    @include XYcenteredBlock;
+    min-height: 100vh;
+}
+
+// Gestion overlay
+@mixin overlayParent{
+    content: "";
+    position:absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    z-index:0;
+}
+@mixin overlayChild{
+    position:relative;
+    z-index:10;
+}
+@mixin overlayReset{
+    position:static;
+}

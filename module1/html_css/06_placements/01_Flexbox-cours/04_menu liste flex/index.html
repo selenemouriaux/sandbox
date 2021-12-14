@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menus et listes flexbox</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/layout-style.css">
+	<link rel="stylesheet" type="text/css" href="css/flex-style.css">
+</head>
+<body>
+	<header>
+	<h2>Flex-list</h2>
+	<h3>Pas de flex-grow / row, space-between, </h3>
+	<ul class="first">
+	  <li class="salade">Salade</li>
+	  <li class="tomate">Tomate</li>
+	  <li class="oignons">Oignon frit</li>
+	  <li class="aioli">Aïoli</li>
+	  <li class="navette">Navette</li>
+	</ul>
+
+	<h2>Flex-list pleine largeur</h2>
+	<h3>Pas de flex-wrap / row, (width:100% pour les li) </h3>
+	<ul class="first-bis">
+	  <li class="salade">Salade</li>
+	  <li class="tomate">Tomate</li>
+	  <li class="oignons">Oignon frit</li>
+	  <li class="aioli">Aïoli</li>
+	  <li class="navette">Navette</li>
+	</ul>
+	<p><em>Ici a la différence du menu suivant, les items de menus font tous la même largeur <br>
+	C'est l'effet du width 100% avec le no-wrap</em></p>
+
+	<h2>Flex-list et sous menus</h2>
+	<h3>Avec flex-grox à 1 pour tous / row, space between</h3>
+	<ul class="second">
+	  <li class="salade">Salade</li>
+	  <li class="tomate">Tomate</li>
+	  <li class="oignons">Oignons
+	  	<ul>
+	  		<li>rouges</li>
+	  		<li>doux</li>
+	  		<li>jaune</li>
+			<li>frits
+				<ul>
+					<li>mode thaï</li>
+					<li>aigre douce</li>
+					<li>à l'aïl</li>
+				</ul>
+			</li>
+	  	</ul>
+	  </li>
+	  <li class="aioli">Aïoli</li>
+	  <li class="navette">Navette</li>
+	</ul>
+	<p><em>Ici le menu occupe tout l'espace disponible les items de menus sont autorisés à grandir <code>flex-grow:1</code><br>
+	En revanche la taille des éléments est proportionnelle à la longueur du mot à l'intérieur</em></p>
+
+</header>
+<main>
+	<h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</h2>
+	
+	<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+	
+	<h2>Header Level 2</h2>
+	
+	<ol>
+		<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+		<li>Aliquam tincidunt mauris eu risus.</li>
+	</ol>
+	
+	<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+	
+	<h3>Header Level 3</h3>
+	
+	<ul>
+		<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+		<li>Aliquam tincidunt mauris eu risus.</li>
+	</ul>
+	
+	<pre><code>
+	#header h1 a { 
+		display: block; 
+		width: 300px; 
+		height: 80px; 
+	}
+	</code></pre>
+</main>
+</body>
+</html>

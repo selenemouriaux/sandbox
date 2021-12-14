@@ -1,0 +1,32 @@
+#mainFooter{
+    background: theme-color('sax-dark-green');
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: space();
+    font-size: $font-size-xs;
+    color: theme-color('sax-white');
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    p{
+        @include reset();
+    }
+    nav{
+        justify-self: end;
+        ul{
+            @include reset();
+            display: flex;
+            flex-flow: row wrap;
+            li{
+                padding-left: space();
+                a{
+                    color: theme-color('sax-white');
+                    text-decoration: none;
+                    &:hover{
+                        color: theme-color('sax-light-green');
+                    }//end a:hover
+                }//end #mainFooter nav ul li a
+            }//end #mainFooter nav ul li
+        }//end #mainFooter nav ul
+    }//end #mainFooter nav
+}//end #mainFooter

@@ -1,0 +1,56 @@
+/* Placer tous les conteneurs section en contexte flexbox et*/
+.first, .second, .first-bis{
+	display: flex;
+	width:80%;
+}
+ul ul{
+	width:100%;
+	
+}
+.first{
+	justify-content:space-between;
+}
+.first-bis{
+	flex-wrap: nowrap;/*cette valeur est par défaut, elle n'est pas nécessaire*/
+}
+.second{
+	height:50px;
+	position:relative;
+	justify-content:space-between;
+}
+
+.first-bis li{
+	width:100%;
+	text-align: center;
+
+}
+
+.second li{
+	flex-grow: 1;
+	
+
+}
+.second ul{
+	display:none;
+	height:50px;
+}
+.second>li:hover>ul{
+	display:flex;
+	flex-flow:row wrap;
+	align-items: stretch;
+	position:absolute;
+	top:50px;
+	left:0;
+}
+.second>li:hover>ul li{
+		position:relative;
+		background-color: olivedrab;	
+	}
+
+.second li li:hover ul{
+	display:flex;	
+	flex-direction: column;
+	position:absolute;
+	top:50px;
+	left:0px;
+}

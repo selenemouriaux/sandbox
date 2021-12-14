@@ -1,0 +1,11 @@
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
+
+@function breakpoint($key: "sm") {
+  @return map-get($grid-breakpoints, $key);
+}
+
+@function space($key: 3) {
+  @return map-get($spacers, $key);
+}

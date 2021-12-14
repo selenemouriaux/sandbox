@@ -1,0 +1,26 @@
+/* Placer tous les conteneurs section en contexte flexbox et*/
+section{
+	display: flex;
+}
+.first{
+	
+	flex-direction: row;
+}
+.second{
+	flex-direction: column;
+}
+.third{
+	flex-direction: column-reverse;
+}
+.fourth{
+	width:100px;
+	
+}
+.fifth{
+	width:100px;
+	flex-wrap: wrap;
+}
+.sixth{
+	width:100px;
+	flex-wrap: wrap-reverse;
+}
