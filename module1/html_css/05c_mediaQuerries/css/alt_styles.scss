@@ -19,26 +19,29 @@
   &-title {
     color: mediumpurple;
     background-color: white;
-    padding: 10px;
+    padding: 0;
     font-weight: bolder;
   }
 
   &-menu {
-    padding: 10px 0;
+    padding: 0;
   }
 }
 
 .Menu {
   list-style-type: none;
   background-color: #501b00;
+  padding: 10px;
+  margin: 0;
 
   &-item {
     line-height: 1.3em;
 
     &-link {
-      &:link, &:visited {
-        color: white;
-      }
+      //&:link, &:visited {
+      //  color: white;
+      //}
+      @include special;
 
       &:hover {
         color: mediumpurple;
@@ -50,12 +53,111 @@
 
 .MainContent {
   color: white;
+
   &-textContent {
+    padding: 10px;
     background-color: hotpink;
+
+    &-title {
+      padding: 10px 0;
+      background-color: hotpink;
+      color: white;
+      text-align: center;
+    }
   }
-  &-title {
-    background-color: hotpink;
+
+  &-extraContent {
+    padding: 10px;
+    background-color: blueviolet;
     color: white;
     text-align: center;
+
+    &-title {
+      padding: 10px;
+      margin: 0;
+      background-color: blueviolet;
+      color: white;
+      text-align: center;
+    }
+
+    &-image {
+      width: 100%;
+    }
+  }
+}
+.Footer {
+  &-bottomNav {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    &-item{
+      width: 100%;
+    }
+  }
+}
+
+/******************************************************************
+********************* media query tablet !! ***********************
+******************************************************************/
+
+@media (min-width: 768px) {
+  .Menu {
+    display: flex;
+    justify-content: space-around;
+
+    &-item {
+      width: 100%;
+
+      &:hover {
+        background-color: #333333;
+      }
+
+      &-link {
+        &:link, &:visited {
+          color: white;
+        }
+
+        //@include special;
+
+        &:hover {
+          color: mediumpurple;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .MainContent-extraContent {
+    overflow: hidden;
+
+    &-image {
+      width: 35%;
+      float: left;
+      margin-right: 10px;
+    }
+  }
+}
+
+
+/******************************************************************
+********************* media query laptop !! ***********************
+******************************************************************/
+
+@media (min-width: 980px) {
+  .MainContent{
+    display:flex;
+    &-textContent {
+      width: 68%;
+      color: black;
+      background-color: white;
+      &-image{
+        width: 100%;
+      }
+    }
+    &-extraContent{
+      width:29%;
+      clear: both;
+      color: black;
+      background-color: white;
+    }
   }
 }

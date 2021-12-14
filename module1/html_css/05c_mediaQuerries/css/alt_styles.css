@@ -15,22 +15,28 @@
 .SiteHeader-title {
   color: mediumpurple;
   background-color: white;
-  padding: 10px;
+  padding: 0;
   font-weight: bolder;
 }
 .SiteHeader-menu {
-  padding: 10px 0;
+  padding: 0;
 }
 
 .Menu {
   list-style-type: none;
   background-color: #501b00;
+  padding: 10px;
+  margin: 0;
 }
 .Menu-item {
   line-height: 1.3em;
 }
+.Menu-item-link {
+  text-shadow: 2px 2px 10px black;
+}
 .Menu-item-link:link, .Menu-item-link:visited {
-  color: white;
+  text-decoration: none;
+  color: orange;
 }
 .Menu-item-link:hover {
   color: mediumpurple;
@@ -41,12 +47,93 @@
   color: white;
 }
 .MainContent-textContent {
+  padding: 10px;
   background-color: hotpink;
 }
-.MainContent-title {
+.MainContent-textContent-title {
+  padding: 10px 0;
   background-color: hotpink;
   color: white;
   text-align: center;
+}
+.MainContent-extraContent {
+  padding: 10px;
+  background-color: blueviolet;
+  color: white;
+  text-align: center;
+}
+.MainContent-extraContent-title {
+  padding: 10px;
+  margin: 0;
+  background-color: blueviolet;
+  color: white;
+  text-align: center;
+}
+.MainContent-extraContent-image {
+  width: 100%;
+}
+
+.Footer-bottomNav {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+}
+.Footer-bottomNav-item {
+  width: 100%;
+}
+
+/******************************************************************
+********************* media query tablet !! ***********************
+******************************************************************/
+@media (min-width: 768px) {
+  .Menu {
+    display: flex;
+    justify-content: space-around;
+  }
+  .Menu-item {
+    width: 100%;
+  }
+  .Menu-item:hover {
+    background-color: #333333;
+  }
+  .Menu-item-link:link, .Menu-item-link:visited {
+    color: white;
+  }
+  .Menu-item-link:hover {
+    color: mediumpurple;
+    font-weight: bold;
+  }
+
+  .MainContent-extraContent {
+    overflow: hidden;
+  }
+  .MainContent-extraContent-image {
+    width: 35%;
+    float: left;
+    margin-right: 10px;
+  }
+}
+/******************************************************************
+********************* media query laptop !! ***********************
+******************************************************************/
+@media (min-width: 980px) {
+  .MainContent {
+    display: flex;
+  }
+  .MainContent-textContent {
+    width: 68%;
+    color: black;
+    background-color: white;
+  }
+  .MainContent-textContent-image {
+    width: 100%;
+  }
+  .MainContent-extraContent {
+    width: 29%;
+    clear: both;
+    color: black;
+    background-color: white;
+  }
 }
 
 /*# sourceMappingURL=alt_styles.css.map */

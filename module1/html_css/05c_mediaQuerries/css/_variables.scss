@@ -2,3 +2,13 @@
 // Définition des variables SASS
 
 $fontFirst : 'Roboto';
+
+// Définition des mixins
+
+@mixin special{
+  text-shadow: 2px 2px 10px black;
+  &:link, &:visited{
+    text-decoration: none;
+    color: orange;
+  }
+}
