@@ -1,0 +1,14 @@
+@import "variables";
+
+.PageWrapper{
+  margin: 0;
+}
+
+.TopBanner{
+  background-color: $headerColor;
+  display: flex;
+  justify-content: space-between;
+  &-logo{
+    //min-width: ;
+  }
+}

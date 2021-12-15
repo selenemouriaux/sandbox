@@ -5,6 +5,28 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/layout-style.css">
 	<meta name="viewport" content="width-device-width" initial-scale="1">
+	<style>
+		section {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.first div {flex-grow: 1}
+
+		.second .aioli{flex-grow: 0; order: -1}
+		.second .salade{flex-grow: 3; order: 2}
+		.second .tomate{flex-grow: 2; order: 1}
+		.second .oignons{flex-grow: 2; order: 1}
+
+		.third .tomate{align-self: center}
+
+		.fourth .tomate{flex: 1 0 50%}
+
+		.fifth div{flex-grow: 1}
+		.fifth .aioli{flex: 0 0 250px}
+
+		.sixth div{flex-shrink: .5}
+		.sixth .tomate{flex: 0 1 50%}
+	</style>
 </head>
 <body>
 	<h1>Propriétés des flex-items - <em>Authoriser le wrap a toutes les sections</em></h1>

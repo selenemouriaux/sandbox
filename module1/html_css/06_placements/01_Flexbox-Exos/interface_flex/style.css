@@ -1,0 +1,11 @@
+.PageWrapper {
+  margin: 0;
+}
+
+.TopBanner {
+  background-color: #b4b0b0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*# sourceMappingURL=style.css.map */
