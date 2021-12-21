@@ -11,7 +11,8 @@ let message;
             2011 <= birthYear && birthYear <= 2025 ? generation = 'Alpha' :
                 generation = 'des Baby-boomers';
 
-(!(birthYear % 4) && (birthYear % 100)) || !(birthYear % 400) ? bissextile = 'était' : bissextile = 'n\'était pas';
+(!(birthYear % 4) && (birthYear % 100)) || !(birthYear % 400) ?
+    bissextile = 'était' : bissextile = 'n\'était pas';
 
 message = `Vous faites partie de la génération ${generation}.
 ${birthYear} ${bissextile} une année bissextile.`;

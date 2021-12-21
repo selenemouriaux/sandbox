@@ -1,0 +1,105 @@
+@import "variables";
+
+.PageWrapper {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: $regular;
+}
+
+.TopBanner {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: $black;
+  padding: $lSpace;
+  color: $white;
+  &-left {
+    &-title, &-description {
+      ul, li{
+        margin: 0;
+      }
+      margin: 0;
+    }
+  }
+  &-backToRoot {
+    align-self: center;
+    &-item {
+      color: $white;
+      padding: $lSpace;
+      &:link, &:visited {
+        text-decoration: none;
+      }
+      &:hover, &:active {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.MainContent {
+  background-color: $light;
+  border-radius: $lSpace;
+  margin-top: $lSpace;
+  align-self: center;
+  min-width:500px;
+  max-width: 1200px;
+  padding: $xsSpace $lSpace;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto 1fr;
+  &-title {
+    margin: $mSpace;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+  &-description {
+    margin: $mSpace 0;
+  }
+  &-blackboard {
+
+  }
+}
+
+.Footer {
+  margin-top: auto;
+  background-color: $black;
+  color: $white;
+  text-align: center;
+  &-info {
+    padding-left: $lSpace;
+  }
+}
+
+.ob-formatted {
+  h3{
+    margin: $sSpace 0;
+  }
+}
+
+.Form {
+  padding: $lSpace;
+  legend {}
+  div {
+    padding-top: $mSpace;
+    display: flex;
+    justify-content: space-around;
+  }
+  label {
+    margin-top: $mSpace;
+    width: 80%;
+  }
+  input {
+    width: 20%;
+    text-align: center;
+  }
+}
+.checkbox {
+  display: flex;
+  justify-content: space-around;
+}
+

@@ -1,0 +1,71 @@
+/***** FONTS *****/
+/***** COLORS *****/
+/***** SPACES *****/
+/***** MIXINS *****/
+.PageWrapper {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Nunito";
+}
+
+.TopBanner {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: black;
+  padding: 15px;
+  color: white;
+}
+.TopBanner-title {
+  width: 80%;
+  margin: 0;
+}
+.TopBanner-description {
+  width: 80%;
+}
+.TopBanner-backToRoot {
+  padding: 0 15px;
+  justify-self: end;
+  align-self: center;
+  text-align: end;
+}
+.TopBanner-backToRoot:link, .TopBanner-backToRoot:visited {
+  color: #40e8e8;
+}
+.TopBanner-backToRoot:hover, .TopBanner-backToRoot:active {
+  color: #d3009c;
+}
+
+.MainContent {
+  background-color: #e5dada;
+  margin-top: 15px;
+  border-radius: 15px;
+  align-self: center;
+  max-width: 1200px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1200px;
+  grid-template-rows: auto auto 1fr;
+}
+.MainContent-title {
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.Footer {
+  display: flex;
+  margin-top: auto;
+  background-color: black;
+  color: white;
+  justify-content: flex-end;
+}
+.Footer-info {
+  padding: 0 15px;
+}
+
+/*# sourceMappingURL=style.css.map */

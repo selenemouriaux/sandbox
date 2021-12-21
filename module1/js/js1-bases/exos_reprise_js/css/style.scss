@@ -1,0 +1,83 @@
+@import "variables";
+
+.PageWrapper {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: $regular;
+}
+
+.TopBanner {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  //flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: $black;
+  padding: $lSpace;
+  color: $white;
+
+  &-title {
+    width: 80%;
+    margin: 0;
+  }
+
+  &-description {
+    width: 80%;
+  }
+
+  &-backToRoot {
+    //width: 15%;
+    padding: 0 $lSpace;
+    justify-self: end;
+    align-self: center;
+    text-align: end;
+    &:link, &:visited{
+      color: #40e8e8;
+    }
+    &:hover, &:active{
+      color: #d3009c;
+    }
+  }
+}
+
+.MainContent {
+  background-color: $light;
+  margin-top: $lSpace;
+  border-radius: $lSpace;
+  align-self: center;
+  max-width: 1200px;
+  padding: $lSpace;
+  display: grid;
+  grid-template-columns: 1200px;
+  grid-template-rows: auto auto 1fr;
+
+  &-title {
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+
+  &-description {
+
+  }
+
+  &-blackboard {
+
+  }
+}
+
+.Footer {
+  display: flex;
+  margin-top: auto;
+  background-color: $black;
+  color: $white;
+  justify-content: flex-end;
+
+  &-info {
+    padding: 0 $lSpace;
+  }
+}

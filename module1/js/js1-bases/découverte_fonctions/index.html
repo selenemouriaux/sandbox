@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet">
+    <title>Intro au Fonctions</title>
+</head>
+<body class="PageWrapper">
+<header class="TopBanner">
+    <div class="TopBanner-left">
+        <h1 class="TopBanner-left-title">Introduction à Javascript</h1>
+        <p class="TopBanner-left-description">Fonctions</p>
+    </div>
+    <nav class="TopBanner-backToRoot">
+        <a href="./.." class="TopBanner-backToRoot-item">RootLink 1</a>
+        <a href="./.." class="TopBanner-backToRoot-item">RootLink 2</a>
+        <a href="./.." class="TopBanner-backToRoot-item">RootLink 3</a>
+        <a href="./.." class="TopBanner-backToRoot-item">RootLink 4</a>
+    </nav>
+</header>
+<main class="MainContent">
+    <h2 class="MainContent-title">Exercices sur les fonctions</h2>
+    <p class="MainContent-description">Réaliser des fonctions diverses dans 4
+        fichiers js différents :
+    <ul>
+        <li>Le cercle parfait</li>
+        <li>Tirage aléatoire</li>
+        <li>Obtenir une objet date à partir d'une chaîne</li>
+        <li>Travail sur un DataSet</li>
+    </ul>
+    </p>
+    <div class="MainContent-blackboard ob-formatted">
+        <hr>
+        <h3>Tableau blanc :</h3>
+        <hr>
+        <hr>
+        <p>Étape 1</p>
+        <div id="step1">
+            <form class="Form" onsubmit="return showCircleCss(this)">
+                <fieldset>
+                    <legend>Drawing a nice Circle in CSS&nbsp;</legend>
+                    <div>
+                        <label for="diameter">Please give the diameter you'd
+                            like
+                            your circle to have (in&nbsp;px): </label>
+                        <input type="number" required id="diameter" value="50"
+                               name="diameter">
+                    </div>
+                    <div>
+                        <label for="color">Which color do you want for it
+                            ? </label>
+                        <input type="color" id="color" name="color"
+                               value="#9e38ad">
+                    </div>
+                    <div><input type="submit" value="Dessiner !"></div>
+                </fieldset>
+            </form>
+            <p id="jeSapelCercle"></p>
+        </div>
+        <hr>
+        <p>Étape 2</p>
+        <div id="step2">
+            <form class="Form"
+                  onsubmit="return getRandomInteger(this.n1.value, this.n2.value)">
+                <fieldset>
+                    <legend>Générateur aléatoire entre&nbsp;</legend>
+                    <div>
+                        <label for="n1">Borne inférieure : </label>
+                        <input type="number" id="n1" name="n1" value="10">
+                    </div>
+                    <div>
+                        <label for="n2">Borne supérieure : </label>
+                        <input type="number" id="n2" name="n2" value="20">
+                    </div>
+                    <div><input type="submit" value="Générer"></div>
+                </fieldset>
+            </form>
+            <p id="etape2"></p>
+        </div>
+        <hr>
+        <p>Étape 3</p>
+        <div id="step3">
+            <form id="dates" class="Form" onsubmit="return getDateByStr(this)">
+                <fieldset>
+                    <legend>Extracteur d'objet DateTime à partir d'une String&nbsp;</legend>
+                    <div><label for="camarade">Sélectionnez qqun du groupe
+                        pour traduire sa date de naissance : </label>
+                        <input list="liste" id="camarade" name="liste">
+                    </div>
+                    <hr>
+                    <div class="checkbox">
+                        <label for="str">Ou saisissez votre date et format
+                            pourraves : </label>
+                        <input type="text" id="str" name="str"
+                               value="">
+                    </div>
+                    <div>
+                        <input type="radio" id="jjmmaaaa" name="format" value="jjmmaaaa"><label
+                            for="jjmmaaaa">jj mm aaaa </label>
+                        <input type="radio" id="mmjjaaaa" name="format" value="mmjjaaaa"><label
+                            for="mmjjaaaa">mm jj aaaa </label>
+                        <input type="radio" id="aaaammjj" name="format" value="aaaammjj"><label
+                            for="aaaammjj">aaaa mm jj </label>
+                        <input type="radio" id="aaaajjmm" name="format" value="aaaajjmm"><label
+                            for="aaaajjmm">aaaa jj mm </label>
+                    </div>
+                    <div><input type="submit" value="Traduire"></div>
+                </fieldset>
+            </form>
+            <p id="etape3"></p>
+        </div>
+        <hr>
+        <p>Étape 4</p>
+        <div id="step4"></div>
+        <H1>MON VIAIS !</H1>
+        <hr>
+        <hr>
+    </div>
+</main>
+<footer class="Footer">
+    <p class="Footer-info">Infos footer</p>
+</footer>
+<script src="js/etape1.js"></script>
+<script src="js/etape2.js"></script>
+<script src="js/etape3.js"></script>
+<script src="js/etape4.js"></script>
+<script src="js/datas.js" type="module"></script>
+<script src="https://kit.fontawesome.com/c6a24866e1.js"
+        crossorigin="anonymous"></script>
+</body>
+</html>

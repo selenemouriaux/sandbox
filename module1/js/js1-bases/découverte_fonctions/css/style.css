@@ -1,0 +1,100 @@
+/***** FONTS *****/
+/***** COLORS *****/
+/***** SPACES *****/
+/***** MIXINS *****/
+.PageWrapper {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Nunito";
+}
+
+.TopBanner {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  padding: 15px;
+  color: white;
+}
+.TopBanner-left-title, .TopBanner-left-description {
+  margin: 0;
+}
+.TopBanner-left-title ul, .TopBanner-left-title li, .TopBanner-left-description ul, .TopBanner-left-description li {
+  margin: 0;
+}
+.TopBanner-backToRoot {
+  align-self: center;
+}
+.TopBanner-backToRoot-item {
+  color: white;
+  padding: 15px;
+}
+.TopBanner-backToRoot-item:link, .TopBanner-backToRoot-item:visited {
+  text-decoration: none;
+}
+.TopBanner-backToRoot-item:hover, .TopBanner-backToRoot-item:active {
+  text-decoration: underline;
+}
+
+.MainContent {
+  background-color: #e5dada;
+  border-radius: 15px;
+  margin-top: 15px;
+  align-self: center;
+  min-width: 500px;
+  max-width: 1200px;
+  padding: 3px 15px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto 1fr;
+}
+.MainContent-title {
+  margin: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.MainContent-description {
+  margin: 10px 0;
+}
+.Footer {
+  margin-top: auto;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+.Footer-info {
+  padding-left: 15px;
+}
+
+.ob-formatted h3 {
+  margin: 5px 0;
+}
+
+.Form {
+  padding: 15px;
+}
+.Form div {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.Form label {
+  margin-top: 10px;
+  width: 80%;
+}
+.Form input {
+  width: 20%;
+  text-align: center;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*# sourceMappingURL=style.css.map */
