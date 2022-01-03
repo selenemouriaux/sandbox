@@ -1,0 +1,232 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+}
+
+h1, h2, h3 {
+  font-family: 'Ceviche One', cursive;
+  font-weight: normal;
+}
+
+.h1-size {
+  font-size: 2em;
+}
+
+.h2-size {
+  font-size: 1.6em;
+}
+
+.h3-size {
+  font-size: 1.4em;
+}
+
+a:link, a:visited {
+  color: #bf0000;
+}
+
+a:hover {
+  color: orange;
+}
+
+.Header {
+  background-color: transparent;
+}
+
+.Header-figure {
+  width: 100%;
+  background-color: #bf0000;
+  margin: 0;
+  padding: 4em 0;
+  text-align: center;
+}
+
+.Header-img {
+  max-width: 280px;
+}
+
+.Header-nav-menu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.Header-nav-menu-link-a:link {
+  display: block;
+  background-color: #860000;
+  text-align: center;
+  padding: .8em;
+  text-decoration: none;
+  color: #FFF;
+}
+
+.Header-nav-menu-link-a:visited {
+  color: #FFF;
+}
+
+.Header-nav-menu-link-a:hover {
+  background-color: #bf0000;
+}
+
+.Main-presentation {
+  background: black;
+  color: #FFF;
+  padding: 1em;
+}
+
+.Main-presentation h1 {
+  color: #bf0000;
+  text-align: center;
+}
+
+.Main-recettes {
+  padding: 1em;
+  background: #ff3939 url(../img/fond.png);
+}
+
+.Main-recettes-h1 {
+  text-align: center;
+  color: #860000;
+}
+
+.Main-recettes-h1 strong {
+  color: #333;
+}
+
+.Main-aside {
+  background-color: #bf0000;
+  color: #FFF;
+  padding: 1em;
+}
+
+.Main-aside-h1 {
+  text-align: center;
+}
+
+.Main-aside-h1 strong {
+  color: #ff3939;
+}
+
+.Main-aside-actu-h2-ico {
+  color: #ff3939;
+}
+
+.Recette {
+  border-top: 15px #860000 dotted;
+}
+
+.Recette-h2-ico {
+  color: #860000;
+}
+
+.Recette-content {
+  text-align: justify;
+}
+
+.Recette-img {
+  float: left;
+  border: 5px solid #860000;
+  max-width: 170px;
+  border-radius: 50%;
+  margin-right: .4em;
+}
+
+.Recette-button:link {
+  display: block;
+  padding: .7em;
+  background-color: #860000;
+  color: #FFF;
+  text-align: center;
+  text-decoration: none;
+  width: 50%;
+  margin: 2em auto 1em;
+}
+
+.Recette-button:visited {
+  color: #FFF;
+}
+
+.Footer-content {
+  text-align: center;
+}
+
+@media screen and (min-width: 550px) {
+  .Header {
+    min-height: 250px;
+  }
+  .Header-figure {
+    border-top: 5px #860000 solid;
+    border-bottom: 5px #860000 solid;
+    margin: 8em 0 0;
+    padding: 1em;
+  }
+  .Header-nav-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .Header-nav-menu-link {
+    margin-right: .5em;
+  }
+  .Header-nav-menu-link-a:link {
+    border-radius: 0 0 10px 10px;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+  }
+  .Header-nav-menu-link-a:hover {
+    padding-top: 2em;
+  }
+  .Main-recettes {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    gap: 2em;
+  }
+  .Main-recettes-h1 {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+  }
+  .Recette {
+    border: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .Recette-button:link {
+    margin-top: auto;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .Main {
+    max-width: 960px;
+    margin: 0 auto;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 250px;
+        grid-template-columns: 1fr 250px;
+    gap: 2em;
+  }
+  .Main-presentation {
+    border: 5px solid #860000;
+    border-radius: 25px;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+  }
+  .Main-recettes {
+    border: 5px solid #bf0000;
+  }
+  .Main-aside {
+    border: 5px solid #860000;
+  }
+}
+/*# sourceMappingURL=style.css.map */

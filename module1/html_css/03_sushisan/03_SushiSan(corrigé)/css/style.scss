@@ -1,0 +1,205 @@
+// $firstColor:#25b3b4;
+// $firstDarkColor:#1b9ca2;
+// $firstLightColor:#b6dfdd;
+// $textColor:#333;
+// $defonceColor:#FFF;
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Slabo 27px', serif;
+
+@import 'mixins';
+
+// Styles généraux et Objets
+body{
+    font-family: 'Open Sans', sans-serif;
+    color:$textColor;
+}
+h1,h2,h3{
+    font-family: 'Ceviche One', cursive;
+    font-weight: normal;
+}
+.h1-size{font-size: 2em;}
+.h2-size{font-size: 1.6em;}
+.h3-size{font-size: 1.4em;}
+a:link,a:visited{
+    color:$firstColor;
+
+}
+a:hover{
+    color:orange;
+}
+
+// Styles BEM jolis
+.Header{
+    background-color: transparent;
+    &-figure{
+        width:100%;
+        background-color:$firstColor ;
+        margin:0;
+        padding:4em 0;
+        text-align: center;
+    }
+    &-img{
+        max-width:280px;
+    }
+    &-nav-menu{
+        margin:0;
+        padding:0;
+        list-style-type:none;
+        &-link-a:link{
+            display:block;
+            background-color: $firstDarkColor;
+            text-align: center;
+            padding:.8em;
+            text-decoration: none;
+            color:$defonceColor;
+        }
+        &-link-a:visited{
+            color:$defonceColor;
+        }
+        &-link-a:hover{
+            background-color: $firstColor;
+        }
+    }
+}// fin de header
+
+.Main{
+    
+    &-presentation{
+        background: black;
+        color:$defonceColor;
+        padding:1em;
+        h1{
+            color:$firstColor;
+            text-align: center;
+
+        }
+    }
+    &-recettes{
+        padding:1em;
+        background: $firstLightColor url(../img/fond.png);
+        &-h1{
+            text-align: center;
+            color:$firstDarkColor;
+            strong{
+                color:$textColor;
+            }
+        }
+    }
+    &-aside{
+        background-color: $firstColor;
+        color:$defonceColor;
+        padding: 1em;
+        &-h1{
+            text-align: center;
+            & strong{
+                color:$firstLightColor;
+            }
+        }
+        &-actu-h2-ico{
+            color:$firstLightColor;
+        }
+    }
+}//fin de main
+
+// Composant Recette (dans Main)
+.Recette{
+    border-top:15px $firstDarkColor dotted;
+    &-h2-ico{
+        color:$firstDarkColor;
+    }
+    &-content{
+        text-align: justify;
+    }
+    &-img{
+        float:left;
+        border:5px solid $firstDarkColor;
+        max-width:170px;
+        border-radius : 50%;
+        margin-right:.4em;
+    }
+    &-button:link{
+        display:block;
+        padding:.7em;
+        background-color: $firstDarkColor;
+        color:$defonceColor;
+        text-align:center;
+        text-decoration:none;
+        width:50%;
+        margin:2em auto 1em;
+    }
+    &-button:visited{
+        color:$defonceColor;
+    }
+
+}
+
+.Footer-content{
+    text-align: center;;
+}
+
+@media screen AND (min-width:550px){
+    .Header{
+        min-height:250px;
+        &-figure{
+            border-top:5px $firstDarkColor solid;
+            border-bottom:5px $firstDarkColor solid;
+            margin:8em 0 0;
+            padding:1em;
+        }
+        &-nav-menu{
+            display:flex;
+            justify-content: center;
+            &-link{
+                margin-right:.5em;
+                &-a:link{
+                    border-radius:0 0 10px 10px;
+                    transition: all .3s ease-out;
+                }
+                &-a:hover{
+                    padding-top:2em;
+                }
+            }
+        }
+
+    }// fin de .Header
+    .Main-recettes{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap:2em;
+        &-h1{
+            grid-column: 1/3;
+        }
+
+    }
+
+    //Objet .Recette
+    .Recette{
+        border:none;
+        display:flex;
+        flex-direction: column;
+        &-button:link{
+            margin-top:auto;
+        }
+    }
+}// fin de query 450 min
+@media screen AND (min-width:900px){
+    .Main{
+        max-width:960px;
+        margin: 0 auto;
+        display:grid;
+           grid-template-columns: 1fr 250px;
+           gap:2em;
+        &-presentation{
+            border:5px solid $firstDarkColor;
+            border-radius:25px;
+            grid-column:1/3 ;
+        }
+        &-recettes{
+           border:5px solid $firstColor;
+           
+        }
+        &-aside{
+            border:5px solid $firstDarkColor;
+        }
+    }
+}

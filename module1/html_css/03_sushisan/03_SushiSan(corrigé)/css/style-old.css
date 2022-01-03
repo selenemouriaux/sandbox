@@ -1,0 +1,208 @@
+/*
+####  Charte graphique :
+##################################
+
+font-family: 'Open Sans', sans-serif;
+font-family: 'Slabo 27px', serif;
+
+Bleu très clair	#B6DFDD;
+Bleu clair	#25B3B4;
+Bleu Foncé	#1B9CA2;
+
+*/
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	color:#333;
+}
+header figure{
+	background-color:#25B3B4;
+	margin:0;
+	text-align: center;
+	padding:3em 0;
+}
+header ul{
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
+header nav a:link, header nav a:visited{
+	display: block;
+	background-color: #1B9CA2;
+	color:white;
+	text-align:center;
+	padding:0.7em 0;
+	text-decoration: none;
+}
+header nav a:visited{
+	color:white;
+}
+header nav a:hover{
+	background-color: #B6DFDD;
+	color: #1B9CA2;
+}
+h1,h2,h3{
+	font-family: 'Slabo 27px', serif;
+}
+#presentation{
+	background-color: white;
+}
+#presentation h1{
+	color:#1B9CA2;
+	text-align: center;
+}
+#presentation a:link{
+	color:#25B3B4;
+}
+#presentation a:visited{
+	color: #1B9CA2;
+}
+#presentation a:hover{
+	color:orange;
+}
+section,aside{
+	padding:0.4em; 
+}
+#recettes{
+	background-image: url('../img/fond.png');
+}
+#recettes h1{
+	text-align: center;
+	color:#1B9CA2;
+}
+#recettes h1 strong{
+	color:#333;
+}
+.recette{
+	border-top:1em dotted  #1B9CA2;
+	margin-top: 3em;
+}
+.recette h2 i{
+	color:#1B9CA2;
+}
+.recette img{
+	border-radius: 50%;
+	float:left;
+	margin:0.4em;
+	width:35%;
+}
+.recette a:link{
+	color:#1B9CA2;
+}
+.recette a:visited{
+	color:#157b7f;
+}
+.recette a:hover{
+	color:orange;
+}
+.recette a.infos:link,.recette a.infos:visited{
+	display:block;
+	background-color:#1B9CA2;
+	color: white;
+	text-align: center; 
+	width:40%;
+	padding:0.8em;
+	margin-left: auto;
+	margin-right: auto;
+	text-decoration: blink;
+	transition: all 0.7s;
+	clear:both;
+}
+.recette a.infos:hover{
+	background-color:white;
+	color: #1B9CA2;
+}
+aside{
+	background-color: #1B9CA2;
+	color: white;
+}
+aside h1 strong{
+	color:#B6DFDD;
+}
+aside h2 i{
+	color:#B6DFDD;
+}
+footer{
+	padding:2em;
+	text-align: center;
+	color: darkgrey;
+}
+@media screen AND (min-width: 700px){
+	header{
+		height:15em;
+		/*background-color: red;*/
+	}
+	header figure{
+		margin-top: 7em;
+		padding:0.8em;
+		border-top: 0.4em solid #1B9CA2;
+		border-bottom: 0.4em solid #1B9CA2;
+	}
+	header nav ul{
+		display:flex;
+		justify-content: center;
+	}
+	header nav li{
+		margin:0 0.2em ;
+	}
+	header nav a:link{
+		padding:0.8em;
+		border-radius: 0 0 0.6em 0.6em;
+		transition:all 0.6s ease-out;
+	}
+	header nav a:hover{
+		padding-top: 3em;
+	}
+
+	#recettes{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	#recettes h1{
+		width:100%;
+	}
+	.recette{
+		width:48%;
+		margin-top: 2em;
+		border-top: 0;
+		text-align: justify;
+	}
+	.recette:first-child{
+		margin-right: 2%;
+	}
+	.recette:last-child{
+		margin-left:2%;
+	}
+
+}
+@media screen AND (min-width:950px){
+	article,section, aside{
+		box-sizing: border-box;
+	}
+	#presentation{
+		border:solid 0.5em #1B9CA2;
+		border-radius : 2em;
+		margin-bottom:2em;
+	}
+	main{
+		display:flex;
+		flex-wrap: wrap;
+		max-width: 1200px;
+		margin:0 auto;
+
+	}
+	#recettes{
+		width:69.2%;
+		border:solid 0.6em #25B3B4;
+		margin-right:0.8%;
+
+	}
+	aside{
+		width:29.2%;
+		border:solid 0.6em #1B9CA2;
+		background-color: #25B3B4;
+		margin-left:0.8%;
+
+	}
+
+}

@@ -1,0 +1,15 @@
+a.infos:link,a.infos:visited{
+	display:block;
+	background-color: #1B9CA2;
+	color:white;
+	text-align: center;
+	width:50%;
+	padding:1em;
+	margin:2em auto;
+	border-radius:0.8em;
+	transition:all 0.6s;
+}
+a.infos:hover{
+	background-color: white;
+	color:#1B9CA2;
+}

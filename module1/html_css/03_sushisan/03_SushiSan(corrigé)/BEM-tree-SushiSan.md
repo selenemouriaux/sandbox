@@ -1,0 +1,26 @@
+Header
+    Header-figure
+        Header-img
+    Header-nav
+        Header-nav-menu
+            Header-nav-menu-link
+                Header-nav-menu-link-a
+Main
+    Main-presentation
+    Main-recettes
+        Main-recettes-recette / Recette
+            Main-recettes-h1
+            Recette-h2
+                Recette-h2-ico
+            Recette-content
+                Recette-img
+            Recette-button
+                Recette-button-ico
+    Main-aside
+        Main-aside-h1
+        Main-aside-actu
+            Main-aside-actu-h2
+                Main-aside-actu-h2-ico
+            Main-aside-actu-content
+Footer
+    Footer-content
