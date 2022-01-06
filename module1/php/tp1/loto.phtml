@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> LOTO </title>
+</head>
+<body>
+<h1>Tirage du loto :</h1>
+<?php $tirage = tirage();$i = 0;foreach ($tirage as $number) : ?>
+    <p>Numéro <?php echo $i + 1 ?> : <?php echo $number ?> </p>
+    <?php $i++; endforeach; ?>
+</body>
+</html>
