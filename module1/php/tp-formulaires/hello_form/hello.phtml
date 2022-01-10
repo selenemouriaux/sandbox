@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tests PHP & Formulaires</title>
+</head>
+<body>
+<form action="hello.php" method="post">
+    <fieldset>
+        <legend> Tests de gestion de formulaire en PHP</legend>
+        <label for="firstname">Votre prénom : </label>
+        <input type="text" id="firstname" name="prénom" placeholder="Jean-Daniel">
+        <input type="submit" value="Envoyer !">
+    </fieldset>
+</form>
+<hr>
+<p>Bonjour <?php echo $firstname; ?></p>
+<p>Bonjour <?= $firstname ?></p>
+</body>
+</html>

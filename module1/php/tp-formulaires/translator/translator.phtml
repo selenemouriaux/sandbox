@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Translator</title>
+</head>
+<body>
+<h1>Traducteur Anglais - Français</h1>
+<form action="./translator.php" method="post">
+    <fieldset>
+        <legend> Traduire </legend>
+        <label for="word">Mot à traduire : </label>
+        <input type="text" id="word" name="mot">
+        <label for="direction">Sens de traduction : </label>
+        <select name="traduire_en" id="direction">
+            <option value="toEng">du Français en Anglais</option>
+            <option value="toFr">de l'Anglais en Français</option>
+        </select>
+        <button type="submit">Traduire !</button>
+    </fieldset>
+</form>
+<?php if ($mot) :?>
+<h2>La traduction de "<?= $mot ?>" est : <?= $translation ?></h2>
+<?php else : ?>
+<h2>veuillez saisir un mot à traduire :)</h2>
+<?php endif ?>
+</body>
+</html>

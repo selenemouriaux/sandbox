@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulaire de contact</title>
+</head>
+<body>
+<h1>Formulaire de contact pour s'abonner à la newsletter !</h1>
+<form action="persitent-contacts.php" method="post">
+    <fieldset>
+        <legend>Mes coordonnées :</legend>
+        <label for="email">Mon email : </label>
+        <input type="text" name="email" id="email" value="">
+        <button type="submit">Je m'abonne !</button>
+    </fieldset>
+</form>
+<hr>
+<h2>Liste des emails des abonnés :</h2>
+<br>
+<?php if ($newsletterSubs) : ?>
+<?php foreach ($newsletterSubs as $email) : ?>
+<p><?= $email ?> </p>
+<?php endforeach ?>
+<?php endif; ?>
+</body>
+</html>
