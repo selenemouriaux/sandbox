@@ -18,12 +18,16 @@
     </fieldset>
 </form>
 <hr>
+<?php if ($error) :?>
+<h3>ERREUR DE TRAITEMENT : <?=$error?></h3>
+<?php endif;?>
 <h2>Liste des emails des abonnés :</h2>
-<br>
 <?php if ($newsletterSubs) : ?>
-<?php foreach ($newsletterSubs as $email) : ?>
-<p><?= $email ?> </p>
-<?php endforeach ?>
+    <ul>
+        <?php foreach ($newsletterSubs as $email) : ?>
+            <li><?= $email ?> </li>
+        <?php endforeach ?>
+    </ul>
 <?php endif; ?>
 </body>
 </html>
