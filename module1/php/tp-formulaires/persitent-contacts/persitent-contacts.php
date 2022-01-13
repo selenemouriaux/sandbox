@@ -7,8 +7,8 @@ $error = null;
 function getListFromCsv($filePath)
 {
     $subs = [];
-    $emails = fopen(FILEPATH, "a+");
-    while (!feof($emails) && $data = fgetcsv($emails)) {
+    $emails = fopen($filePath, "a+");
+    while ($data = fgetcsv($emails)) {
         $subs[] = $data[0];
     }
     fclose($emails);

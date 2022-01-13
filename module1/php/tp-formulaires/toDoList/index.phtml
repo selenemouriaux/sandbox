@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDoList</title>
+</head>
+<body>
+<div class="PageWrapper">
+    <header class="TopBanner">
+        <h1 class="TopBanner-title">Ma ToDo List !</h1>
+    </header>
+    <main class="MainContent">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" class="MainContent-form Form">
+            <fieldset>
+                <legend class="Form-title"> Liste des tâches :&nbsp;</legend>
+                <?php if ($tasks) :?>
+                <input type="submit" class="Form-submit" value="Supprimer" name="supprimer">
+                <ul class="Form-menu">
+                    <?php foreach($tasks as $task) :?>
+                    <li class="Form-menu-task">
+                        todo random
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+                <?php else : ?>
+                    <h2>Ah comme ça on risque pas de mal faire, c'est sûr ! ...</h2>
+                <?php endif; ?>
+            </fieldset>
+        </form>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" class="MainContent-form Form">
+            <fieldset>
+                <legend class="Form-title"> Ajouter une tâche :&nbsp;</legend>
+                <ul class="Form-menu">
+                    <li class="Form-menu-item">
+                        <label for="titre">Titre : </label>
+                        <input type="text" id="titre" name="titre"
+                               value="<?php if (isset($arr['titre'])) echo htmlspecialchars($arr['titre']); ?>">
+                    </li>
+                    <li class="Form-menu-item">
+                        <label for="description">Description : </label>
+                        <textarea id="description" name="description" rows="5">
+                            <?php if (isset($arr['description'])) echo htmlspecialchars($arr['description']) ?>
+                        </textarea>
+                    </li>
+                    <li class="Form-menu-item">
+                        <label for="date">Date limite : </label>
+                        <input type="date" id="date" name="date"
+                               value="<?php if (isset($arr['date'])) echo htmlspecialchars($arr['date']) ?>">
+                    </li>
+                    <li class="Form-menu-item">
+                        <p>Priorité : </p>
+                        <label for="basse"> basse </label>
+                        <input type="radio" name="priorite" id="basse" value="basse"
+                            <?php if ($arr['priorite'] === 'basse') echo "checked" ?>>
+                        <label for="moyenne"> moyenne </label>
+                        <input type="radio" name="priorite" id="moyenne" value="moyenne"
+                            <?php if ($arr['priorite'] === 'moyenne') echo "checked" ?>>
+                        <label for="haute"> haute </label>
+                        <input type="radio" name="priorite" id="haute" value="haute"
+                            <?php if ($arr['priorite'] === 'haute') echo "checked" ?>>
+                    </li>
+                </ul>
+                <input type="submit" class="Form-submit" value="Enregistrer" name="enregistrer">
+            </fieldset>
+        </form>
+    </main>
+</div>
+</body>
+</html>
