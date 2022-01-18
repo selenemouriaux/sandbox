@@ -2,22 +2,32 @@
 require './modules/functions.php';
 const TMP = './tmp.json';
 const TASKS = './tasks.json';
-const REQUEST = ['id', 'titre', 'description', 'date', 'priorite', 'modifier', 'supprimer',
-    'idTache', 'selectionDeTaches', 'enregistrer', 'erreurs'];
+const REQUEST = ['titre', 'description', 'date', 'priorite', 'erreurs'];
 
-var_dump("TODO : execute sense() on values after validation !");
-echo '<hr>';
+//echo '<hr>';
 [$arr, $tasks] = initialize();
+var_dump($_POST);
 if ($_POST) {
+    if (isset($_POST['indexes']) && isset($_POST['supprimer'])) {
+        var_dump("CONDITION VRAIE");
+        $tasks = deleteTask($_POST['indexes'], $tasks);
+        jsonUpdate($tasks, TASKS);
+        $tasks = initialize()[1];
+    }
     $arr = updateArray($arr);
-//    PROCESS FORM
+    [$arr, $isValid] = processArrays($arr);
+    if ($isValid && !in_array($arr, $tasks) && $_POST['enregistrer']) {
+        $tasks[] = $arr;
+        jsonUpdate($tasks, TASKS);
+    } elseif (in_array($arr, $tasks)) {
+        $arr['erreurs']['erreurs'] = "!! Exact same ToDo already exists !!";
+    }
+    jsonUpdate($arr, TMP);
 
 //    $arr = resetButtons($arr);
-    jsonUpdate($arr, TMP);
 //    header('Location: index.php');
 //    exit;
 }
-var_dump($arr);
 
 include 'index.phtml';
 

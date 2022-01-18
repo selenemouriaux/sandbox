@@ -1,3 +1,14 @@
+.PageWrapper {
+  max-width: 900px;
+  margin: auto;
+  font-family: "Rock Salt";
+}
 
+.TopBanner {
+  display: flex;
+}
+input[type=checkbox]:checked + label.strikethrough {
+  text-decoration: line-through;
+}
 
 /*# sourceMappingURL=style.css.map */

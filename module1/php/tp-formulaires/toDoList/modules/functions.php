@@ -76,16 +76,10 @@ function updateArray(array $arr): array
 function checkArray($field, string $key): string
 {
     $okValues = [
-        'id' => ['check' => "#^\d{2}$#", 'err' => "Id non conforme"],
-        'titre' => ['check' => "#^[a-z A-Z-!À-ÿ]{3,55}$#", 'err' => "Obligatoire ! max 55 caractères et [- espace !]"],
-        'description' => ['check' => "#^[a-z A-Z,.\"'\-!À-ÿ\n]{3,512}$#", 'err' => "max 500 caractères et [-!,.\" espace & entrée"],
+        'titre' => ['check' => "#^[a-z0-9 A-Z-!À-ÿ]{3,55}$#", 'err' => "Obligatoire ! max 55 caractères et [- espace !]"],
+        'description' => ['check' => "#^[a-z0-9 A-Z,.\"'\-!À-ÿ\n]{3,512}$#", 'err' => "max 500 caractères et [-!,.\" espace & entrée"],
         'date' => ['check' => "#^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$#", 'err' => "doit matcher yyyy-mm-dd"],
         'priorite' => ['check' => "#^basse$|^moyenne$|^haute$#", 'err' => "accepte uniquement 'basse' ou 'moyenne' ou 'haute', moyenne par défaut"],
-        'modifier' => ['check' => "#^Modifier$#", 'err' => "stop trifouiller 'modifier'"],
-        'supprimer' => ['check' => "#^Supprimer$#", 'err' => "stop trifouiller 'supprimer'"],
-        'idTache' => ['check' => "#^\d{2}$#", 'err' => "id de menu déroulant non conforme"],
-        'selectionDeTaches' => ['check' => "#^(\d{2},?)*$#", 'err' => "liste d'id du menu déroulant non conforme"],
-        'enregistrer' => ['check' => "#^Enregistrer$#", 'err' => "stop trifouiller 'enregistrer'"],
         'erreurs' => ['check' => "#^[a-z0-9{}()&A-Z' =>\-À-ÿ\[\]\"\n!,.]{0,2048}$#", 'err' => "erreurCeption"]
     ];
     if (is_array($field)) {
@@ -123,22 +117,31 @@ function jsonUpdate(array $obj, string $file): void
     file_put_contents($file, json_encode($obj));
 }
 
-function processArrays(array $arr, array $tasks):array {
-
-    return [$arr, $tasks];
-}
-
-function updateTasks($arr)
+function processArrays(array $arr): array
 {
-    var_dump("update array");
-    return $arr;
+    $isValid = true;
+    if (!$arr['date']) {
+        $arr['date'] = date('Y-m-d');
+    } elseif ($arr['date'] < date('Y-m-d')) {
+        $arr['erreurs']['date'] = "Overdue !";
+    }
+    if (!$arr['priorite']) {
+        $arr['priorite'] = 'moyenne';
+    }
+    if (!$arr['titre']
+        || $arr['erreurs']['titre']
+        || $arr['erreurs']['description']
+    ) {
+        $isValid = false;
+    }
+    return [$arr, $isValid];
 }
 
-function resetButtons($arr): array
+function deleteTask($indexes, $tasks): array
 {
-//    $arr['modifier'] = null;
-    $arr['supprimer'] = null;
-    $arr['enregistrer'] = null;
-    return $arr;
-}
+    foreach ($indexes as $index) {
+        unset($tasks[intval($index)]);
+    }
 
+    return $tasks;
+}
