@@ -1,0 +1,19 @@
+.PageWrapper {
+  max-width: 900px;
+  margin: auto;
+}
+
+.TopBanner {
+  text-align: center;
+}
+
+.Form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.Form-field {
+  justify-self: center;
+  width: 98%;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Sign In</title>
+</head>
+<body>
+<div class="PageWrapper">
+    <header class="TopBanner">
+        <h1 class="TopBanner-title">Me connecter</h1>
+    </header>
+    <main class="MainContent">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+            <fieldset class="MainContent-form Form">
+                <legend class="Form-title">Login &nbsp;</legend>
+                <div class="Form-field">
+                    <label for="email">Adresse email : &nbsp;</label>
+                    <input type="text" name="email" id="email">
+                </div>
+                <div class="Form-field">
+                    <label for="password">Mot de passe : &nbsp;</label>
+                    <input type="password" name="password" id="password">
+                </div>
+
+                <input type="submit" class="Form-submit" value="Lycos, va chercher !">
+            </fieldset>
+        </form>
+        <?php if ($error) : ?>
+            <h2>ERREUR : <?= $error ?></h2>
+        <?php endif; ?>
+        <?php if ($user) : ?>
+            <h2>Informations utilisateur</h2>
+            <ul>
+                <?php foreach ($user as $field) : ?>
+                    <li>
+                        <?= $field ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+.PageWrapper{
+  max-width: 900px;
+  margin: auto;
+}
+
+.TopBanner{
+  text-align: center;
+}
+
+.Form{
+  display: flex;
+  flex-wrap: wrap;
+  &-field {
+    justify-self: center;
+    width: 98%;
+  }
+  &-submit{
+
+  }
+}

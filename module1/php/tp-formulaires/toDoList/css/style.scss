@@ -7,13 +7,24 @@
 
 .TopBanner {
   display: flex;
+
   &-title {
   }
 }
 
 
-
-
-input[type=checkbox]:checked + label.strikethrough{
+input[type=checkbox]:checked + label.strikethrough {
   text-decoration: line-through;
+}
+
+.glowy-wrap {
+  filter: drop-shadow(0px 0px 30px rgba(0, 3, 196, 0.95));
+}
+
+.glowy {
+  //background: #c64be1;
+  //color: #e700dc;
+  padding: 2rem 3rem 2rem 4rem;
+  font: bold 32px system-ui;
+  clip-path: url(#svgPath);
 }
