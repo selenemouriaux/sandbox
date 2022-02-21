@@ -3,6 +3,14 @@
 // Inclusion du fichier de configuration 
 require '../app/config.php';
 
+// Inclusion du fichier contenant les fonctions relatives à la BDD
+require PROJECT_DIR . '/src/library/database.php';
+
+// Inclusion des fichiers de modèles
+require PROJECT_DIR . '/src/models/articleModel.php';
+require PROJECT_DIR . '/src/models/commentModel.php';
+require PROJECT_DIR . '/src/models/userModel.php';
+
 // Inclusion du fichier contenant les contrôleurs
 require PROJECT_DIR . '/src/controllers/controllers.php';
 
@@ -18,7 +26,7 @@ require PROJECT_DIR . '/src/controllers/controllers.php';
 // if (array_key_exists('action', $_GET)) {
 //     $action = $_GET['action'];
 // }
-$action = $_GET['action'] ?? 'home'; var_dump($action);
+$action = $_GET['action'] ?? 'home';
 
 // Routing : trouver et exécuter le controller associé à l'action 
 switch($action) {
@@ -37,6 +45,10 @@ switch($action) {
 
     case 'mentions':
         genMentions();
+        break;
+
+    case 'signup':
+        genSignUp();
         break;
 
     default:
