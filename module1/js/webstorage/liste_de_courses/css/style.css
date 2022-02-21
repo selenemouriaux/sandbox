@@ -1,0 +1,27 @@
+.BodyLayout {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0;
+}
+
+.TopBanner {
+  padding: 10px 20px;
+  background-color: black;
+  color: beige;
+  width: 100%;
+  box-sizing: border-box;
+}
+.TopBanner-title {
+  margin: 0;
+}
+.MainContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.MainContent-card {
+  width: 45%;
+}
+
+/*# sourceMappingURL=style.css.map */

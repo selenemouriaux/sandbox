@@ -1,0 +1,54 @@
+.BodyLayout {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0;
+}
+
+.TopBanner {
+  padding: 10px 20px;
+  background-color: black;
+  color: beige;
+  width: 100%;
+  box-sizing: border-box;
+
+  &-title {
+    margin: 0;
+
+  }
+
+  &-description {
+
+  }
+
+  &-nav {
+
+    &-menu {
+
+      &-item {
+
+      }
+    }
+  }
+}
+
+.MainContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &-card {
+    width: 45%;
+    &-title {
+
+    }
+
+    &-list {
+
+    }
+  }
+}
+
+.Footer {
+
+}

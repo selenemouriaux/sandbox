@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mes courses !</title>
+  <meta name="description" content="Liste de courses utilisant webstorage">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/c6a24866e1.js"
+          crossorigin="anonymous"></script>
+</head>
+<body class="BodyLayout">
+<header class="TopBanner">
+  <h1 class="TopBanner-title">Webstorage</h1>
+  <p class="TopBanner-description">premiers pas</p>
+  <nav class="TopBanner-nav">
+    <ul class="TopBanner-nav-menu">
+      <li class="TopBanner-nav-menu-item"><a href="#">step1</a></li>
+      <li class="TopBanner-nav-menu-item"><a href="#">step2</a></li>
+      <li class="TopBanner-nav-menu-item"><a href="#">step3</a></li>
+    </ul>
+    <a class="TopBanner-nav-menu" href="./..">racine ..</a>
+  </nav>
+</header>
+<main class="MainContent">
+  <section class="MainContent-card">
+    <form class="Maincontent-card-form" id="addItemForm">
+      <fieldset>
+        <legend>&nbspAjouter à ma liste :&nbsp</legend>
+        <div class="MainContent-card-form-field">
+          <label for="produit">Produit :</label>
+          <input type="text" id="produit" name="produit">
+        </div>
+        <div class="MainContent-card-form-field">
+          <label for="qtte">Quantité :</label>
+          <input type="number" id="qtte" name="qtte" value="1">
+        </div>
+        <div class="MainContent-card-form-field">
+          <div class="MainContent-card-form-field-radio">
+            <input type="radio" name="conditionnement" id="unite"
+                   value="unité(s)"
+                   checked>
+            <label for="unite">Unité(s)</label>
+          </div>
+          <div class="MainContent-card-form-field-radio">
+            <input type="radio" name="conditionnement" id="kg" value="kg(s)">
+            <label for="kg">Kg(s)</label>
+          </div>
+          <div class="MainContent-card-form-field-radio">
+            <input type="radio" name="conditionnement" id="paquet"
+                   value="boîte(s) ou sachet(s)">
+            <label for="paquet">Boîte(s) ou sachet(s)</label>
+          </div>
+        </div>
+      </fieldset>
+      <button type="submit">Ajouter</button>
+      <button type="reset">Abandonner</button>
+    </form>
+  </section>
+  <section class="MainContent-card">
+    <h2 class="MainContent-card-title">Liste des courses !</h2>
+    <ol class="MainContent-card-list">
+    </ol>
+    <button type="button" id="clearList">Effacer ma liste</button>
+  </section>
+</main>
+<footer class="Footer">
+
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
