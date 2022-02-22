@@ -8,7 +8,7 @@
                     <?php if (isset($data->firstname)) : ?>
                         value="<?= $data->firstname ?>"
                     <?php endif; ?>>
-                <?php if ($errors['firstname']) : ?>
+                <?php if (array_key_exists('firstname', $errors)) : ?>
                     <p>Erreur : <?= $errors['firstname'] ?></p>
                 <?php endif; ?>
             </div>
@@ -18,7 +18,7 @@
                     <?php if (isset($data->lastname)) : ?>
                         value="<?= $data->lastname ?>"
                     <?php endif; ?>>
-                <?php if ($errors['lastname']) : ?>
+                <?php if (array_key_exists('lastname', $errors)) : ?>
                     <p>Erreur : <?= $errors['lastname'] ?></p>
                 <?php endif; ?>
             </div>
@@ -28,7 +28,7 @@
                     <?php if (isset($data->email)) : ?>
                         value="<?= $data->email ?>"
                     <?php endif; ?>>
-                <?php if ($errors['email']) : ?>
+                <?php if (array_key_exists('email', $errors)) : ?>
                     <p>Erreur : <?= $errors['email'] ?></p>
                 <?php endif; ?>
             </div>
@@ -38,7 +38,7 @@
                     <?php if (isset($data->password)) : ?>
                         value="<?= $data->password ?>"
                     <?php endif; ?>>
-                <?php if ($errors['password']) : ?>
+                <?php if (array_key_exists('password', $errors)) : ?>
                     <p>Erreur : <?= $errors['password'] ?></p>
                 <?php endif; ?>
             </div>
@@ -48,7 +48,7 @@
                     <?php if (isset($data->password_confirm)) : ?>
                         value="<?= $data->password_confirm ?>"
                     <?php endif; ?>>
-                <?php if ($errors['password_confirm']) : ?>
+                <?php if (array_key_exists('password_confirm', $errors)) : ?>
                     <p>Erreur : <?= $errors['password_confirm'] ?></p>
                 <?php endif; ?>
             </div>

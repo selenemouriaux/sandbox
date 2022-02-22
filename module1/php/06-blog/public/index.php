@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Inclusion du fichier de configuration 
 require '../app/config.php';
@@ -14,11 +14,15 @@ require PROJECT_DIR . '/src/models/userModel.php';
 // Inclusion du fichier contenant les contrôleurs
 require PROJECT_DIR . '/src/controllers/controllers.php';
 
+// Inclusion des fichiers outils
+require PROJECT_DIR . '/src/library/validation.php';
+require PROJECT_DIR . '/src/library/flashbag.php';
+
 /**
  * Plusieurs possiblités pour gérer les URLs
  * http://localhost/greta/greta-live-gr8/06-blog/public/index.php?action=article&id=37
  * http://localhost/greta/greta-live-gr8/06-blog/public/index.php/article?id=37
- * http://localhost/greta/greta-live-gr8/06-blog/public/index.php/article/37 
+ * http://localhost/greta/greta-live-gr8/06-blog/public/index.php/article/37
  */
 
 // On récupère l'action de l'URL courante, par défaut on va sur la page d'accueil 
@@ -29,9 +33,9 @@ require PROJECT_DIR . '/src/controllers/controllers.php';
 $action = $_GET['action'] ?? 'home';
 
 // Routing : trouver et exécuter le controller associé à l'action 
-switch($action) {
+switch ($action) {
 
-    case 'home': 
+    case 'home':
         genHome();
         break;
 
@@ -49,6 +53,9 @@ switch($action) {
 
     case 'signup':
         genSignUp();
+        break;
+    case 'login':
+        genLogin();
         break;
 
     default:

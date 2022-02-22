@@ -94,13 +94,11 @@ function genMentions()
 }
 
 /**
- * Contrôleur dde la page Signup
+ * Contrôleur de la page Signup
  */
 function genSignUp()
 {
-    // Initialisation du tableau des erreurs à null
-    $errors = ['firstname' => null, 'lastname' => null, 'email' => null, 'password' => null, 'password_confirm' => null,];
-
+    $errors = [];
     // Traitement des entrées du formulaire
     if ($_POST) {
 
@@ -111,30 +109,34 @@ function genSignUp()
         }
 
         // appel au UserModel pour la validité de l'email et gestion d'erreurs
-        if (emailAlreadyInUse($data->email)) {
-            $errors['email'] = emailAlreadyInUse($data->email);
-        }
-
-        // Vérification et gestion des erreurs de mot de passe
-        if (strlen($data->password) < 8) {
-            $errors['password'] = "le mot de passe est trop court";
-        }
-        if ($data->password !== $data->password_confirm) {
-            $errors['password_confirm'] = "les mots de passe ne correspondent pas";
-        }
+        $errors = validateSignupform($data);
 
         // Ordre au UserModel d'insérer le nouvel utilisateur si aucune erreur n'est détectée après avoir hashé le mot de passe pour le sauvegarder
         if (!array_filter($errors)) {
             $data->hash = password_hash($data->password, PASSWORD_DEFAULT);
             $status = insertUser($data);
             if ($status) {
-                // génerer le flash message !!
-                // redirect connexion.php
+                addFlashMessage("Votre compte a bien été créé :)");
+                header('Location: index.php?action=login');
+                exit;
             } else {
                 // flash message : ERREUR BDD, please retry
                 $template = 'signup';
                 include TEMPLATE_DIR . '/base.phtml';
             }
         }
+    } else {
+        $template = 'signup';
+        include TEMPLATE_DIR . '/base.phtml';
     }
+}
+
+/**
+ * Contrôleur de la page Login
+ */
+function genLogin()
+{
+
+    $template = 'login';
+    include TEMPLATE_DIR . 'login.phtml';
 }
