@@ -1,0 +1,43 @@
+<h1>DASHBOARD</h1>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th colspan="4">
+                <h2>Liste des articles</h2>
+            </th>
+            <td>
+                <a href="index.php?action=article_add">
+                    <button>Ajouter</button>
+                </a>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($articles as $article): ?>
+            <tr>
+                <td>
+                    <?= $article['category_label']; ?>
+                </td>
+                <td>
+                    <?= $article['title']; ?>
+                </td>
+                <td>
+                    <?= (new DateTimeImmutable($article['createdAt']))->format('d/m/Y'); ?>
+                </td>
+                <td>
+                    <?= mb_substr($article['content'], 0, 20); ?>...
+                </td>
+                <td>
+                    <a href="index.php?action=admin_article_edit_<?= $article['idArticle'] ?>">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </td>
+                <td>
+                    <a href="index.php?action=admin_article_delete_<?= $article['idArticle'] ?>">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

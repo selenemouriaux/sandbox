@@ -1,0 +1,12 @@
+{
+    "name": "greta/blog",
+    "authors": [
+        {
+            "name": "Sélène Mouriaux",
+            "email": "magicneuron@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
+}

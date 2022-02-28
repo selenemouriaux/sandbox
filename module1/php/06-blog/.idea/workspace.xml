@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d0290fd-64eb-4214-bc1f-ea5c28411e3b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../js/js2-DOM/slider/step3/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../js/js2-DOM/slider/step3/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js/js2-DOM/slider/step3/js/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../js/js2-DOM/slider/step3/js/slider.js" afterDir="false" />
-    </list>
+    <list default="true" id="1d0290fd-64eb-4214-bc1f-ea5c28411e3b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,6 +45,7 @@
       <option name="presentableId" value="Default" />
       <updated>1645004933611</updated>
       <workItem from="1645004934745" duration="809000" />
+      <workItem from="1645713385802" duration="684000" />
     </task>
     <servers />
   </component>
