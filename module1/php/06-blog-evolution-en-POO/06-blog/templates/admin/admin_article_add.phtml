@@ -3,15 +3,15 @@
     <fieldset>
         <legend>&nbspMon bel Article :&nbsp</legend>
         <div class="field-list">
-            <label for="title">titre de l'article : </label>
-            <input type="text" id="title" name="title" value="<?=htmlspecialchars($art_title)?>">
+            <label for="art_title">titre de l'article : </label>
+            <input type="text" id="art_title" name="art_title" value="<?=htmlspecialchars($art_title)?>">
             <?php if (isset($errors['art_title'])): ?>
                 <p class="error"><?=$errors['art_title'];?></p>
             <?php endif; ?>
         </div>
         <div class="field-list">
-            <label for="category_id">Catégorie : </label>
-            <select name="category_id" id="category_id">
+            <label for="art_category">Catégorie : </label>
+            <select name="art_category" id="art_category">
                 <?php foreach ($labels as $label) : ?>
                     <option value="<?=$label?>"><?=$label?></option>
                 <?php endforeach; ?>

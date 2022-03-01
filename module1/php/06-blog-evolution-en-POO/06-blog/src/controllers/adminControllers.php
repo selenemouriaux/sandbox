@@ -29,25 +29,29 @@ function genArticleAdd()
         $labels[] = $v['label'];
     }
     $labels[] = "Ajouter une catégorie";
-    $art_title = '';
-    $art_content = '';
-    $art_image = '';
-    $art_category = '';
 
-    if (!empty($_POST)) {
+    if (empty($_POST)) {
+        $art_title = '';
+        $art_content = '';
+        $art_image = '';
+        $art_category = '';
+        $template = 'admin_article_add';
+        include TEMPLATE_DIR . '/admin/baseAdmin.phtml';
+    } else {
         $art_title = trim($_POST['art_title']);
         $art_content = trim($_POST['art_content']);
         $art_image = trim($_POST['art_image']);
-        isset($_POST['new_category']) ?
+        !empty($_POST['new_category']) ?
             $art_category = trim($_POST['new_category'])
             :
             $art_category = trim($_POST['art_category']);
-
         $errors = validateNewArticle();
 
         if (empty($errors)) {
-            // add cat if needed
-            $list->addCategory($art_category);
+            // add category if needed
+            if (!in_array($art_category, $labels)) {
+                $list->addCategory($art_category);
+            }
             $newArticle = new ArticleModel();
             $newArticle->addArticle([$art_title, $art_content, $list->getCategoryIdByLabel($art_category), $art_image]);
             // insert article
@@ -57,17 +61,51 @@ function genArticleAdd()
             exit;
         }
     }
-    $template = 'admin_article_add';
-    include TEMPLATE_DIR . '/admin/baseAdmin.phtml';
 }
 
 /**
  * @return void
  * Contrôleur de l'édition d'article existant
  */
-function genArticleEdit()
+function genArticleEdit(int $idArticle)
 {
+    $article = new ArticleModel();
+    $currentArticle = $article->getOneArticle($idArticle);
 
+    $list = new CategoryModel();
+    $art_categories = $list->getAllCategories();
+    $labels = [];
+    foreach ($art_categories as $k => $v) {
+        $labels[] = $v['label'];
+    }
+    $labels[] = "Ajouter une catégorie";
+
+    if (empty($_POST)) {
+        $art_title = $currentArticle['title'];
+        $art_content = $currentArticle['content'];
+        $art_image = $currentArticle['image'];
+        $art_category = $currentArticle['category_label'];
+    } else {
+        $art_title = $_POST['art_title'];
+        $art_content = $_POST['art_content'];
+        $art_image = $_POST['art_image'];
+        $art_category = $_POST['art_category'];
+
+        $errors = validateNewArticle();
+        if (empty($errors)) {
+            $update[] = trim($_POST['art_title']);
+            $update[] = trim($_POST['art_content']);
+            $update[] = $list->getCategoryIdByLabel(trim($_POST['art_category']));
+            $update[] = trim($_POST['art_image']);
+            $update[] = $idArticle;
+
+            $article->editArticle($update);
+
+            addFlashMessage("Votre article a bien été modifié");
+            header('Location: index.php?action=admin');
+            exit;
+        }
+    }
     $template = 'admin_article_edit';
     include TEMPLATE_DIR . '/admin/baseAdmin.phtml';
 }
@@ -76,10 +114,12 @@ function genArticleEdit()
  * @return void
  * Contrôleur de suppression d'article existant
  */
-function genArticleDelete()
+function genArticleDelete(int $idArticle)
 {
+    $article = new ArticleModel();
+    $article->deleteArticle($idArticle);
+    addFlashMessage("L'article " . $idArticle . " a bien été supprimé");
 
-    $template = 'admin_article_delete';
-    include TEMPLATE_DIR . '/admin/baseAdmin.phtml';
+    genDashboard();
 }
 

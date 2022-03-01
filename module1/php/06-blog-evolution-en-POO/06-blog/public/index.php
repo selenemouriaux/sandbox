@@ -92,14 +92,14 @@ switch($action) {
         break;
 
     case stristr($action, 'admin_article_edit'):
-        genArticleEdit();
+        genArticleEdit($_GET['idArticle']);
         break;
 
     case stristr($action, 'admin_article_delete'):
-        genArticleDelete();
+        genArticleDelete($_GET['idArticle']);
         break;
 
-    case 'article_add':
+    case 'admin_article_add':
         genArticleAdd();
         break;
 

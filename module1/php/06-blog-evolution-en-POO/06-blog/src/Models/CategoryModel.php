@@ -39,6 +39,6 @@ class CategoryModel extends AbstractModel
                 FROM category
                 WHERE label = ?';
         $id = $this->db->getOneResult($sql, [$label]);
-        return $id[0];
+        return $id['idCategory'];
     }
 }

@@ -57,12 +57,29 @@ class ArticleModel extends AbstractModel {
         $sql = 'INSERT INTO article (title, content, categoryId, image)
                 VALUES (?, ?, ?, ?)';
 
-        $this->db->prepareAndExecute($sql, [
-            $article['art_title'],
-            $article['art_content'],
-            $article['art_category'],
-            $article['art_image']
-        ]);
+        $this->db->prepareAndExecute($sql, $article);
+    }
+
+    /**
+     * @param int $articleId
+     * @return void
+     * deletes the entire article identified by its Id.
+     */
+    function deleteArticle(int $articleId):void {
+        $sql = 'DELETE FROM article
+                WHERE idArticle = ?';
+        $this->db->prepareAndExecute($sql, [$articleId]);
+    }
+
+    function editArticle(array $update):void {
+        $sql = 'UPDATE article
+                SET
+                    title = ?,
+                    content = ?,
+                    categoryId = ?,
+                    image = ?
+                WHERE idArticle = ?';
+        $this->db->prepareAndExecute($sql, $update);
     }
 
 }

@@ -1,1 +1,45 @@
-<?php
+<!-- Formulaire de modification d'article -->
+<form action="index.php?action=admin_article_edit&idArticle=<?=$idArticle?>" method="POST">
+    <fieldset>
+        <legend>&nbspMon bel Article :&nbsp</legend>
+        <div class="field-list">
+            <label for="art_title">titre de l'article : </label>
+            <input type="text" id="art_title" name="art_title" value="<?=htmlspecialchars($art_title)?>">
+            <?php if (isset($errors['art_title'])): ?>
+                <p class="error"><?=$errors['art_title'];?></p>
+            <?php endif; ?>
+        </div>
+        <div class="field-list">
+            <label for="art_category">Catégorie : </label>
+            <select name="art_category" id="art_category">
+                <?php foreach ($labels as $label) : ?>
+                    <?php $label == $art_category ? $selected = 'selected' : $selected = '' ?>
+                    <option <?=$selected?> value="<?=$label?>"><?=$label?></option>
+                <?php endforeach; ?>
+            </select>
+            <?php if (isset($errors['category_id'])): ?>
+                <p class="error"><?=$errors['category_id'];?></p>
+            <?php endif; ?>
+        </div>
+        <div id="new_category" class="field-list is-hidden">
+            <label for="new_category">Créer la nouvelle catégorie : </label>
+            <input type="text" name="new_category" id="new_category" value="">
+        </div>
+        <div class="field-list">
+            <label for="art_content">Texte : </label>
+            <textarea id="art_content" name="art_content" rows="20" cols="100">
+                <?=$art_content?></textarea>
+            <?php if (isset($errors['art_content'])): ?>
+                <p class="error"><?=$errors['art_content'];?></p>
+            <?php endif; ?>
+        </div>
+        <div class="field-list">
+            <label for="art_image">url de l'image : </label>
+            <input type="text" id="art_image" name="art_image" value="<?=$art_image?>">
+            <?php if (isset($errors['art_image'])): ?>
+                <p class="error"><?=$errors['art_image'];?></p>
+            <?php endif; ?>
+        </div>
+        <input class="btn" type="submit" value="Valider mes modifications !">
+    </fieldset>
+</form>

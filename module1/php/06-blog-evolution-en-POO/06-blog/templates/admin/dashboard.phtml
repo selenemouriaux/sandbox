@@ -7,7 +7,7 @@
                 <h2>Liste des articles</h2>
             </th>
             <td>
-                <a href="index.php?action=article_add">
+                <a href="index.php?action=admin_article_add">
                     <button>Ajouter</button>
                 </a>
             </td>
@@ -29,11 +29,11 @@
                     <?= mb_substr($article['content'], 0, 20); ?>...
                 </td>
                 <td>
-                    <a href="index.php?action=admin_article_edit_<?= $article['idArticle'] ?>">
+                    <a href="index.php?action=admin_article_edit&idArticle=<?= $article['idArticle'] ?>">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                 </td>
                 <td>
-                    <a href="index.php?action=admin_article_delete_<?= $article['idArticle'] ?>">
+                    <a href="index.php?action=admin_article_delete&idArticle=<?= $article['idArticle'] ?>">
                         <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
