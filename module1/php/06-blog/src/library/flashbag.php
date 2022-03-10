@@ -1,9 +1,9 @@
-<?php
+<?php 
 
 /**
- * Démarrage de session
+ * Démarre la session le cas échéant (si la session n'est pas encore démarrée)
  */
-function startSession(): void
+function startSession()
 {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -11,33 +11,37 @@ function startSession(): void
 }
 
 /**
- * Ajouter un message flash en session
+ * Ajoute un message en session
  */
-function addFlashMessage(string $message): void
+function addFlashMessage(string $message)
 {
     startSession();
-    $_SESSION["flashMessage"] = $message;
+    $_SESSION['flashbag'] = $message;
 }
 
 /**
- * récupère et réinitialise le message
+ * Récupère le message flash enregistré en session et le supprime de la session puis le retourne
+ * Ou bien renvoie la valeur null si pas de message
  */
-function getFlashMessage(): ?string
+function getFlashMessage(): ?string 
 {
     startSession();
+    
     if (hasFlashMessage()) {
-        $message = $_SESSION["flashMessage"];
-        unset($_SESSION["flashMessage"]);
-        return $message;
+        $flashMessage = $_SESSION['flashbag'];
+        unset($_SESSION['flashbag']);
+        return $flashMessage;
     }
     return null;
 }
 
 /**
- * vérifie la présence d'un message flash
+ * Y a-t-il un message en session ?
+ * Retourne true si oui, false si non
  */
-function hasFlashMessage(): bool
+function hasFlashMessage(): bool 
 {
     startSession();
-    return isset($_SESSION["flashMessage"]);
+    return isset($_SESSION['flashbag']);
 }
+

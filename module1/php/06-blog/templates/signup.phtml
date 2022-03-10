@@ -1,58 +1,42 @@
-<section>
-    <form action="../public/index.php?action=signup" method="post">
-        <fieldset>
-            <legend>&nbspM'inscrire :&nbsp</legend>
-            <div>
-                <label for="firstname">Prénom :&nbsp</label>
-                <input type="text" name="firstname" id="firstname" required
-                    <?php if (isset($data->firstname)) : ?>
-                        value="<?= $data->firstname ?>"
-                    <?php endif; ?>>
-                <?php if (array_key_exists('firstname', $errors)) : ?>
-                    <p>Erreur : <?= $errors['firstname'] ?></p>
-                <?php endif; ?>
-            </div>
-            <div>
-                <label for="lastname">Nom :&nbsp</label>
-                <input type="text" name="lastname" id="lastname" required
-                    <?php if (isset($data->lastname)) : ?>
-                        value="<?= $data->lastname ?>"
-                    <?php endif; ?>>
-                <?php if (array_key_exists('lastname', $errors)) : ?>
-                    <p>Erreur : <?= $errors['lastname'] ?></p>
-                <?php endif; ?>
-            </div>
-            <div>
-                <label for="email">Email :&nbsp</label>
-                <input type="email" name="email" id="email" required
-                    <?php if (isset($data->email)) : ?>
-                        value="<?= $data->email ?>"
-                    <?php endif; ?>>
-                <?php if (array_key_exists('email', $errors)) : ?>
-                    <p>Erreur : <?= $errors['email'] ?></p>
-                <?php endif; ?>
-            </div>
-            <div>
-                <label for="password">Mot de passe :&nbsp</label>
-                <input type="password" name="password" id="password" required
-                    <?php if (isset($data->password)) : ?>
-                        value="<?= $data->password ?>"
-                    <?php endif; ?>>
-                <?php if (array_key_exists('password', $errors)) : ?>
-                    <p>Erreur : <?= $errors['password'] ?></p>
-                <?php endif; ?>
-            </div>
-            <div>
-                <label for="password_confirm">Confirmez votre mot de passe :&nbsp</label>
-                <input type="password" name="password_confirm" id="password_confirm" required
-                    <?php if (isset($data->password_confirm)) : ?>
-                        value="<?= $data->password_confirm ?>"
-                    <?php endif; ?>>
-                <?php if (array_key_exists('password_confirm', $errors)) : ?>
-                    <p>Erreur : <?= $errors['password_confirm'] ?></p>
-                <?php endif; ?>
-            </div>
-            <button type="submit">Valider</button>
-        </fieldset>
-    </form>
-</section>
+<!-- Formulaire de création de compte -->
+<form action="index.php?action=signup" method="POST">
+    <fieldset>
+        <legend>Créez votre compte client</legend>
+        <div class="field-list">
+            <label for="lastname">Nom</label>
+            <input type="text" id="lastname" name="lastname" value="<?=$lastname?>">
+            <?php if (isset($errors['lastname'])): ?>
+                <p class="error"><?=$errors['lastname'];?></p>
+            <?php endif; ?>
+        </div> 
+        <div class="field-list">
+            <label for="firstname">Prénom</label>
+            <input type="text" id="firstname" name="firstname" value="<?=$firstname?>">
+            <?php if (isset($errors['firstname'])): ?>
+                <p class="error"><?=$errors['firstname'];?></p>
+            <?php endif; ?>
+        </div> 
+        <div class="field-list">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" value="<?=$email?>">
+            <?php if (isset($errors['email'])): ?>
+                <p class="error"><?=$errors['email'];?></p>
+            <?php endif; ?>
+        </div> 
+        <div class="field-list">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password">
+            <?php if (isset($errors['password'])): ?>
+                <p class="error"><?=$errors['password'];?></p>
+            <?php endif; ?>
+        </div> 
+        <div class="field-list">
+            <label for="password-confirm">Mot de passe (confirmation)</label>
+            <input type="password" id="password-confirm" name="password-confirm">
+            <?php if (isset($errors['password-confirm'])): ?>
+                <p class="error"><?=$errors['password-confirm'];?></p>
+            <?php endif; ?>
+        </div> 
+        <input class="btn" type="submit" value="Créer mon compte">
+    </fielset>
+</form>

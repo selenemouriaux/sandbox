@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon blog !</title>
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -12,10 +13,21 @@
         <nav>
             <a href="index.php">Accueil</a>
             <a href="index.php?action=contact">Contact</a>
-            <a href="index.php?action=signup">S'inscrire</a>
+            <?php if (isConnected()): ?>
+                <a href="index.php?action=logout">Déconnexion</a>
+            <?php else: ?>
+                <a href="index.php?action=login">Connexion</a>
+                <a href="index.php?action=signup">Créer un compte</a>
+            <?php endif; ?>
         </nav>
     </header>
     <main>
+        <!-- Affichage des messages flash -->
+        <?php if (isset($flashMessage)): ?>
+            <p><?=htmlspecialchars($flashMessage);?></p>
+        <?php endif; ?>
+
+        <!-- Inclusion du template de la page --> 
         <?php include TEMPLATE_DIR . '/' . $template . '.phtml'; ?>
     </main>
     <footer>

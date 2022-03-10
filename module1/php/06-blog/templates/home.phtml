@@ -3,7 +3,7 @@
     <?php foreach ($articles as $article): ?>
         <article>
             <p><?=$article['category_label'];?></p>
-            <img src="<?=$article['image'];?>" alt="">
+            <img src="<?=assetUpload($article['image']);?>" alt="">
             <h3><?=$article['title'];?></h3>
             <small><?=(new DateTimeImmutable($article['createdAt']))->format('d/m/Y');?></small>
             <p><?=mb_substr($article['content'], 0, 150);?>...</p>

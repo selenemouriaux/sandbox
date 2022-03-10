@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /**
  * Contrôleur de la page d'accueil
@@ -6,11 +6,15 @@
 function genHome()
 {
     // Sélection des articles
-    $articles = getAllArticles(5);
+    $articleModel = new ArticleModel();
+    $articles = $articleModel->getAllArticles(5);
+
+    // On récupère le message flash le cas échéant
+    $flashMessage = getFlashMessage();
 
     // Affichage : inclusion du fichier de template
     $template = 'home';
-    include TEMPLATE_DIR . '/base.phtml';
+    include TEMPLATE_DIR . '/base.phtml'; 
 }
 
 /**
@@ -25,10 +29,11 @@ function genArticle()
     }
 
     // Récupérer le paramètre idArticle
-    $idArticle = (int)$_GET['idArticle'];
+    $idArticle = (int) $_GET['idArticle']; 
 
     // Sélection de l'article
-    $article = getOneArticle($idArticle);
+    $articleModel = new ArticleModel();
+    $article = $articleModel->getOneArticle($idArticle);
 
     // Test pour savoir si l'article existe
     if (!$article) {
@@ -36,13 +41,15 @@ function genArticle()
         exit;
     }
 
+    // Création d'un objet CommentModel
+    $commentModel = new CommentModel();
 
     // Traitement des données du formulaire d'ajout de commentaires
     if (!empty($_POST)) {
 
         // Récupération des données 
         $content = trim($_POST['content']);
-        $rate = (int)$_POST['rate'];
+        $rate = (int) $_POST['rate'];
 
         // Validation
         $errors = [];
@@ -55,8 +62,13 @@ function genArticle()
         // Si pas d'erreurs
         if (empty($errors)) {
 
+            // On récupère l'id de l'utilsiateur connecté
+            $userId = getUserId();
+
+            // @TODO vérifier qu'on récupère bien un userId !
+
             // Insertion du commentaire en base de données
-            insertComment($content, $idArticle, $rate);
+            $commentModel->insertComment($content, $idArticle, $rate, $userId);
 
             // Redirection
             header('Location: index.php?action=article&idArticle=' . $idArticle);
@@ -66,7 +78,7 @@ function genArticle()
     }
 
     // Sélection des commentaires associésà l'article
-    $comments = getCommentsByArticleId($idArticle);
+    $comments = $commentModel->getCommentsByArticleId($idArticle);
 
     // Affichage : inclusion du fichier de template
     $template = 'article';
@@ -94,49 +106,114 @@ function genMentions()
 }
 
 /**
- * Contrôleur de la page Signup
+ * Contrôleur de la page de création de compte
  */
-function genSignUp()
+function genSignup()
 {
-    $errors = [];
-    // Traitement des entrées du formulaire
-    if ($_POST) {
+    $firstname = '';
+    $lastname = '';
+    $email = '';
+    $password = '';
+    $password_confirm = '';
 
-        // création d'un objet dans lequel je vais stocker toutes les infos cleanées du formulaire
-        $data = new stdClass();
-        foreach ($_POST as $field => $value) {
-            $data->$field = htmlspecialchars($value);
+    // Si le formulaire est soumis... 
+    if (!empty($_POST)) {
+
+        // On récupère les données du formulaire
+        $firstname = trim($_POST['firstname']);
+        $lastname = trim($_POST['lastname']);
+        $email = trim($_POST['email']);
+        $password = $_POST['password'];
+        $password_confirm = $_POST['password-confirm'];
+
+        // Validation du formulaire (à faire en dernier quand ça fonctionne sans erreur)
+        $errors = validateSignupForm($firstname, $lastname, $email, $password, $password_confirm);
+
+        // S'il n'y a pas d'erreur, si tout est OK
+        if (empty($errors)) {
+
+            // Hashage du mot de passe
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+
+            // On fait appel au modèle ( la fonction insertUser() ) pour insérer les données dans la table user
+            $userModel = new UserModel();
+            $userModel->insertUser($firstname, $lastname, $email, $hash);
+            
+            // Ajout d'un message flash en session
+            addFlashMessage('Votre compte a bien été créé');
+
+            // On redirige l'internaute pour l'instant vers la page d'accueil
+            header('Location: index.php');
+            exit;
+            
         }
-
-        // appel au UserModel pour la validité de l'email et gestion d'erreurs
-        $errors = validateSignupform($data);
-
-        // Ordre au UserModel d'insérer le nouvel utilisateur si aucune erreur n'est détectée après avoir hashé le mot de passe pour le sauvegarder
-        if (!array_filter($errors)) {
-            $data->hash = password_hash($data->password, PASSWORD_DEFAULT);
-            $status = insertUser($data);
-            if ($status) {
-                addFlashMessage("Votre compte a bien été créé :)");
-                header('Location: index.php?action=login');
-                exit;
-            } else {
-                // flash message : ERREUR BDD, please retry
-                $template = 'signup';
-                include TEMPLATE_DIR . '/base.phtml';
-            }
-        }
-    } else {
-        $template = 'signup';
-        include TEMPLATE_DIR . '/base.phtml';
     }
+
+    // Affichage : inclusion du fichier de template
+    $template = 'signup';
+    include TEMPLATE_DIR . '/base.phtml';
 }
 
 /**
- * Contrôleur de la page Login
+ * Contrôleur de la page de connexion
  */
 function genLogin()
 {
+    // Si le formulaire est soumis
+    if (!empty($_POST)) {
 
+        // On récupère les données du formulaire (email et mot de passe)
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // On vérifie les identifiants ( fonction checkCredentials() )
+        $userModel = new UserModel();
+        $user = $userModel->checkCredentials($email, $password);
+
+        // Si les identifiants sont corrects
+        if ($user) {
+
+            // On enregistre les données de l'utilisateur en session ( fonction userRegister() )
+            userRegister($user['idUser'], $user['firstname'], $user['lastname'], $user['email'], $user['role']);
+
+            // On ajoute un message flash ( fonction addFlashMessage() )
+            addFlashMessage('Bonjour ' . $user['firstname']);
+
+            // Si l'utilisateur est un administrateur, on le redirige vers le dashboard
+            if (isAdmin()) {
+                header('Location: index.php?action=admin');
+                exit;
+            }
+
+            // On redirige l'internaute vers la page d'accueil
+            header('Location: index.php');
+            exit;
+        }
+
+        // Si les identifiants sont incorrects, on stocke un message d'erreur dans une variable
+        $error = 'Identifiants incorrects';
+    }
+
+    // On récupère le message flash le cas échéant
+    $flashMessage = getFlashMessage();
+
+    // Affichage : inclusion du fichier de template
     $template = 'login';
-    include TEMPLATE_DIR . 'login.phtml';
+    include TEMPLATE_DIR . '/base.phtml';
+}
+
+/**
+ * Contrôleur de la déconnexion
+ */
+function genLogout()
+{
+    // On se déconnecte
+    logout();
+
+    // Message flash
+    addFlashMessage('Vous êtes bien déconnecté');
+
+    // Redirection vers l'accueil
+    header('Location: index.php');
+    exit;
 }

@@ -1,0 +1,40 @@
+<h2 class="mt-5">Modifier un article</h2>
+
+<form enctype="multipart/form-data" action="index.php?action=admin_article_edit&idArticle=<?=intval($idArticle);?>" method="POST">
+    <fieldset>
+        <legend>Modifier un article</legend>
+        <div class="mb-3">
+            <label class="form-label" for="title">Titre</label>
+            <input class="form-control" type="text" id="title" name="title" value="<?=htmlspecialchars($title);?>">
+            <?php if (isset($errors['title'])): ?>
+                <p class="alert alert-danger mt-1"><?=$errors['title']?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="category">Catégorie</label>
+            <select class="form-select" id="category" name="category">
+                <?php foreach ($categories as $category): ?>
+                    <?php $selected = $category['idCategory']==$categoryId?'selected':''; ?>
+                    <option value="<?=intval($category['idCategory']);?>" <?=$selected;?>>
+                        <?=htmlspecialchars($category['label']);?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="content">Contenu</label>
+            <textarea class="form-control" id="content" name="content"><?=htmlspecialchars($content);?></textarea>
+            <?php if (isset($errors['content'])): ?>
+                <p class="alert alert-danger mt-1"><?=$errors['content']?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="image">Image</label>
+            <input class="form-control" type="file" id="image" name="image">
+            <?php if (isset($errors['image'])): ?>
+                <p class="alert alert-danger"><?=$errors['image']?></p>
+            <?php endif; ?>
+        </div>
+    </fieldset>
+    <input type="submit" value="Enregistrer" class="btn btn-primary my-3">
+</form>
