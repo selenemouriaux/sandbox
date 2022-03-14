@@ -1,0 +1,83 @@
+/**
+    ZOOM
+    Thème Dark
+*/
+
+body {
+    font-family: Roboto, sans-serif;
+    background : lighten( $color-default,2%);
+    color : $light-color;
+}
+
+.site-logo {
+    color : $light-color !important;
+    font-size: 2em;
+    font-weight : 900;
+}
+
+.site-description {
+    color : $color-inverse !important;
+}
+
+
+.banner,
+.footer {
+    background-color: $color-default;
+    color : $light-color;
+}
+
+.banner a,
+.footer a {
+    color : $color-inverse;
+}
+
+.banner-nav a {
+
+    &:hover,
+    &:focus,    
+    &:active,
+    &.is-current {
+        color : $light-color;
+    }
+}
+
+#goTop {
+    background-color: $color-default;
+}
+
+/* ZOOM */ 
+
+h1,h2 {
+    text-align: center;
+}
+
+h1, h2, .zoom-list {
+    padding : 1rem;
+    background-color: var(--color-default,$color-default);
+    border-radius : 1rem;
+}
+
+.zoom-thumbnail {
+    border : 2px solid rgba(255,255,255,0.1);
+    border-radius : 2px;
+
+    &:hover,
+    &.is-active {
+        border-color : var(--color-inverse,$color-inverse);
+    }
+}
+
+.zoom-figure {
+    border : 5px solid var(--color-inverse,$color-inverse);
+    border-radius : 1rem;
+}
+
+.zoom-caption {
+    background-color: transparentize($color-default,0.5);
+    color : var(--color-inverse,$light-color);
+    border-radius : 1rem;
+
+    * {
+        background : none;
+    }
+}

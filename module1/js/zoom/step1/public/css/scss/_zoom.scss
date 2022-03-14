@@ -1,0 +1,121 @@
+.zoom {
+    margin : 1em 0;
+}
+
+.zoom-header {
+    grid-column: 2;
+    font-weight: 300;
+}
+
+.zoom-list {
+    display : grid;
+    grid-template-columns: repeat(auto-fill, calc((100vw / 5) - 1.5rem));
+    grid-template-rows: repeat(auto-fill, calc((100vw / 5) - 1.5rem));
+    gap : 0.5rem;
+    margin : 0;
+    padding : 0;
+    list-style: none;
+    justify-content: center;
+}
+
+
+.zoom-list-item {
+    height : calc((100vw / 5) - 1.5rem);
+    overflow: hidden;
+    margin : 0;
+    padding : 0;
+}
+
+.zoom-thumbnail {
+  width : 100%;
+  min-height : 100%;
+  object-fit:cover;
+  object-position: 50% 50%;
+  filter : grayscale(100%);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    filter : grayscale(60%);
+    border-color : darken($color-inverse,50%);
+  }
+
+  &.is-active {
+    border-color : var(--color-inverse,$color-inverse);
+    filter : grayscale(0);
+    cursor : not-allowed;
+  }
+}
+
+.zoom-figure {
+    grid-row: 1 / span 2;
+    place-self: center;
+    position : relative;
+    margin : 0;
+    overflow : hidden;
+    resize: vertical;
+}
+
+.zoom-caption {
+    position : absolute;
+    bottom: 1rem;
+    right : 1rem;
+    padding : 1rem;
+
+    * {
+        padding : 0;
+        margin : 0;
+        font-size : 0.9em;
+    }
+
+    h1 {
+        text-align: left;
+        font-size : 0.9em;
+        font-weight : normal;
+    }
+
+    p {
+        display : none;
+    }
+}
+
+.zoom-picture {
+    object-fit: contain;
+}
+
+@media screen and (min-width: 1024px) {
+    .zoom {
+        display : grid;
+        grid-template-columns: 1fr 30vw;
+        grid-template-rows: min-content 1fr;
+        column-gap : 1em;
+        align-items : start;
+    }
+
+    .zoom-list {
+        grid-template-columns: repeat(auto-fill, calc((30vw / 5) - 1.5rem));
+        grid-template-rows: repeat(auto-fill, calc((30vw / 5) - 1.5rem));
+        gap : 1rem;
+    }
+
+    .zoom-list-item {
+        height : calc((30vw / 5) - 1.5rem);
+    }
+
+    .zoom-caption {
+        position : absolute;
+        bottom: 1em;
+        right : 1em;
+        padding : 1em;
+    
+        h1 {
+            font-size : 1.2em;
+        }
+    
+        p {
+            display : block;
+        }
+    }
+}
+
+

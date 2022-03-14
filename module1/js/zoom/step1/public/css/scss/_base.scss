@@ -1,0 +1,48 @@
+/* STYLES DE BASES */
+
+  
+/* *********** Styles de base ********** */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height : 100vh;
+    display : grid;
+    grid-template-rows: auto 1fr auto;
+    font-size: 1.6rem;
+}
+
+img,
+video {
+    max-width: 100%;
+    height : auto;
+    vertical-align: top;
+}
+
+/* *********** Layout général ********** */
+
+.banner,
+.footer,
+main {
+    padding-left  : 1em;
+    padding-right : 1em;
+}
+
+main {
+    padding-bottom : 5em;
+}
+
+strong,h1,h2,h3,h4,h5 {
+    font-weight: 500;
+}
+
+
+
+
+

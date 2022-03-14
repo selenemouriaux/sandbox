@@ -1,0 +1,121 @@
+.site-logo {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.site-description {
+    grid-column: 1;
+    grid-row: 2;
+    margin : 0;
+}
+
+.banner a,
+.footer a {
+    text-decoration: none;
+}
+
+.banner {
+    padding-top : 1em;
+    padding-bottom : 1em;
+}
+
+.banner-nav {
+
+    position: absolute;
+    left: 0; right : 0;
+    z-index: 0; /* will be under everything */
+
+    padding-top : 1em;
+
+    a {
+        display: block;
+        margin : 1em;
+        padding-bottom: 5px;
+        border-bottom: 1px dotted currentColor;
+
+        &.is-current {
+            text-align: center;
+            font-weight: 900;
+        }  
+    }
+}
+
+
+main {
+    position: relative;
+    transition: transform .25s;
+    will-change: transform;
+    background : lighten( $color-default,2%);
+
+    &.is-open {
+        transform: translateY(12em);
+    }
+}
+
+.footer {
+    position: relative;
+    padding-top : 1rem;
+    padding-bottom : 1rem;
+    text-align: center;
+}
+
+.footer > * {
+    margin : 0;
+}
+
+#goTop {
+    width : 1.5em;
+    height : 1.2em;
+    line-height: 1.2em;
+    position : absolute;
+    top : -1.2em;
+    left : calc(50% - 0.75em);
+    z-index : 2000;
+    border-radius: 5px 5px 0 0;
+    font-size: 2em;
+}
+
+@media screen and (min-width : 1024px) {
+
+    .banner {
+        padding-top : 1rem;
+        padding-bottom : 1rem;
+    }
+
+    .banner-nav {
+        position : static;
+        text-transform: uppercase;
+    
+        a {
+            display: inline-block;
+            border-bottom: 5px solid transparent;
+
+            &:hover,
+            &:focus,
+            &:active,
+            &.is-current {
+                border-bottom: 5px solid currentColor;
+                color : $light-color;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+@media screen and (min-width : 1440px) {
+
+    .banner {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        grid-template-rows: auto;
+        align-items: center;
+        column-gap : 1em;
+    }
+
+    .banner-nav {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        justify-self : end;
+    }
+}
+
