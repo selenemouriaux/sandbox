@@ -1,0 +1,11 @@
+body {
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    border: 1px solid blue;
+    padding: 5px;
+    margin: 5px;
+}
