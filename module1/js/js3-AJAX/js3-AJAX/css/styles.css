@@ -1,0 +1,334 @@
+/*******************************************************************************
+*                              STYLES GENERAUX                                 *
+*******************************************************************************/
+
+
+/* ***************************************************************************************
+	La propriété box-sizing définit la façon dont la hauteur et la largeur totale d'un élément est calculée
+	htprojects://developer.mozilla.org/fr/docs/Web/CSS/box-sizing
+
+	Tous les éléments HTML incluent leur padding et leur bordure éventuels dans leur taille
+*******************************************************************************************  */
+* {
+  box-sizing : border-box;
+}
+
+/* ***************************************************************************************
+  Définir la taille de police par défaut
+  htproject://www.pompage.net/traduction/dimensionner-ses-fontes-avec-rem
+  htprojects://developer.mozilla.org/fr/docs/Web/CSS/font-size
+
+  L'unité de police rem (qui signifie « root em ») se raporte à la taille définie par défaut,
+  soit celle de la balise HTML (16px par défaut definit dans les préférences du navigateur)
+
+  Définir la taille par défaut à 10px (1rem = 10px)
+	puis ramener à 16px sur body soit 1.6rem
+******************************************************************************************* */
+
+html {
+  font-size : 62.5%; /* 1rem = 10px */
+  scroll-behavior : smooth;
+}
+
+/* ***************************************************************************************
+	LAYOUT GENERAL
+
+	Un pied de page (mentions) qui reste à sa place,
+	grâce à un body adoptant la grid attitude en direction verticale
+	faisant au minimum la hauteur du viewport (voire plus, si son contenu le nécessite)
+
+******************************************************************************************* */
+
+body {
+  min-height : 100vh;
+  display : flex;
+  flex-direction : column;
+  justify-content : space-between;
+  font-family: 'Open Sans', sans-serif;
+  font-size : 1.6rem; /* On revient à 16px par défaut */
+  line-height : 1.6;
+}
+
+/* MARGIN-TOP : AUTO PERMET AU MAIN DE RESTER EN HAUT */
+main {
+  margin : 0 0 auto;
+}
+
+.main-header {
+  padding : 1rem 1em;
+  background : rgb(0, 150, 166);
+  text-align: center;
+  color : white;
+}
+
+.main-header > * {
+  margin : 0;
+}
+
+a {
+  color : rgb(0, 150, 166);
+  text-decoration : none;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color : orange;
+}
+
+figure, blockquote {
+  margin : 0;
+}
+
+img {
+  max-width : 100%;
+  height : auto;
+  vertical-align : middle;
+}
+
+code {
+  display : inline-block;
+  padding : 1rem;
+  background-color : #eee;
+  border-radius : 0.5rem;
+}
+
+/*******************************************************************************
+*                              STYLES DU TP                                    *
+*******************************************************************************/
+main nav {
+  text-align: center;
+}
+main nav h2 {
+  font-size : 1em;
+}
+main nav {
+  font-size : 1.2em;
+}
+
+main nav a {
+  display : inline-block;
+  padding : 0.5rem 1rem;
+  background : #555;
+  border-radius : 0.5rem;
+  color : white;
+}
+
+main nav a:hover,
+main nav a.is-current {
+  background : rgb(0, 150, 166);
+  color : white;
+}
+
+article,
+.article,
+ul,
+form {
+  max-width : 36em;
+  margin : 5em auto;
+}
+
+.field {
+  display : flex;
+  align-items: center;
+}
+
+label {
+  flex-basis : 10em;
+}
+
+[type=text],
+[type=password] {
+  flex : 1;
+  padding: 0.5rem 1rem;
+  border : 1px solid #ccc;
+}
+
+
+
+/*******************************************************************************
+*                              BANNIERE ET MENTIONS                            *
+*******************************************************************************/
+
+.banner {
+  padding : 1rem 1em;
+  background-color : #444;
+  text-align: center;
+  color : #fff;
+}
+
+.banner-link {
+  font-size : 1.1em;
+  color : #fff;
+}
+
+.banner-nav a, .banner-logo {
+  display : block;
+  margin : 1rem auto;
+}
+
+.mentions  {
+  padding : 0.5rem 1rem;
+  background-color : #444;
+  font-size : 0.9em;
+  text-align: center;
+  color : #fff;
+}
+
+.mentions > * {
+  margin : 0;
+}
+
+.mentions a {
+  color : #fff;
+}
+
+
+@media screen and (min-width : 768px) {
+
+  .banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .banner-nav a {
+    display : inline-block;
+    margin : 0 1rem;
+  }
+}
+
+/*body {*/
+/*  margin: 0;*/
+/*  background: #333;*/
+/*}*/
+
+@keyframes arrow-spin {
+  100% {
+    transform: rotate(179deg);
+  }
+}
+
+@-webkit-keyframes arrow-spin {
+  100% {
+    -webkit-transform: rotate(179deg);
+  }
+}
+
+.psoload,
+.psoload *,
+.psoload *:before,
+.psoload *:after {
+  box-sizing: border-box;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+
+.psoload {
+  position: relative;
+  margin: 30px auto;
+  height: 150px;
+  width: 150px;
+}
+
+.psoload .straight,
+.psoload .curve {
+  position: absolute;
+  top: 17.5%;
+  left: 17.5%;
+  width: 65%;
+  height: 65%;
+  border-radius: 100%;
+  animation: arrow-spin 0.85s cubic-bezier(0.2, 0.8, 0.9, 0.1) infinite;
+  -webkit-animation: arrow-spin 0.85s cubic-bezier(0.2, 0.8, 0.9, 0.1) infinite;
+}
+
+.psoload .straight:before,
+.psoload .straight:after {
+  content: '';
+  position: absolute;
+  width: 15%;
+  border-bottom: 3px solid #058c80;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.psoload .straight:before {
+  top: 5px;
+  left: 5px;
+}
+
+.psoload .straight:after {
+  bottom: 5px;
+  right: 5px;
+}
+
+.psoload .curve:before,
+.psoload .curve:after {
+  content: '';
+  position: absolute;
+  width: 45px;
+  height: 10px;
+  border: solid 3px transparent;
+  border-top-color: #058c80;
+  border-radius: 50%/10px 10px 0 0;
+  z-index: 90001;
+}
+
+.psoload .curve:before {
+  transform: rotate(-63deg) translateX(-27px) translateY(-4px);
+  -webkit-transform: rotate(-63deg) translateX(-27px) translateY(-4px);
+}
+
+.psoload .curve:after {
+  bottom: 5px;
+  right: 5px;
+  transform: rotate(115deg) translateX(-26px) translateY(-12px);
+  -webkit-transform: rotate(115deg) translateX(-26px) translateY(-12px);
+}
+
+.psoload .center {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  border-radius: 100%;
+  border: 3px solid #058c80;
+}
+
+.psoload .inner {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  border-radius: 100%;
+  animation: arrow-spin 0.85s cubic-bezier(0.2, 0.8, 0.9, 0.1) infinite reverse;
+  -webkit-animation: arrow-spin 0.85s cubic-bezier(0.2, 0.8, 0.9, 0.1) infinite reverse;
+}
+
+.psoload .inner:before,
+.psoload .inner:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-bottom-width: 11px;
+  border-bottom-color: rgb(5, 140, 128);
+}
+
+.psoload .inner:before {
+  top: 12px;
+  left: 12px;
+  transform: rotate(128deg);
+  -webkit-transform: rotate(128deg);
+}
+
+.psoload .inner:after {
+  bottom: 12px;
+  right: 12px;
+  transform: rotate(-48deg);
+  -webkit-transform: rotate(-48deg);
+}
