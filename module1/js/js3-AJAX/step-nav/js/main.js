@@ -21,17 +21,22 @@ function spinner() {
   return spinner
 }
 
-function onClickGetText() {
-  let url = './appli/' + this.dataset.url
+function onClickGetText(e) {
+  if (e.target.id !== 'btn-ajax1') {
+    return
+  }
+  let url = './appli/' + e.target.dataset.url
   ajaxGet(url, function (response) {
     let containerAjax = document.querySelector('#ajax')
     containerAjax.innerHTML = response
   })
 }
 
-
-function onClickGetJSON() {
-  let url = './appli/' + this.dataset.url
+function onClickGetJSON(e) {
+  if (e.target.id !== 'btn-ajax2') {
+    return
+  }
+  let url = './appli/' + e.target.dataset.url
   let containerAjax = document.querySelector('#ajax')
   containerAjax.innerHTML = ''
   ajaxGet(url, function (response) {
@@ -51,9 +56,12 @@ function onClickGetJSON() {
 }
 
 function onSubmitForm(e) {
+  if (e.target.tagName !== "FORM") {
+    return
+  }
   e.preventDefault()
-  const formData = new FormData(this)
-  let url = "post.php?ajax="+new Date().getTime()
+  const formData = new FormData(e.target)
+  let url = "post.php?ajax=" + new Date().getTime()
   let containerAjax = document.querySelector('#ajax')
   ajaxPost(url, formData, function (response) {
     containerAjax.innerHTML = ''
@@ -64,18 +72,38 @@ function onSubmitForm(e) {
   })
 }
 
+function onClickNav(e) {
+  if (e.target.tagName !== "A") {
+    return
+  }
+  e.preventDefault() //désactivation des liens
+  let url = e.target.href + '?ajax=' + e.timestamp
+  let containerAjax = document.querySelector('#ajax')
+  containerAjax.innerHTML = ''
+  ajaxGet(url, function (response) {
+    containerAjax.append(spinner())
+    setTimeout(() => {
+      containerAjax.innerHTML = response
+    }, 1500)
+  })
+  history.pushState({page: e.target.href}, '', e.target.href)
+}
 
 document.addEventListener('DOMContentLoaded', function () {
-  let btnAjax1 = document.querySelector('#btn-ajax1')
-  if (btnAjax1 !== null) {
-    btnAjax1.addEventListener('click', onClickGetText)
-  }
-  let btnAjax2 = document.querySelector('#btn-ajax2')
-  if (btnAjax2 !== null) {
-    btnAjax2.addEventListener('click', onClickGetJSON)
-  }
-  let form = document.querySelector('form')
-  if (form !== null) {
-    form.addEventListener('submit', onSubmitForm)
-  }
+  document.addEventListener('click', onClickGetText)
+  document.addEventListener('click', onClickGetJSON)
+  document.addEventListener('submit', onSubmitForm)
+  document.querySelector('.banner-nav').addEventListener('click', onClickNav)
+})
+
+window.addEventListener('popstate', function (e) {
+  const url = e.state.page + '?ajax=' + e.timeStamp
+  let containerAjax = document.querySelector('#ajax')
+  containerAjax.innerHTML = ''
+  ajaxGet(url, function (response) {
+    containerAjax.append(spinner())
+    setTimeout(() => {
+      containerAjax.innerHTML = response
+    }, 1500)
+  })
 })

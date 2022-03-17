@@ -1,32 +1,45 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="premier pas avec Ajax">
-  <link rel="stylesheet" href="./css/styles.css">
-  <title>Document</title>
+  <meta charset="utf-8">
+  <title>AJAX : présentation</title>
+  <meta name="description" content="Introduction à AJAX">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/styles.css?v2" media="screen">
 </head>
+
 <body>
-<header>
-  <H1>ajax</H1>
+<header class="banner">
+  <a class="banner-link" href="./" title="Recharger la page">Ajax</a>
+  <nav class="banner-nav">
+    <a href="index.html">Présentation</a>
+    <a href="get.html">Recevoir des données</a>
+    <a href="post.php">Envoyer des données</a>
+  </nav>
 </header>
 <main>
   <header class="main-header">
-    <h1>recevir et afficher des donnees</h1>
-    <p>2 moteurs : texte simple et recuperation d'un JSON</p>
+    <h1>Recevoir et afficher des données</h1>
+    <p>2 moteurs : texte simple et récupération d'un JSON</p>
   </header>
   <nav>
-    <button id="btn-ajax-1" data-url="page1.phtml" type="button">recup du texte en
-      HTML</button>
-    <button id="btn-ajax-2" data-url="page2.php" type="button">recuperer un JSON</button>
+    <h2>Boutons de chargement</h2>
+    <button id="btn-ajax1" data-url="page1.phtml" type="button">Récupérer du texte formaté en HTML</button>
+    <button id="btn-ajax2" data-url="page2.php" type="button">Récupérer un contenu JSON</button>
   </nav>
   <div id="ajax">
     <article>
-      <h2>affichage au chargement</h2>
-      <p>cet article sera remplacé en AJAX</p>
+      <h2>Affichage au chargement</h2>
+      <p>Cet article sera remplacé en AJAX</p>
     </article>
   </div>
 </main>
+<footer class="mentions">
+  <p><a href="https://veroniquecuomo.fr/support/jQuery">Formation Développeur WEB</a></p>
+  <p>&copy; Intervenant : Véronique CUOMO - Module javaScript
+  <p>
+</footer>
 <script src="./js/ajax.js"></script>
 <script src="./js/main.js"></script>
 </body>

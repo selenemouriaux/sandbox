@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>AJAX : présentation</title>
+		<meta name="description" content="Introduction à AJAX">
+   		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="./css/normalize.css">
+		<link rel="stylesheet" href="./css/styles.css?v2" media="screen">
+	</head>
+	<body>
+		<header class="banner">
+			<a class="banner-link" href="./" title="Recharger la page">Ajax</a>
+			<nav class="banner-nav">
+				<a href="./index.html">Présentation</a>
+				<a href="./get.html">Recevoir des données</a>
+				<a href="./post.php">Envoyer des données</a>
+			<nav>
+		</header>
+		<main>
+			<div id="ajax">
+				<?php include './appli/' . $template . '.phtml' ?>
+			</div>
+		</main>
+		<footer class="mentions">
+			<p><a href="https://veroniquecuomo.fr/support/jQuery">Formation Développeur WEB</a></p>
+			<p>&copy; Intervenant : Véronique CUOMO - Module javaScript<p>
+		</footer>
+		<script src="./js/ajax.js"></script>
+    <script src="./js/post.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
