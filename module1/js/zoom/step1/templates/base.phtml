@@ -12,6 +12,10 @@
     <header class="banner">
       <a class="site-logo" href="../">Zoom</a>
       <p class="site-description">Étape 1 : mise en place</p>
+      <nav>
+        <a href="./">Accueil</a>
+        <a href="?action=pixabay">Interface Pixabay</a>
+      </nav>
     </header>
     <main>
       <?php include TEMPLATE_DIR . '/' . $template . '.phtml'; ?>
@@ -22,5 +26,10 @@
       <p>Nous remercions les auteurs des photos présentées sur ce site, récoltées sur <a href="https://pixabay.com/fr/">Pixabay</a></p>
       <a id="goTop" href="#" title="Remonter">&UpArrow;</a>
     </footer>
+
+  <?php if ($template === 'pixabay') : ?>
+    <script src="../public/js/ajax.js"></script>
+    <script src="../public/js/pixabay.js"></script>
+  <?php endif; ?>
   </body>
 </html>

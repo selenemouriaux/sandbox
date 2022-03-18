@@ -24,13 +24,13 @@ function OnclickThumbnail(img) {
   // console.log(img)
   console.log(document.querySelector('.zoom-thumbnail.is-active'))
   document.querySelector('.zoom-thumbnail.is-active').classList.remove("is-active");
-  document.querySelector(img.dataset.gallery_id).classList.remove("animate__zoomIn");
-  document.querySelector(img.dataset.gallery_id).classList.add("animate__zoomOut");
+  document.querySelector(img.dataset.gallery).classList.remove("animate__zoomIn");
+  document.querySelector(img.dataset.gallery).classList.add("animate__zoomOut");
   setTimeout(() => {
-    document.querySelector(img.dataset.gallery_id+' img').src = img.src;
+    document.querySelector(img.dataset.gallery+' img').src = img.src;
     img.classList.add("is-active");
-    document.querySelector(img.dataset.gallery_id).classList.remove("animate__zoomOut");
-    document.querySelector(img.dataset.gallery_id).classList.add("animate__zoomIn");
+    document.querySelector(img.dataset.gallery).classList.remove("animate__zoomOut");
+    document.querySelector(img.dataset.gallery).classList.add("animate__zoomIn");
 
   }, 350);
 }
