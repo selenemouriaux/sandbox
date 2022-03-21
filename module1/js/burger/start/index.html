@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Menu responsive</title>
+    <meta name="description" content="Technique du menu responsive en CSS">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./css/normalize.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="banner">
+      <a class="site-logo" href="./">Menu responsive</a>
+      <p class="site-description">Technique du menu responsive</p>
+      <nav id="menu" class="banner-nav">
+        <a href="https://www.alsacreations.com/article/lire/1500-matchmedia-javascript-media-queries.html" title="Media queries en javascript">MatchMedia</a>
+        <a href="https://www.goetter.fr/nav/" title="Exemples et techniques de menu responsive">Simple Nav</a>
+        <a href="https://www.sarasoueidan.com/demos/navicon-transformicons/" title="Boutons tout en CSS">Icons with CSS3 Transforms</a>
+      </nav>
+    </header>
+    <main>
+      <h1>Menu responsive</h1>
+      <section>
+        <h2>Kesako ?</h2>
+
+        <p>Un menu responsive consiste à cacher le menu général du site, généralement présenté dans une navigation horizontale, laquelle ne peut être affichée sur une seule ligne lorsque la largeur d'écran est inférieure à un certain seuil (breakpoint)</p>
+
+        <p>Sur les mobiles, le menu est souvent dépliable en actionnant un bouton, lequel porte le nom de "Burger" par référence à sa ressemblance à un hamburger : <button class="demo-burger button-burger"></button></p>
+
+      </section>
+      <section>
+        <h2>Éléments fournis</h2>
+        <p>Le présent dossier de départ founit : </p>
+        <ol>
+          <li>Une feuille de style</li>
+          <li>Un document html</li>
+          <li>Des liens de ressources dans la navigation</li>
+          <li>Un fichier javascript de démarrage, introduisant une fonction <code>toggleNav()</code> restant à développer et à exécuter.</li>
+        </ol>
+        <h3>La feuille de style</h3>
+        <p>Elle met à votre disposition les règles CSS suivantes : </p>
+        <ol>
+          <li>La classe <code>button-burger</code>, associée à un élement html <code>&lt;button&gt;</code>, permet de dessiner un bouton de style burger.<br>Les plus curieux pourront observer le code CSS : le bouton est dessiné en CSS.</li>
+          <li>La classe <code>has-focus</code> asssociée au burger permet de modifier son apparence : l'élément se présente alors comme une croix (également réalisée en CSS)</li>
+          <li>L'identifiant <code>#menu</code>, d'ores et déjà appliqué à l'élément <code>&lt;nav&gt;</code> de la bannière, subit une transformation de style pour une largeur d'écran inférieure à 1023px.</li>
+        </ol>
+        <h3>Comportement du menu</h3>
+        <p>Lorsque la largeur d'écran est inférieure à 1024px, la navigation n'est plus visible.</p>
+        <p>Dans ce cas, l'ajout de la classe <code>is-open</code> permet son affichage avec un effet d'animation, exploitant la propriété CSS <code>transform</code> afin de provoquer un glissement depuis la gauche de l'écran</p>
+        
+        <div class="container-figures">
+          <figure>
+            <figcaption>Menu fermé</figcaption>
+            <img src="img/menu-responsive-close.png" alt="">
+          </figure>
+          <figure>
+            <figcaption>Menu Ouvert</figcaption>
+            <img src="img/menu-responsive-open.png" alt="">
+          </figure>
+        </div>
+      </section>
+      <section>
+        <h2>Votre mission</h2>
+        <p>Votre mission, si vous l'acceptez, est de réaliser le fonctionnement javascript suivant :  </p>
+        <ol>
+          <li>Le javascript doit être chargé dans le document</li>
+          <li>Le code ne doit s'exécuter qu'en dessous de 1024px : voir <a href="https://www.alsacreations.com/article/lire/1500-matchmedia-javascript-media-queries.html">La méthode matchMedia ou les Media Queries pour JavaScript</a> </li>
+          <li>Création d'un élément <code>&lt;button&gt;</code> affecté de la classe <code>button-burger</code></li>
+          <li>Insertion du bouton entre <code>&lt;p class="site-description"&gt;</code> et <code>&lt;nav&gt;</code></li>
+          <li>
+              Installation d'un gestionnaire d'événement au click sur le bouton qui doit réaliser :
+              <ol>
+                <li>Un toggle sur le menu de la class <code>is-open</code></li>
+                <li>Un toggle sur le bouton de la class <code>has-focus</code></li>
+              </ol>
+          </li>
+          <li>Le code ne doit s'exécuter qu'une fois les ressources entièrement chargées : (re)voir <a href="https://developer.mozilla.org/fr/docs/Web/API/Window/load_event">L’évènement load</a></li>
+          <li>En bonus : prévoir de recharger la page si elle est redimmensionnée : 
+            <ul>
+              <li>Voir : <a href="https://developer.mozilla.org/fr/docs/Web/API/GlobalEventHandlers/onresize">element.onresize</a></li>
+              <li>Voir : <a href="https://developer.mozilla.org/fr/docs/Web/API/Location/reload">Location : reload()</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <h2>Test de votre code</h2>
+        <p>Il va s'en dire, mais nous le rappelons quand même, que vous devez tester votre code en utilisant les outils médias du navigateur (simuler l'affichage sur un écran mobile)</p>
+        <p>De même, gardez un oeil sur la console : elle est votre seule amie !</p>
+      </section>
+
+    </main>
+    <footer class="footer">
+      <p>Formation Développeur Web - &copy; <a href="https://veroniquecuomo.fr/support/">Véronique CUOMO</a><p>
+      <p>Nous remercions les auteurs des photos présentées sur ce site, récoltées sur <a href="https://pixabay.com/fr/">Pixabay</a></p>
+      <a id="goTop" href="#" title="Remonter">&UpArrow;</a>
+    </footer>
+  </body>
+</html>

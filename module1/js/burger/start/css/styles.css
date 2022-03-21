@@ -1,0 +1,306 @@
+/*
+Définir des variables CSS
+https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties
+
+Première variable CSS : currentColor
+https://la-cascade.io/la-premiere-variable-css-currentcolor/
+*/
+
+:root {
+  --color-default : #222;
+  --color-inverse : #ddd;
+  --dark-color    : #333;
+  --light-color   : #fff;
+}
+
+/* *********** Styles de base ********** */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height : 100vh;
+  display : grid;
+  grid-template-rows: auto 1fr auto;
+  font-size: 1.6rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color : var(--color-default,#222);
+  line-height : 1.6;
+}
+
+img,
+video {
+  max-width: 100%;
+  height : auto;
+  vertical-align: top;
+}
+
+code {
+  background : #ccc;
+}
+
+/* *********** Layout général ********** */
+
+.banner,
+.footer,
+main {
+  padding-left  : 1em;
+  padding-right : 1em;
+}
+
+main {
+  padding-bottom : 5em;
+}
+
+.banner,
+.footer {
+  background-color: var(--dark-color);
+  color : var(--color-inverse);
+}
+
+.banner a,
+.footer a {
+  color : var(--color-inverse);
+  text-decoration: none;
+}
+
+.banner {
+  padding-top : 1rem;
+  padding-bottom : 1rem;
+  text-align: center;
+}
+
+.site-logo {
+  font-size : 1.3em;
+}
+
+.site-description {
+  margin : 0;
+}
+
+.banner-nav a {
+  display: block;
+  margin : 1em;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted currentColor;
+  text-align: left;
+}
+
+.banner-nav a:hover,
+.banner-nav a.has-focus,
+.banner-nav a:active,
+.banner-nav a.is-current {
+  color : var(--light-color);
+}
+
+
+.footer {
+  position: relative;
+  padding-top : 1rem;
+  padding-bottom : 1rem;
+  text-align: center;
+}
+
+.footer > * {
+  margin : 0;
+}
+
+#goTop {
+  width : 1.5em;
+  height : 1.2em;
+  line-height: 1.2em;
+  position : absolute;
+  top : -1.2em;
+  left : calc(50% - 0.75em);
+  z-index : 2000;
+  background-color: var(--dark-color);
+  border-radius: 5px 5px 0 0;
+  font-size: 2em;
+}
+
+li {
+  margin : 1em 0;
+}
+
+@media screen and (min-width : 1024px) {
+
+  .banner,
+  .footer,
+  main {
+    padding-left  : calc((100% - 1200px) / 2 );
+    padding-right : calc((100% - 1200px) / 2 );
+  }
+
+  .banner {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    column-gap : 1em;
+    text-align: left;
+  }
+
+  .site-logo {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .site-description {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+
+  .banner-nav {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    justify-self : end;
+    text-transform: uppercase;
+  }
+
+  .banner-nav a {
+    display: inline-block;
+    border-bottom: 5px solid transparent;
+  }
+
+  .banner-nav a:hover,
+  .banner-nav a.has-focus,
+  .banner-nav a:active,
+  .banner-nav a.is-current {
+    border-bottom: 5px solid currentColor;
+    color : var(--light-color);
+  }
+}
+
+.demo-burger {
+  position : static !important;
+  background-color : white !important;
+  color : black !important;
+  vertical-align: middle;
+}
+
+.container-figures {
+  display : flex;
+  justify-content: space-around;
+}
+
+/* *********** MENU BURGER ********** */
+
+/*
+    Style du bouton
+    Explotation des pseudos éléments pour dessiner le burger
+
+    Voir : https://codepen.io/raphaelgoetter/pen/ZQvYKV?editors=1100
+    Voir : https://www.sarasoueidan.com/blog/navicon-transformicons/
+  */
+
+.button-burger {
+  height: 2.4rem;
+  width: 2.8rem;
+  background-color: transparent;
+  background-image: linear-gradient(to right, currentColor, currentColor);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 5px;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  color: var(--light-color);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: .25s cubic-bezier(.17,.67,.89,1.4);
+  transition-property: transform;
+  will-change: transform;
+}
+.button-burger::before,
+.button-burger::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  display: block;
+  height: 5px;
+  background: currentColor;
+  transition: .25s;
+  transition-property: transform, top;
+  will-change: transform, top;
+}
+.button-burger::before {
+  top: 0;
+}
+.button-burger::after {
+  top: calc(100% - 4px);
+}
+
+/* Style du bouton quand le menu est ouvert */
+.button-burger.has-focus {
+  background-image: none;
+}
+.button-burger.has-focus::before,
+.button-burger.has-focus::after{
+  top: 50%;
+}
+.button-burger.has-focus::before {
+  transform: translate3d(0,-50%,0) rotate3d(0,0,1,45deg);
+}
+.button-burger.has-focus::after {
+  transform: translate3d(0,-50%,0) rotate3d(0,0,1,-45deg);
+}
+
+@media screen and (max-width:1023px) {
+
+  .button-burger {
+    position : absolute;
+    top : 0.5rem;;
+    right :1rem;
+  }
+
+  /* Sur mobile, le menu est caché au chargement
+  Pour l'effet d'animation, il faut jouer avec transition et transform : translate
+  (car display n'est pas une propriété reconnue pour les transitions)
+  */
+  #menu {
+    transform : translateX(-100%);
+
+    /* Mais il occupe toutjours sa place en hauteur,
+    même décalé : donc on le réduit */
+    height : 0;
+    /* Et empêcher les liens de déborder */
+    overflow : hidden;
+
+    /* Prévoir l'animation sur transform */
+
+    transition : transform 0.5s linear;
+
+    /* Optimiser l'animation : le navigateur prévoit le calcul à l'avance (ne pas en abuser) */
+    will-change : transform;
+
+    /*
+    Positonner pour qu'il passe dessus le contenu
+    en positionnant / à banner et en ne donnant pas de top, il sera en dessous du titre
+
+    il faut donc mettre un fond
+     */
+    position : absolute;
+    left : 0;
+    right : 0;
+    z-index : 1000;
+    /* Variante */
+    right : 40%;
+
+    /* Un fond pour la supperposition sur le blanc du contenu */
+    background : var(--dark-color);
+  }
+
+  /* La classe is-open est rajoutée/supprimée par le script lorsqu'on clique sur le bouton */
+  #menu.is-open {
+    height : auto;
+    min-height : 100vh;
+    transform : translateX(0);
+  } 
+
+}
