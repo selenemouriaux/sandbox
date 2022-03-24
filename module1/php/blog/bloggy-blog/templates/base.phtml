@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon blog !</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur blog !</h1>
+        <nav>
+            <a href="index.php">Accueil</a>
+            <a href="index.php?action=contact">Contact</a>
+            <?php if (isConnected()): ?>
+                <a href="index.php?action=logout">Déconnexion</a>
+            <?php else: ?>
+                <a href="index.php?action=login">Connexion</a>
+                <a href="index.php?action=signup">Créer un compte</a>
+            <?php endif; ?>
+        </nav>
+    </header>
+    <main>
+        <!-- Affichage des messages flash -->
+        <?php if (isset($flashMessage)): ?>
+            <p><?=htmlspecialchars($flashMessage);?></p>
+        <?php endif; ?>
+
+        <!-- Inclusion du template de la page --> 
+        <?php include TEMPLATE_DIR . '/' . $template . '.phtml'; ?>
+    </main>
+    <footer>
+        <nav>
+            <a href="index.php?action=mentions">Mentions légales</a>
+        </nav>
+    </footer>
+</body>
+</html>

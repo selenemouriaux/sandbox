@@ -1,0 +1,55 @@
+<article>
+    <p><?=$article['category_label'];?></p>
+    <img src="<?=assetUpload($article['image']);?>" alt="">
+    <h3><?=$article['title'];?></h3>
+    <small><?=(new DateTimeImmutable($article['createdAt']))->format('d/m/Y');?></small>
+    <p><?=$article['content'];?></p>
+</article>
+
+<section>
+    <!-- Formulaire d'ajout de commentaire SI ON EST CONNECTE -->
+    <?php if (isConnected()): ?>
+        <form action="index.php?action=article&idArticle=<?=$article['idArticle'];?>" method="POST">
+            <fieldset>
+                <legend>Commentez cet article</legend>
+                <div>
+                    <label for="content">Commentaire</label>
+                    <textarea id="content" name="content"></textarea>
+
+                    <!-- Affichage du message d'erreur le cas échéant -->
+                    <?php if (isset($errors['content'])): ?>
+                        <p class="error"><?=$errors['content']?></p>
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <label for="rate">Note</label>
+                    <select id="rate" name="rate">
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                            <option value="<?=$i?>"><?=$i?></option>
+                        <?php endfor; ?>
+                    </select>
+                </div>
+            </fieldset>
+            <input type="submit" value="Valider">
+        </form>
+    <?php endif; ?>
+
+    <!-- Liste des commentaires --> 
+    <h3>Commentaires</h3>
+    <?php if ($comments): ?>
+        <ul>
+            <?php foreach ($comments as $comment): ?>
+                <li>
+                    <small>
+                        Ajouté le <?=(new DateTimeImmutable($comment['createdAt']))->format('d/m/Y à H:i');?> par 
+                        <?=$comment['firstname']?> <?=$comment['lastname']?> 
+                    </small>
+                    <p>Note : <?=htmlspecialchars($comment['rate']);?>/5</p>
+                    <p><?=htmlspecialchars($comment['content']);?></p>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>Soyez le premier à commenter cet article !</p>
+    <?php endif; ?>
+</section>
