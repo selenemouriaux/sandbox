@@ -21,8 +21,9 @@ class UserModel extends AbstractModel {
         $sql = 'SELECT * FROM user WHERE email = ?';
 
         $aResult = $this->db->getOneResult($sql, [$email]);
-
-
+        if (!$aResult) {
+          return null;
+        }
         return (new User())->hydrate($aResult);
     }
 
@@ -31,23 +32,23 @@ class UserModel extends AbstractModel {
      * Si les identifiants sont corrects, on retourne l'utilisateur
      * Sinon (email qui n'existe pas ou mot de passe incorrect) on retourne false
      */
-    function checkCredentials(string $email, string $password)
+    function checkCredentials(string $email, string $password) :?User
     {
         // On va chercher l'utilisateur à partir de l'email
-        $user = $this->getUserByEmail($email);
+        $oUser = $this->getUserByEmail($email);
 
         // Si l'utilisateur existe bien...
-        if ($user) {
+        if ($oUser) {
 
-            // Si le mot de passe est correct
-            if (password_verify($password, $user['password'])) {
+          // Si le mot de passe est correct
+            if (password_verify($password, $oUser->getPassword())) {
 
                 // Tout est OK, email et mot de passe, on retourne l'utilisateur
-                return $user;
+                return $oUser;
             }
         }
 
         // Si on arrive ici c'est qu'il y a un soucis soit avec l'email, soit avec le mot de passe
-        return false;
+        return null;
     }
 }

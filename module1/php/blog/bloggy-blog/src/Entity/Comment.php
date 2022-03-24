@@ -9,7 +9,28 @@ final class Comment
   private User $user;
   private string $content;
   private int $rate;
-  private DateTime $createdAt;
+  private DateTimeImmutable $createdAt;
+
+  public function hydrate(array $aData): self
+  {
+    $this
+      ->setId($aData['idComment'])
+      ->setIdArticle($aData['articleId'])
+      ->setContent($aData['content'])
+      ->setRate($aData['rate'])
+      ->setCreatedAt(new DateTimeImmutable($aData['createdAt']))
+      ->setIdUser($aData['userId']);
+    return $this;
+  }
+
+  /**
+   * @param User $user
+   */
+  public function setUser(User $user): self
+  {
+    $this->user = $user;
+    return $this;
+  }
 
   /**
    * @return int
@@ -22,9 +43,10 @@ final class Comment
   /**
    * @param int $id
    */
-  public function setId(int $id): void
+  public function setId(int $id): self
   {
     $this->id = $id;
+    return $this;
   }
 
   /**
@@ -38,9 +60,10 @@ final class Comment
   /**
    * @param int $idArticle
    */
-  public function setIdArticle(int $idArticle): void
+  public function setIdArticle(int $idArticle): self
   {
     $this->idArticle = $idArticle;
+    return $this;
   }
 
   /**
@@ -54,9 +77,10 @@ final class Comment
   /**
    * @param Article $article
    */
-  public function setArticle(Article $article): void
+  public function setArticle(Article $article): self
   {
     $this->article = $article;
+    return $this;
   }
 
   /**
@@ -70,9 +94,10 @@ final class Comment
   /**
    * @param int $idUser
    */
-  public function setIdUser(int $idUser): void
+  public function setIdUser(int $idUser): self
   {
     $this->idUser = $idUser;
+    return $this;
   }
 
   /**
@@ -83,13 +108,6 @@ final class Comment
     return $this->user;
   }
 
-  /**
-   * @param User $user
-   */
-  public function setUser(User $user): void
-  {
-    $this->user = $user;
-  }
 
   /**
    * @return string
@@ -102,9 +120,10 @@ final class Comment
   /**
    * @param string $content
    */
-  public function setContent(string $content): void
+  public function setContent(string $content): self
   {
     $this->content = $content;
+    return $this;
   }
 
   /**
@@ -118,25 +137,27 @@ final class Comment
   /**
    * @param int $rate
    */
-  public function setRate(int $rate): void
+  public function setRate(int $rate): self
   {
     $this->rate = $rate;
+    return $this;
   }
 
   /**
-   * @return DateTime
+   * @return DateTimeImmutable
    */
-  public function getCreatedAt(): DateTime
+  public function getCreatedAt(): DateTimeImmutable
   {
     return $this->createdAt;
   }
 
   /**
-   * @param DateTime $createdAt
+   * @param DateTimeImmutable $createdAt
    */
-  public function setCreatedAt(DateTime $createdAt): void
+  public function setCreatedAt(DateTimeImmutable $createdAt): self
   {
     $this->createdAt = $createdAt;
+    return $this;
   }
 
 }

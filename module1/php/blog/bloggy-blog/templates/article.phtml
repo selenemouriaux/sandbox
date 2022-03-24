@@ -41,11 +41,11 @@
             <?php foreach ($comments as $comment): ?>
                 <li>
                     <small>
-                        Ajouté le <?=(new DateTimeImmutable($comment['createdAt']))->format('d/m/Y à H:i');?> par 
-                        <?=$comment['firstname']?> <?=$comment['lastname']?> 
+                        Ajouté le <?=(($comment->getCreatedAt()))->format('d/m/Y à H:i');?> par
+                        <?=$comment->getUser()->getFirstname()?> <?=$comment->getUser()->getLastname()?>
                     </small>
-                    <p>Note : <?=htmlspecialchars($comment['rate']);?>/5</p>
-                    <p><?=htmlspecialchars($comment['content']);?></p>
+                    <p>Note : <?=htmlspecialchars($comment->getRate());?>/5</p>
+                    <p><?=htmlspecialchars($comment->getContent());?></p>
                 </li>
             <?php endforeach; ?>
         </ul>

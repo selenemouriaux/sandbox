@@ -8,12 +8,46 @@ final class Article
   private string $title;
   /** @var string */
   private string $content;
-  /** @var DateTime */
-  private DateTime $createdAt;
+  /** @var DateTimeImmutable */
+  private DateTimeImmutable $createdAt;
   /** @var int */
   private int $idCategory;
   /** @var string */
   private string $image;
+  /** @var string */
+  private string $categoryLabel;
+
+  public function hydrate(array $aData): self
+  {
+    $this
+      ->setId($aData['idArticle'])
+      ->setTitle($aData['title'])
+      ->setContent($aData['content'])
+      ->setCreatedAt(new DateTimeImmutable($aData['createdAt']))
+      ->setIdCategory($aData['categoryId'])
+      ->setImage($aData['image'])
+      ->setCategoryLabel($aData['category_label'])
+      ;
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getCategoryLabel(): string
+  {
+    return $this->categoryLabel;
+  }
+
+  /**
+   * @param string $categoryLabel
+   * @return Article
+   */
+  public function setCategoryLabel(string $categoryLabel): Article
+  {
+    $this->categoryLabel = $categoryLabel;
+    return $this;
+  }
 
   /**
    * @return int
@@ -26,9 +60,10 @@ final class Article
   /**
    * @param int $id
    */
-  public function setId(int $id): void
+  public function setId(int $id): self
   {
     $this->id = $id;
+    return $this;
   }
 
   /**
@@ -42,9 +77,10 @@ final class Article
   /**
    * @param string $title
    */
-  public function setTitle(string $title): void
+  public function setTitle(string $title): self
   {
     $this->title = $title;
+    return $this;
   }
 
   /**
@@ -58,25 +94,27 @@ final class Article
   /**
    * @param string $content
    */
-  public function setContent(string $content): void
+  public function setContent(string $content): self
   {
     $this->content = $content;
+    return $this;
   }
 
   /**
-   * @return DateTime
+   * @return DateTimeImmutable
    */
-  public function getCreatedAt(): DateTime
+  public function getCreatedAt(): DateTimeImmutable
   {
     return $this->createdAt;
   }
 
   /**
-   * @param DateTime $createdAt
+   * @param DateTimeImmutable $createdAt
    */
-  public function setCreatedAt(DateTime $createdAt): void
+  public function setCreatedAt(DateTimeImmutable $createdAt): self
   {
     $this->createdAt = $createdAt;
+    return $this;
   }
 
   /**
@@ -90,9 +128,10 @@ final class Article
   /**
    * @param int $idCategory
    */
-  public function setIdCategory(int $idCategory): void
+  public function setIdCategory(int $idCategory): self
   {
     $this->idCategory = $idCategory;
+    return $this;
   }
 
   /**
@@ -106,9 +145,10 @@ final class Article
   /**
    * @param string $image
    */
-  public function setImage(string $image): void
+  public function setImage(string $image): self
   {
     $this->image = $image;
+    return $this;
   }
 
 }

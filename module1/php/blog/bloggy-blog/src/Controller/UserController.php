@@ -65,16 +65,17 @@ class UserController
 
       // On vérifie les identifiants ( fonction checkCredentials() )
       $userModel = new UserModel();
-      $user = $userModel->checkCredentials($email, $password);
+      $oUser = $userModel->checkCredentials($email, $password);
+      var_dump($oUser);
 
       // Si les identifiants sont corrects
-      if ($user) {
+      if ($oUser) {
 
         // On enregistre les données de l'utilisateur en session ( fonction userRegister() )
-        userRegister($user['idUser'], $user['firstname'], $user['lastname'], $user['email'], $user['role']);
+        userRegister($oUser);
 
         // On ajoute un message flash ( fonction addFlashMessage() )
-        addFlashMessage('Bonjour ' . $user['firstname']);
+        addFlashMessage('Bonjour ' . $oUser->getFirstname());
 
         // Si l'utilisateur est un administrateur, on le redirige vers le dashboard
         if (isAdmin()) {

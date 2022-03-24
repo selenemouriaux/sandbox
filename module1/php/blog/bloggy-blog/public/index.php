@@ -41,7 +41,7 @@ require PROJECT_DIR . '/src/Controller/UserController.php';
 // On démarre la session dès le début pour être sûr de ne pas être embêté plus tard
 session_start();
 
-print_r( (new CategoryModel())->find(1) );
+//print_r( (new CategoryModel())->find(1) );
 
 /**
  * Plusieurs possiblités pour gérer les URLs
@@ -68,69 +68,3 @@ if (array_key_exists($action, $aRoutes)) {
 } else {
   echo 'ERREUR 404 : Page introuvable';
 }
-
-
-// Routing : trouver et exécuter le controller associé à l'action 
-//switch ($action) {
-//
-// Page d'accueil
-//  case 'home':
-//    (new DefaultController())->genHome();
-////    $oDefaultController->genHome();
-//    break;
-//
-//  // Page Article
-//  case 'article':
-//    $oDefaultController->genArticle();
-//    break;
-//
-//  // Formulaire de contact
-//  case 'contact':
-//    $oDefaultController->genContact();
-//    break;
-//
-//  // Mentions légales
-//  case 'mentions':
-//    $oDefaultController->genMentions();
-//    break;
-//
-//  // Formulaire de création de compte
-//  case 'signup':
-//    $oUserController->genSignUp();
-//    break;
-//
-//  // Formulaire de connexion
-//  case 'login':
-//    $oUserController->genLogin();
-//    break;
-//
-//  // Déconnexion
-//  case 'logout':
-//    $oUserController->genLogout();
-//    break;
-//
-//  // Dashboard administration
-//  case 'admin':
-//    $oAdminController->genDashboard();
-//    break;
-//
-//  // Création d'un article
-//  case 'admin_article_add':
-//    $oAdminController->genAddArticle();
-//    break;
-//
-//  // Modification d'un article
-//  case 'admin_article_edit':
-//    $oAdminController->genEditArticle();
-//    break;
-//
-//  // Suppression d'un article
-//  case 'admin_article_delete':
-//    $oAdminController->genDeleteArticle();
-//    break;
-//
-//  // On n'a pas trouvé de page pour l'action présente dans l'URL => erreur 404
-//  default:
-//    echo 'ERREUR 404 : Page introuvable';
-//    break;
-//}

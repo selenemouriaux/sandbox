@@ -3,16 +3,16 @@
 /**
  * Enregistre les données de l'utilisateur en session
  */
-function userRegister(int $userId, string $firstname, string $lastname, string $email, string $role)
+function userRegister(User $oUser)
 {
     startSession();
 
     $_SESSION['user'] = [
-        'userId' => $userId,
-        'lastname' => $lastname,
-        'firstname' => $firstname,
-        'email' => $email,
-        'role' => $role
+        'userId' => $oUser->getId(),
+        'lastname' => $oUser->getLastname(),
+        'firstname' => $oUser->getFirstname(),
+        'email' => $oUser->getEmail(),
+        'role' => $oUser->getRole()
     ];
 }
 

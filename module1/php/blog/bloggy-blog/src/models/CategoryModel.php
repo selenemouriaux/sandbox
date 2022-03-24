@@ -3,6 +3,9 @@
 class CategoryModel extends AbstractModel
 {
 
+  /**
+   * @return array
+   */
   public function findAll(): array
   {
     $sSql = 'SELECT * FROM category ORDER BY label';
@@ -15,6 +18,10 @@ class CategoryModel extends AbstractModel
     return $aCategories;
   }
 
+  /**
+   * @param int $idCategory
+   * @return Category|null
+   */
   public function find(int $idCategory): ?Category
   {
     // Requête de sélection pour aller chercher l'article à afficher

@@ -2,12 +2,19 @@
 
 final class User
 {
+  /** @var int */
   private int $id;
+  /** @var string */
   private string $firstname;
+  /** @var string */
   private string $lastname;
+  /** @var string */
   private string $email;
-  private DateTime $createdAt;
+  /** @var DateTimeImmutable */
+  private DateTimeImmutable $createdAt;
+  /** @var string */
   private string $password;
+  /** @var string */
   private string $role;
 
   public function hydrate(array $aData): self
@@ -101,9 +108,9 @@ final class User
   }
 
   /**
-   * @param DateTime $createdAt
+   * @param DateTimeImmutable $createdAt
    */
-  public function setCreatedAt(DateTime $createdAt): self
+  public function setCreatedAt(DateTimeImmutable $createdAt): self
   {
     $this->createdAt = $createdAt;
     return $this;
