@@ -10,13 +10,19 @@ use \App\Framework\UserSession as Tkn;
 ///////////////////////////////////////////////
 class AdminController extends AbstractController
 {
+  private Tkn $tkn;
+  public function __construct()
+  {
+    $this->tkn = new Tkn();
+  }
+
   /**
    * Génère la page d'accueil de l'admin (le dashboard)
    */
   public function genDashboard() :void
   {
     // Protection ADMIN
-    if (!(new tkn)->isConnected()) {
+    if (!$this->tkn->isConnected()) {
       $this->flashbag->addFlashMessage('Merci de vous connecter');
       header('Location: index.php?action=login');
       exit;
