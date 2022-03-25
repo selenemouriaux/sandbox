@@ -1,6 +1,9 @@
 <?php
+namespace App\Repository;
 
-class CategoryModel extends AbstractModel
+use \App\Entity\Category;
+
+class CategoryRepository extends \App\Framework\AbstractModel
 {
 
   /**

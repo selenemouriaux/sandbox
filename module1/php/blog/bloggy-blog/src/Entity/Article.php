@@ -1,7 +1,13 @@
 <?php
+namespace App\Entity;
+
+use \DateTimeImmutable;
 
 final class Article
 {
+
+  const DB_TABLE = 'article';
+
   /** @var int */
   private int $id;
   /** @var string */
@@ -10,12 +16,11 @@ final class Article
   private string $content;
   /** @var DateTimeImmutable */
   private DateTimeImmutable $createdAt;
-  /** @var int */
-  private int $idCategory;
   /** @var string */
   private string $image;
-  /** @var string */
-  private string $categoryLabel;
+  /** @var Category */
+  private Category $category;
+
 
   public function hydrate(array $aData): self
   {
@@ -24,28 +29,26 @@ final class Article
       ->setTitle($aData['title'])
       ->setContent($aData['content'])
       ->setCreatedAt(new DateTimeImmutable($aData['createdAt']))
-      ->setIdCategory($aData['categoryId'])
       ->setImage($aData['image'])
-      ->setCategoryLabel($aData['category_label'])
       ;
     return $this;
   }
 
   /**
-   * @return string
+   * @return Category
    */
-  public function getCategoryLabel(): string
+  public function getCategory(): Category
   {
-    return $this->categoryLabel;
+    return $this->category;
   }
 
   /**
-   * @param string $categoryLabel
+   * @param Category $category
    * @return Article
    */
-  public function setCategoryLabel(string $categoryLabel): Article
+  public function setCategory(Category $category): Article
   {
-    $this->categoryLabel = $categoryLabel;
+    $this->category = $category;
     return $this;
   }
 
@@ -114,23 +117,6 @@ final class Article
   public function setCreatedAt(DateTimeImmutable $createdAt): self
   {
     $this->createdAt = $createdAt;
-    return $this;
-  }
-
-  /**
-   * @return int
-   */
-  public function getIdCategory(): int
-  {
-    return $this->idCategory;
-  }
-
-  /**
-   * @param int $idCategory
-   */
-  public function setIdCategory(int $idCategory): self
-  {
-    $this->idCategory = $idCategory;
     return $this;
   }
 

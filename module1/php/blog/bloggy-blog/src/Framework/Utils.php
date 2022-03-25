@@ -1,7 +1,9 @@
 <?php 
+namespace App\Framework;
 
-function slugify($text)
-{
+final class Utils {
+  public function slugify($text)
+  {
     // Strip html tags
     $text=strip_tags($text);
     // Replace non letter or digits by -
@@ -21,12 +23,13 @@ function slugify($text)
     if (empty($text)) { return 'n-a'; }
     // Return result
     return $text;
-}
+  }
 
-/**
- * Construit le chemin relatif vers un fichier du répertoire upload
- */
-function assetUpload(string $filename): string 
-{
+  /**
+   * Construit le chemin relatif vers un fichier du répertoire upload
+   */
+  public function assetUpload(string $filename): string
+  {
     return UPLOAD_DIR . '/' . $filename;
+  }
 }

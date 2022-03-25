@@ -21,7 +21,7 @@
             <tr>
                 <th scope="row"><?=intval($article->getId());?></th>
                 <td><?=htmlspecialchars($article->getTitle());?></td>
-                <td><?=htmlspecialchars($article->getCategoryLabel());?></td>
+                <td><?=htmlspecialchars($article->getCategory()->getLabel());?></td>
                 <td><?=($article->getCreatedAt())->format('d/m/Y');?></td>
                 <td>
                     <img class="thumbnail" src="<?=assetUpload($article->getImage());?>" alt="">

@@ -1,6 +1,9 @@
-<?php 
+<?php
+namespace App\Repository;
 
-class UserModel extends AbstractModel {
+use \App\Entity\User;
+
+class UserRepository extends \App\Framework\AbstractModel {
 
     /**
      * Insert un nouvel utilisateur dans la base de données

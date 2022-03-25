@@ -1,4 +1,7 @@
 <?php
+namespace App\Entity;
+
+use \DateTimeImmutable;
 
 final class User
 {
@@ -100,9 +103,9 @@ final class User
   }
 
   /**
-   * @return DateTime
+   * @return DateTimeImmutable
    */
-  public function getCreatedAt(): DateTime
+  public function getCreatedAt(): DateTimeImmutable
   {
     return $this->createdAt;
   }

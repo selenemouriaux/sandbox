@@ -1,4 +1,8 @@
-<?php 
+<?php
+namespace App\Framework;
+
+use \PDO;
+use \PDOStatement;
 
 class Database {
 

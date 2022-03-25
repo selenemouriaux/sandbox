@@ -3,18 +3,18 @@
 $aRoutes = [];
 
 // DefaultController
-$aRoutes ['home'] = 'DefaultController::genHome';
-$aRoutes ['article'] = 'DefaultController::genArticle';
-$aRoutes ['contact'] = 'DefaultController::genContact';
-$aRoutes ['mentions'] = 'DefaultController::genMentions';
+$aRoutes ['home'] = '\App\Controller\DefaultController::genHome';
+$aRoutes ['article'] = '\App\Controller\DefaultController::genArticle';
+$aRoutes ['contact'] = '\App\Controller\DefaultController::genContact';
+$aRoutes ['mentions'] = '\App\Controller\DefaultController::genMentions';
 
 // UserController
-$aRoutes ['signup'] = 'UserController::genSignUp';
-$aRoutes ['login'] = 'UserController::genLogin';
-$aRoutes ['logout'] = 'UserController::genLogout';
+$aRoutes ['signup'] = '\App\Controller\UserController::genSignUp';
+$aRoutes ['login'] = '\App\Controller\UserController::genLogin';
+$aRoutes ['logout'] = '\App\Controller\UserController::genLogout';
 
 // AdminController
-$aRoutes ['admin'] = 'AdminController::genDashboard';
-$aRoutes ['admin_article_add'] = 'AdminController::genAddArticle';
-$aRoutes ['admin_article_edit'] = 'AdminController::genEditArticle';
-$aRoutes ['admin_article_delete'] = 'AdminController::genDeleteArticle';
+$aRoutes ['admin'] = '\App\Controller\AdminController::genDashboard';
+$aRoutes ['admin_article_add'] = '\App\Controller\AdminController::genAddArticle';
+$aRoutes ['admin_article_edit'] = '\App\Controller\AdminController::genEditArticle';
+$aRoutes ['admin_article_delete'] = '\App\Controller\AdminController::genDeleteArticle';

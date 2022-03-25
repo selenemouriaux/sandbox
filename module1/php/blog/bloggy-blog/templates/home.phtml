@@ -2,8 +2,8 @@
     <h2>Nos dernières publications</h2>
     <?php foreach ($articles as $article): ?>
         <article>
-            <p><?=$article->getCategoryLabel();?></p>
-            <img src="<?=assetUpload($article->getImage());?>" alt="">
+            <p><?=$article->getCategory()->getLabel();?></p>
+            <img src="<?=(new \App\Framework\Utils)->assetUpload($article->getImage());?>" alt="">
             <h3><?=$article->getTitle();?></h3>
             <small><?=$article->getCreatedAt()->format('d/m/Y');?></small>
             <p><?=mb_substr($article->getContent(), 0, 150);?>...</p>

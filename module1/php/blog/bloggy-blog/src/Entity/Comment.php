@@ -1,4 +1,7 @@
 <?php
+namespace App\Entity;
+
+use \DateTimeImmutable;
 
 final class Comment
 {

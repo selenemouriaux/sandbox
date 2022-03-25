@@ -1,9 +1,14 @@
 <?php
+namespace App\Controller;
+
+use \App\Repository\ArticleRepository;
+use \App\Repository\CategoryRepository;
+use \App\Framework\UserSession as Tkn;
 
 ///////////////////////////////////////////////////
 // CONTROLLERS DE L'ADMINISTRATION //////////////
 ///////////////////////////////////////////////
-class AdminController
+class AdminController extends AbstractController
 {
   /**
    * Génère la page d'accueil de l'admin (le dashboard)
@@ -11,8 +16,8 @@ class AdminController
   public function genDashboard() :void
   {
     // Protection ADMIN
-    if (!isConnected()) {
-      addFlashMessage('Merci de vous connecter');
+    if (!(new tkn)->isConnected()) {
+      $this->flashbag->addFlashMessage('Merci de vous connecter');
       header('Location: index.php?action=login');
       exit;
     }
@@ -23,11 +28,11 @@ class AdminController
     }
 
     // Sélection des articles
-    $articleModel = new ArticleModel();
+    $articleModel = new ArticleRepository();
     $articles = $articleModel->getAllArticles();
 
     // On récupère le message flash le cas échéant
-    $flashMessage = getFlashMessage();
+    $flashMessage = $this->flashbag->getFlashMessage();
 
     // Inclusion du template
     $template = 'dashboard';
@@ -41,7 +46,7 @@ class AdminController
   {
     // Protection ADMIN
     if (!isConnected()) {
-      addFlashMessage('Merci de vous connecter');
+      $this->flashbag->addFlashMessage('Merci de vous connecter');
       header('Location: index.php?action=login');
       exit;
     }
@@ -107,7 +112,7 @@ class AdminController
         // Normalisation du nom du fichier image
         $fileInfo = pathinfo($_FILES['image']['name']);
         $extension = $fileInfo['extension'];
-        $filename = slugify($fileInfo['filename']) . sha1(uniqid(rand(), true)) . '.' . $extension;
+        $filename = (new \App\Framework\Utils)->slugify($fileInfo['filename']) . sha1(uniqid(rand(), true)) . '.' . $extension;
 
         // Déplacement du fichier temporaire vers le dossier final
         if (!file_exists(UPLOAD_DIR)) {
@@ -120,12 +125,12 @@ class AdminController
           $errors['image'] = 'Erreur lors du déplacement du fichier temporaire';
         } else {
 
-          // On insère l'article en appelant la méthode insert() de la classe ArticleModel
-          $articleModel = new ArticleModel();
+          // On insère l'article en appelant la méthode insert() de la classe ArticleRepository
+          $articleModel = new ArticleRepository();
           $articleModel->insert($title, $content, $categoryId, $filename);
 
           // Ajout d'un message flash de confirmation
-          addFlashMessage('Article créé avec succès');
+          $this->flashbag->addFlashMessage('Article créé avec succès');
 
           // Redirection vers le dashboard admin
           header('Location: index.php?action=admin');
@@ -135,7 +140,7 @@ class AdminController
     }
 
     // Sélection des catégories pour les afficher dans la liste déroulante
-    $categories = (new CategoryModel)->findAll();
+    $categories = (new CategoryRepository)->findAll();
 
     // Inclusion du template
     $template = 'addArticle';
@@ -150,7 +155,7 @@ class AdminController
   {
     // Protection ADMIN
     if (!isConnected()) {
-      addFlashMessage('Merci de vous connecter');
+      $this->flashbag->addFlashMessage('Merci de vous connecter');
       header('Location: index.php?action=login');
       exit;
     }
@@ -170,7 +175,7 @@ class AdminController
     $idArticle = (int)$_GET['idArticle'];
 
     // Sélection de l'article
-    $articleModel = new ArticleModel();
+    $articleModel = new ArticleRepository();
     $article = $articleModel->getOneArticle($idArticle);
 
     // Test pour savoir si l'article existe
@@ -239,7 +244,7 @@ class AdminController
           // Normalisation du nom du fichier image
           $fileInfo = pathinfo($_FILES['image']['name']);
           $extension = $fileInfo['extension'];
-          $filename = slugify($fileInfo['filename']) . sha1(uniqid(rand(), true)) . '.' . $extension;
+          $filename = (new \App\Framework\Utils)->slugify($fileInfo['filename']) . sha1(uniqid(rand(), true)) . '.' . $extension;
 
           // Déplacement du fichier temporaire vers le dossier final
           if (!file_exists(UPLOAD_DIR)) {
@@ -263,12 +268,12 @@ class AdminController
         // Si aucun fichier n'est transmis ou s'il n'y a pas eu de problème lors du déplacement du fichier...
         if (!isset($uploadedFileSuccess) || $uploadedFileSuccess) {
 
-          // On insère l'article en appelant la méthode update() de la classe ArticleModel
-          $articleModel = new ArticleModel();
+          // On insère l'article en appelant la méthode update() de la classe ArticleRepository
+          $articleModel = new ArticleRepository();
           $articleModel->update($title, $content, $categoryId, $filename, $idArticle);
 
           // Ajout d'un message flash de confirmation
-          addFlashMessage('Article modifié avec succès');
+          $this->flashbag->addFlashMessage('Article modifié avec succès');
 
           // Redirection vers le dashboard admin
           header('Location: index.php?action=admin');
@@ -278,7 +283,7 @@ class AdminController
     }
 
     // Sélection des catégories pour les afficher dans la liste déroulante
-    $categories = (new CategoryModel)->findAll();
+    $categories = (new CategoryRepository)->findAll();
 
     // Inclusion du template
     $template = 'editArticle';
@@ -289,7 +294,7 @@ class AdminController
   {
     // Protection ADMIN
     if (!isConnected()) {
-      addFlashMessage('Merci de vous connecter');
+      $this->flashbag->addFlashMessage('Merci de vous connecter');
       header('Location: index.php?action=login');
       exit;
     }
@@ -309,7 +314,7 @@ class AdminController
     $idArticle = (int)$_GET['idArticle'];
 
     // Sélection de l'article
-    $articleModel = new ArticleModel();
+    $articleModel = new ArticleRepository();
     $article = $articleModel->getOneArticle($idArticle);
 
     // Test pour savoir si l'article existe
@@ -327,7 +332,7 @@ class AdminController
     // Suppression de l'article dans la base de données
     $articleModel->delete($idArticle);
 
-    addFlashMessage('Article supprimé!');
+    $this->flashbag->addFlashMessage('Article supprimé!');
 
     header('Location: index.php?action=admin');
     exit;

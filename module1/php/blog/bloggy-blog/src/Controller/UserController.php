@@ -1,6 +1,9 @@
 <?php
+namespace App\Controller;
 
-class UserController
+use \App\Repository\UserRepository;
+
+class UserController extends AbstractController
 {
   /**
    * Contrôleur de la page de création de compte
@@ -33,7 +36,7 @@ class UserController
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         // On fait appel au modèle ( la fonction insertUser() ) pour insérer les données dans la table user
-        $userModel = new UserModel();
+        $userModel = new UserRepository();
         $userModel->insertUser($firstname, $lastname, $email, $hash);
 
         // Ajout d'un message flash en session
@@ -64,7 +67,7 @@ class UserController
       $password = $_POST['password'];
 
       // On vérifie les identifiants ( fonction checkCredentials() )
-      $userModel = new UserModel();
+      $userModel = new UserRepository();
       $oUser = $userModel->checkCredentials($email, $password);
       var_dump($oUser);
 

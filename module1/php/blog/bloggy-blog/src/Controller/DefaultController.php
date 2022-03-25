@@ -1,6 +1,12 @@
 <?php
+namespace App\Controller;
 
-class DefaultController
+use \App\Repository\ArticleRepository;
+use \App\Repository\CommentRepository;
+use \App\Framework\Flashbag as Flashbag;
+use \App\Repository\UserRepository;
+
+class DefaultController extends AbstractController
 {
   /**
    * Contrôleur de la page d'accueil
@@ -8,11 +14,11 @@ class DefaultController
   public function genHome() :void
   {
     // Sélection des articles
-    $articleModel = new ArticleModel();
+    $articleModel = new ArticleRepository();
     $articles = $articleModel->getAllArticles(5);
 
     // On récupère le message flash le cas échéant
-    $flashMessage = getFlashMessage();
+    $flashMessage = $this->flashbag->getFlashMessage();
 
     // Affichage : inclusion du fichier de template
     $template = 'home';
@@ -34,7 +40,7 @@ class DefaultController
     $idArticle = (int)$_GET['idArticle'];
 
     // Sélection de l'article
-    $articleModel = new ArticleModel();
+    $articleModel = new ArticleRepository();
     $article = $articleModel->getOneArticle($idArticle);
 
     // Test pour savoir si l'article existe
@@ -43,8 +49,8 @@ class DefaultController
       exit;
     }
 
-    // Création d'un objet CommentModel
-    $commentModel = new CommentModel();
+    // Création d'un objet CommentRepository
+    $commentModel = new CommentRepository();
 
     // Traitement des données du formulaire d'ajout de commentaires
     if (!empty($_POST)) {

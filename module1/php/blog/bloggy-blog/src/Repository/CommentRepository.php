@@ -1,6 +1,7 @@
 <?php
+namespace App\Repository;
 
-class CommentModel extends AbstractModel
+class CommentRepository extends \App\Framework\AbstractModel
 {
 
   /**
@@ -28,15 +29,14 @@ class CommentModel extends AbstractModel
     $aComments = [];
 
     foreach ($this->db->getAllResults($sSql, [$idArticle]) as $aComment) {
-      $oComment = (new Comment)->hydrate($aComment);
-      $oComment->setUser((new UserModel)->getUserByEmail($aComment['email']));
+      $oComment = (new \App\Entity\Comment)->hydrate($aComment);
+      $oComment->setUser((new UserRepository)->getUserByEmail($aComment['email']));
 
       $aComments[] = $oComment;
     }
     if (!$aComments) {
       return [];
     }
-
     return $aComments;
   }
 

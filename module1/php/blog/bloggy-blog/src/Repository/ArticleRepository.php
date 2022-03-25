@@ -1,6 +1,9 @@
 <?php
+namespace App\Repository;
 
-class ArticleModel extends AbstractModel
+use \App\Entity\Article;
+
+class ArticleRepository extends \App\Framework\AbstractModel
 {
 
   /**
@@ -9,9 +12,8 @@ class ArticleModel extends AbstractModel
   function getAllArticles(?int $limit = null): array
   {
     // Requête SQL
-    $sql = 'SELECT idArticle, title, content, createdAt, image, label AS category_label, categoryId 
-                FROM article AS A
-                INNER JOIN category AS C ON A.categoryId = C.idCategory
+    $sql = 'SELECT idArticle, title, content, createdAt, image, categoryId 
+                FROM `'.Article::DB_TABLE.'`
                 ORDER BY createdAt DESC';
 
     if ($limit != null) {
@@ -22,7 +24,9 @@ class ArticleModel extends AbstractModel
     $aArticles = [];
 
     foreach ($this->db->getAllResults($sql) as $aArticle) {
-      $aArticles[] = (new Article)->hydrate($aArticle);
+      $oArticle = (new Article)->hydrate($aArticle);
+      $oArticle->setCategory((new CategoryRepository)->find($aArticle['categoryId']));
+      $aArticles[] = $oArticle;
     }
     return $aArticles;
   }
@@ -30,12 +34,11 @@ class ArticleModel extends AbstractModel
   /**
    * Sélectionne UN article à partir de son ID
    */
-  function getOneArticle(int $idArticle): array
+  function getOneArticle(int $idArticle): ?Article
   {
     // Requête de sélection pour aller chercher l'article à afficher
-    $sql = 'SELECT idArticle, title, content, createdAt, image, label AS category_label, categoryId, image
-                FROM article AS A
-                INNER JOIN category AS C ON A.categoryId = C.idCategory
+    $sql = 'SELECT idArticle, title, content, createdAt, image, categoryId, image
+                FROM article
                 WHERE idArticle = :idArticle';
 
     // Sélection de l'article
@@ -45,12 +48,12 @@ class ArticleModel extends AbstractModel
     if (!$article) {
 
       // On retourne un tableau vide (on pourrait aussi lancer une "exception")
-      return [];
+      return null;
     }
-
-    return $article;
+    $oArticle = (new Article)->hydrate($article);
+    $oArticle->setCategory((new CategoryRepository)->find($article['categoryId']));
+    return $oArticle;
   }
-
 
   /**
    * Insert un nouvel article dans la base de données
