@@ -1,7 +1,11 @@
 <?php
+
 namespace App\Repository;
 
-class CommentRepository extends \App\Framework\AbstractModel
+use App\Entity\Comment;
+use \App\Framework\AbstractModel;
+
+class CommentRepository extends AbstractModel
 {
 
   /**
@@ -26,16 +30,18 @@ class CommentRepository extends \App\Framework\AbstractModel
                 WHERE articleId = ?
                 ORDER BY createdAt DESC';
 
-    $aComments = [];
+    $aComments = $aUserEmails = [];
 
     foreach ($this->db->getAllResults($sSql, [$idArticle]) as $aComment) {
-      $oComment = (new \App\Entity\Comment)->hydrate($aComment);
-      $oComment->setUser((new UserRepository)->getUserByEmail($aComment['email']));
-
-      $aComments[] = $oComment;
-    }
-    if (!$aComments) {
-      return [];
+      if (array_key_exists($aComment['email'], $aUserEmails)) {
+        $oUserComment = $aUserEmails[$aComment['email']];
+      } else {
+        $oUserComment = (new UserRepository)->getUserByEmail($aComment['email']);
+        $aUserEmails[$aComment['email']] = $oUserComment;
+      }
+      $aComments[] = (new Comment)
+        ->hydrate($aComment)
+        ->setUser($oUserComment);
     }
     return $aComments;
   }

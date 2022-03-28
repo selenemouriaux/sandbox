@@ -1,17 +1,18 @@
 <?php
 
 // Autoload de composer
-require '../vendor/autoload.php';
+require '../app/config.php';
 spl_autoload_register(function (string $sClass) {
   $sFilename = PROJECT_DIR . '/' . str_replace(['\\', 'App'], ['/', 'src'], $sClass) . '.php';
   if (file_exists($sFilename)) {
     require $sFilename;
   }
 });
-
-// Inclusion du fichier de configuration 
-require '../app/config.php';
+require '../vendor/autoload.php';
+session_start();
 require PROJECT_DIR . '/app/routes.php';
+
+// Inclusion du fichier de configuration
 //require PROJECT_DIR . '/src/Framework/Utils.php';
 
 // Inclusion du fichier contenant les fonctions relatives à la validation des différents formulaires
@@ -45,7 +46,6 @@ require PROJECT_DIR . '/app/routes.php';
 //require PROJECT_DIR . '/src/Controller/UserController.php';
 
 // On démarre la session dès le début pour être sûr de ne pas être embêté plus tard
-session_start();
 
 //print_r( (new CategoryRepository())->find(1) );
 

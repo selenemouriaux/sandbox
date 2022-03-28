@@ -3,32 +3,25 @@ namespace App\Controller;
 
 use \App\Repository\ArticleRepository;
 use \App\Repository\CategoryRepository;
-use \App\Framework\UserSession as Tkn;
 
 ///////////////////////////////////////////////////
 // CONTROLLERS DE L'ADMINISTRATION //////////////
 ///////////////////////////////////////////////
 class AdminController extends AbstractController
 {
-  private Tkn $tkn;
-  public function __construct()
-  {
-    $this->tkn = new Tkn();
-  }
-
   /**
    * Génère la page d'accueil de l'admin (le dashboard)
    */
   public function genDashboard() :void
   {
     // Protection ADMIN
-    if (!$this->tkn->isConnected()) {
-      $this->flashbag->addFlashMessage('Merci de vous connecter');
+    if (!$this->session->isConnected()) {
+      $this->flashBag->addFlashMessage('Merci de vous connecter');
       header('Location: index.php?action=login');
       exit;
     }
 
-    if (!isAdmin()) {
+    if (!$this->session->isAdmin()) {
       echo 'Accès interdit';
       exit;
     }
@@ -36,9 +29,11 @@ class AdminController extends AbstractController
     // Sélection des articles
     $articleModel = new ArticleRepository();
     $articles = $articleModel->getAllArticles();
+    $oSession = $this->session;
+    $oUtils = $this->utils;
 
     // On récupère le message flash le cas échéant
-    $flashMessage = $this->flashbag->getFlashMessage();
+    $flashMessage = $this->flashBag->getFlashMessage();
 
     // Inclusion du template
     $template = 'dashboard';
@@ -51,13 +46,13 @@ class AdminController extends AbstractController
   public function genAddArticle() :void
   {
     // Protection ADMIN
-    if (!isConnected()) {
-      $this->flashbag->addFlashMessage('Merci de vous connecter');
+    if (!$this->session->isConnected()) {
+      $this->flashBag->addFlashMessage('Merci de vous connecter');
       header('Location: index.php?action=login');
       exit;
     }
 
-    if (!isAdmin()) {
+    if (!$this->session->isAdmin()) {
       echo 'Accès interdit';
       exit;
     }
@@ -67,6 +62,8 @@ class AdminController extends AbstractController
     $content = '';
     $categoryId = 0;
 
+    $oSession = $this->session;
+    $oUtils = $this->utils;
 
     // Si le formulaire est soumis... on traite les données
     if (!empty($_POST)) {
@@ -118,7 +115,7 @@ class AdminController extends AbstractController
         // Normalisation du nom du fichier image
         $fileInfo = pathinfo($_FILES['image']['name']);
         $extension = $fileInfo['extension'];
-        $filename = (new \App\Framework\Utils)->slugify($fileInfo['filename']) . sha1(uniqid(rand(), true)) . '.' . $extension;
+        $filename = $this->utils->slugify($fileInfo['filename']) . sha1(uniqid(rand(), true)) . '.' . $extension;
 
         // Déplacement du fichier temporaire vers le dossier final
         if (!file_exists(UPLOAD_DIR)) {
@@ -136,7 +133,7 @@ class AdminController extends AbstractController
           $articleModel->insert($title, $content, $categoryId, $filename);
 
           // Ajout d'un message flash de confirmation
-          $this->flashbag->addFlashMessage('Article créé avec succès');
+          $this->flashBag->addFlashMessage('Article créé avec succès');
 
           // Redirection vers le dashboard admin
           header('Location: index.php?action=admin');
@@ -160,13 +157,13 @@ class AdminController extends AbstractController
   public function genEditArticle() :void
   {
     // Protection ADMIN
-    if (!isConnected()) {
-      $this->flashbag->addFlashMessage('Merci de vous connecter');
+    if (!$this->session->isConnected()) {
+      $this->flashBag->addFlashMessage('Merci de vous connecter');
       header('Location: index.php?action=login');
       exit;
     }
 
-    if (!isAdmin()) {
+    if (!$this->session->isAdmin()) {
       echo 'Accès interdit';
       exit;
     }
@@ -191,10 +188,10 @@ class AdminController extends AbstractController
     }
 
     // Initialisation des variables pour pré remplir le formulaire
-    $title = $article['title'];
-    $content = $article['content'];
-    $categoryId = $article['categoryId'];
-    $filename = $article['image'];
+    $title = $article->getTitle();
+    $content = $article->getContent();
+    $categoryId = $article->getCategory()->getId();
+    $filename = $article->getImage();
 
     // Si le formulaire est soumis... on traite les données
     if (!empty($_POST)) {
@@ -250,7 +247,7 @@ class AdminController extends AbstractController
           // Normalisation du nom du fichier image
           $fileInfo = pathinfo($_FILES['image']['name']);
           $extension = $fileInfo['extension'];
-          $filename = (new \App\Framework\Utils)->slugify($fileInfo['filename']) . sha1(uniqid(rand(), true)) . '.' . $extension;
+          $filename = $this->utils->slugify($fileInfo['filename']) . sha1(uniqid(rand(), true)) . '.' . $extension;
 
           // Déplacement du fichier temporaire vers le dossier final
           if (!file_exists(UPLOAD_DIR)) {
@@ -264,7 +261,7 @@ class AdminController extends AbstractController
             $errors['image'] = 'Erreur lors du déplacement du fichier temporaire';
           } // Si le fichier a bien été déplacé => on supprime l'ancien
           else {
-            $oldFilepath = UPLOAD_DIR . '/' . $article['image'];
+            $oldFilepath = UPLOAD_DIR . '/' . $article->getImage();
             if (file_exists($oldFilepath)) {
               unlink($oldFilepath);
             }
@@ -279,7 +276,7 @@ class AdminController extends AbstractController
           $articleModel->update($title, $content, $categoryId, $filename, $idArticle);
 
           // Ajout d'un message flash de confirmation
-          $this->flashbag->addFlashMessage('Article modifié avec succès');
+          $this->flashBag->addFlashMessage('Article modifié avec succès');
 
           // Redirection vers le dashboard admin
           header('Location: index.php?action=admin');
@@ -287,7 +284,8 @@ class AdminController extends AbstractController
         }
       }
     }
-
+    $oSession = $this->session;
+    $oUtils = $this->utils;
     // Sélection des catégories pour les afficher dans la liste déroulante
     $categories = (new CategoryRepository)->findAll();
 
@@ -299,13 +297,13 @@ class AdminController extends AbstractController
   public function genDeleteArticle() :void
   {
     // Protection ADMIN
-    if (!isConnected()) {
-      $this->flashbag->addFlashMessage('Merci de vous connecter');
+    if (!$this->session->isConnected()) {
+      $this->flashBag->addFlashMessage('Merci de vous connecter');
       header('Location: index.php?action=login');
       exit;
     }
 
-    if (!isAdmin()) {
+    if (!$this->session->isAdmin()) {
       echo 'Accès interdit';
       exit;
     }
@@ -330,7 +328,7 @@ class AdminController extends AbstractController
     }
 
     // Suppression de l'image
-    $oldFilepath = UPLOAD_DIR . '/' . $article['image'];
+    $oldFilepath = UPLOAD_DIR . '/' . $article->getImage();
     if (file_exists($oldFilepath)) {
       unlink($oldFilepath);
     }
@@ -338,7 +336,7 @@ class AdminController extends AbstractController
     // Suppression de l'article dans la base de données
     $articleModel->delete($idArticle);
 
-    $this->flashbag->addFlashMessage('Article supprimé!');
+    $this->flashBag->addFlashMessage('Article supprimé!');
 
     header('Location: index.php?action=admin');
     exit;

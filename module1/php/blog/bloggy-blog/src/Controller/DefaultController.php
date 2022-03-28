@@ -3,8 +3,7 @@ namespace App\Controller;
 
 use \App\Repository\ArticleRepository;
 use \App\Repository\CommentRepository;
-use \App\Framework\Flashbag as Flashbag;
-use \App\Repository\UserRepository;
+
 
 class DefaultController extends AbstractController
 {
@@ -18,7 +17,7 @@ class DefaultController extends AbstractController
     $articles = $articleModel->getAllArticles(5);
 
     // On récupère le message flash le cas échéant
-    $flashMessage = $this->flashbag->getFlashMessage();
+    $flashMessage = $this->flashBag->getFlashMessage();
 
     // Affichage : inclusion du fichier de template
     $template = 'home';
@@ -51,6 +50,8 @@ class DefaultController extends AbstractController
 
     // Création d'un objet CommentRepository
     $commentModel = new CommentRepository();
+    $oSession = $this->session;
+    $oUtils = $this->utils;
 
     // Traitement des données du formulaire d'ajout de commentaires
     if (!empty($_POST)) {
@@ -71,7 +72,7 @@ class DefaultController extends AbstractController
       if (empty($errors)) {
 
         // On récupère l'id de l'utilsiateur connecté
-        $userId = getUserId();
+        $userId = $this->session->getUserId();
 
         // @TODO vérifier qu'on récupère bien un userId !
 

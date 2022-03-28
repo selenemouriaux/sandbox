@@ -36,31 +36,7 @@ final class UserSession {
    */
   function getUserId(): ?int
   {
-    return $this->isConnected() ? $_SESSION['user']['userId'] : null;
-  }
-
-  /**
-   * Retourne le prénom de l'utilisateur connecté
-   */
-  function getUserFirstname(): ?string
-  {
-    return $this->isConnected() ? $_SESSION['user']['firstname'] : null;
-  }
-
-  /**
-   * Retourne le nom de l'utilisateur connecté
-   */
-  function getUserLastname(): ?string
-  {
-    return $this->isConnected() ? $_SESSION['user']['lastname'] : null;
-  }
-
-  /**
-   * Retourne l'email de l'utilisateur connecté
-   */
-  function getUserEmail(): ?string
-  {
-    return $this->isConnected() ? $_SESSION['user']['email'] : null;
+    return $this->isConnected() ? $_SESSION['user']->getId() : null;
   }
 
   /**
@@ -72,6 +48,30 @@ final class UserSession {
       return false;
     }
 
-    return $_SESSION['user']['role'] == 'ROLE_ADMIN';
+    return $_SESSION['user']->getRole() == 'ROLE_ADMIN';
   }
+
+//  /**
+//   * Retourne le prénom de l'utilisateur connecté
+//   */
+//  function getUserFirstname(): ?string
+//  {
+//    return $this->isConnected() ? $_SESSION['user']['firstname'] : null;
+//  }
+//
+//  /**
+//   * Retourne le nom de l'utilisateur connecté
+//   */
+//  function getUserLastname(): ?string
+//  {
+//    return $this->isConnected() ? $_SESSION['user']['lastname'] : null;
+//  }
+//
+//  /**
+//   * Retourne l'email de l'utilisateur connecté
+//   */
+//  function getUserEmail(): ?string
+//  {
+//    return $this->isConnected() ? $_SESSION['user']['email'] : null;
+//  }
 }

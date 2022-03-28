@@ -35,6 +35,15 @@ final class User
   }
 
   /**
+   * Fonction d'affichage appelée lors du "echo"
+   * @return string
+   */
+  public function __toString(): string
+  {
+    return $this->lastname . ' ' . $this->firstname;
+  }
+
+  /**
    * @return int
    */
   public function getId(): int

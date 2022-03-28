@@ -2,22 +2,41 @@
 namespace App\Repository;
 
 use \App\Entity\Category;
+use \App\Framework\AbstractModel;
 
-class CategoryRepository extends \App\Framework\AbstractModel
+class CategoryRepository extends AbstractModel
 {
-
   /**
    * @return array
    */
   public function findAll(): array
   {
-    $sSql = 'SELECT * FROM category ORDER BY label';
+    $sSql = 'SELECT * FROM `'. Category::DB_TABLE.'` ORDER BY label';
 
     $aCategories = [];
 
     foreach ($this->db->getAllResults($sSql) as $aCategory) {
       $aCategories[] = (new Category())->hydrate($aCategory);
     }
+    return $aCategories;
+  }
+
+  /**
+   * @param array $aIds
+   *
+   * @return Category[]
+   */
+  public function findIndexedByIds(array $aIds): array
+  {
+    $sSql = 'SELECT * FROM `'. Category::DB_TABLE .'` 
+                 WHERE `idCategory` IN ('. implode(',', $aIds).')';
+    $aDbResults = $this->db->getAllResults($sSql);
+
+    $aCategories = [];
+    foreach ($aDbResults as $aCategory) {
+      $aCategories[ $aCategory['idCategory'] ] = (new Category())->hydrate($aCategory);
+    }
+
     return $aCategories;
   }
 
@@ -29,7 +48,7 @@ class CategoryRepository extends \App\Framework\AbstractModel
   {
     // Requête de sélection pour aller chercher l'article à afficher
     $sSql = 'SELECT idCategory, label
-                FROM category
+                FROM `'.Category::DB_TABLE.'`
                 WHERE idCategory = :idCategory';
 
     // Sélection de l'article

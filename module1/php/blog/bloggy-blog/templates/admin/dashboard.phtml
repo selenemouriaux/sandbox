@@ -24,7 +24,7 @@
                 <td><?=htmlspecialchars($article->getCategory()->getLabel());?></td>
                 <td><?=($article->getCreatedAt())->format('d/m/Y');?></td>
                 <td>
-                    <img class="thumbnail" src="<?=assetUpload($article->getImage());?>" alt="">
+                    <img class="thumbnail" src="<?=$oUtils->assetUpload($article->getImage());?>" alt="">
                 </td>
                 <td>
                     <a href="index.php?action=admin_article_edit&idArticle=<?=intval($article->getId());?>" class="btn btn-primary" title="Modifier l'article">

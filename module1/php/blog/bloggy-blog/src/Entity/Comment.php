@@ -6,9 +6,7 @@ use \DateTimeImmutable;
 final class Comment
 {
   private int $id;
-  private int $idArticle;
   private Article $article;
-  private int $idUser;
   private User $user;
   private string $content;
   private int $rate;
@@ -18,11 +16,9 @@ final class Comment
   {
     $this
       ->setId($aData['idComment'])
-      ->setIdArticle($aData['articleId'])
       ->setContent($aData['content'])
       ->setRate($aData['rate'])
-      ->setCreatedAt(new DateTimeImmutable($aData['createdAt']))
-      ->setIdUser($aData['userId']);
+      ->setCreatedAt(new DateTimeImmutable($aData['createdAt']));
     return $this;
   }
 
@@ -53,23 +49,6 @@ final class Comment
   }
 
   /**
-   * @return int
-   */
-  public function getIdArticle(): int
-  {
-    return $this->idArticle;
-  }
-
-  /**
-   * @param int $idArticle
-   */
-  public function setIdArticle(int $idArticle): self
-  {
-    $this->idArticle = $idArticle;
-    return $this;
-  }
-
-  /**
    * @return Article
    */
   public function getArticle(): Article
@@ -83,23 +62,6 @@ final class Comment
   public function setArticle(Article $article): self
   {
     $this->article = $article;
-    return $this;
-  }
-
-  /**
-   * @return int
-   */
-  public function getIdUser(): int
-  {
-    return $this->idUser;
-  }
-
-  /**
-   * @param int $idUser
-   */
-  public function setIdUser(int $idUser): self
-  {
-    $this->idUser = $idUser;
     return $this;
   }
 
@@ -162,5 +124,4 @@ final class Comment
     $this->createdAt = $createdAt;
     return $this;
   }
-
 }

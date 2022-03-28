@@ -2,7 +2,7 @@
 namespace App\Framework;
 
 final class Utils {
-  public function slugify($text)
+  public function slugify($text):string
   {
     // Strip html tags
     $text=strip_tags($text);

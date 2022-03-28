@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Repository;
 
-use \App\Entity\Article;
+use App\Entity\Article;
+use App\Framework\AbstractModel;
 
-class ArticleRepository extends \App\Framework\AbstractModel
+class ArticleRepository extends AbstractModel
 {
-
   /**
    * Sélectionne tous les articles
    */
@@ -13,21 +14,32 @@ class ArticleRepository extends \App\Framework\AbstractModel
   {
     // Requête SQL
     $sql = 'SELECT idArticle, title, content, createdAt, image, categoryId 
-                FROM `'.Article::DB_TABLE.'`
+                FROM `' . Article::DB_TABLE . '`
                 ORDER BY createdAt DESC';
 
     if ($limit != null) {
       $sql .= ' LIMIT ' . $limit;
     }
 
-    // Sélection des articles
-    $aArticles = [];
+    $aDbResults = $this->db->getAllResults($sql);
 
-    foreach ($this->db->getAllResults($sql) as $aArticle) {
-      $oArticle = (new Article)->hydrate($aArticle);
-      $oArticle->setCategory((new CategoryRepository)->find($aArticle['categoryId']));
-      $aArticles[] = $oArticle;
+    // Optimisation 2 : analyse des relations (Category) a récupérer et récupération en une seule requête SQL
+    $aArticles = $aCategoryIds = [];
+    foreach ($aDbResults as $aArticle) {
+      $aCategoryIds[] = $aArticle['categoryId'];
     }
+
+    // Récupération des catégories utiles d'un seul coup (avec dédoublonnage)
+    $aCategories = (new CategoryRepository)->findIndexedByIds(array_unique($aCategoryIds));
+
+    foreach ($aDbResults as $aArticle) {
+      $aArticles[] = (new Article())
+        // remplissage des données primaires
+        ->hydrate($aArticle)
+        // remplissage des clés étrangères
+        ->setCategory($aCategories[$aArticle['categoryId']]);
+    }
+
     return $aArticles;
   }
 
@@ -37,7 +49,7 @@ class ArticleRepository extends \App\Framework\AbstractModel
   function getOneArticle(int $idArticle): ?Article
   {
     // Requête de sélection pour aller chercher l'article à afficher
-    $sql = 'SELECT idArticle, title, content, createdAt, image, categoryId, image
+    $sql = 'SELECT idArticle, title, content, createdAt, image, categoryId
                 FROM article
                 WHERE idArticle = :idArticle';
 
@@ -46,13 +58,15 @@ class ArticleRepository extends \App\Framework\AbstractModel
 
     // Si il n'existe pas d'article pour cet id...
     if (!$article) {
-
       // On retourne un tableau vide (on pourrait aussi lancer une "exception")
       return null;
     }
-    $oArticle = (new Article)->hydrate($article);
-    $oArticle->setCategory((new CategoryRepository)->find($article['categoryId']));
-    return $oArticle;
+
+    $oCategory = (new CategoryRepository())->find($article['categoryId']);
+
+    return (new Article())
+      ->hydrate($article)
+      ->setCategory($oCategory);
   }
 
   /**
@@ -71,7 +85,7 @@ class ArticleRepository extends \App\Framework\AbstractModel
    */
   function update(string $title, string $content, int $categoryId, string $image, int $idArticle)
   {
-    $sql = 'UPDATE article 
+    $sql = 'UPDATE `' . Article::DB_TABLE . '`
                 SET title = ?, content = ?, categoryId = ?, image = ?
                 WHERE idArticle = ?';
 
@@ -83,7 +97,7 @@ class ArticleRepository extends \App\Framework\AbstractModel
    */
   function delete(int $idArticle)
   {
-    $sql = 'DELETE FROM article
+    $sql = 'DELETE FROM `' . Article::DB_TABLE . '`
                 WHERE idArticle = ?';
 
     $this->db->prepareAndExecute($sql, [$idArticle]);

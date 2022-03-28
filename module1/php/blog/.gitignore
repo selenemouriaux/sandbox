@@ -2,3 +2,4 @@
 vendor
 public/upload/*
 !public/upload/.gitkeep
+greta_blog

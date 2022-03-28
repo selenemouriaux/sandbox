@@ -30,7 +30,7 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <?php if (isConnected()): ?>
+                        <?php if ($oSession->isConnected()): ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?action=logout">
                                     <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion</a>

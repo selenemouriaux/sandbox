@@ -3,10 +3,19 @@ namespace App\Entity;
 
 final class Category
 {
+  /** @var string */
+  public const DB_TABLE = 'category';
+
+  /** @var int */
   private int $id;
+  /** @var string */
   private string $label;
 
-  public function hydrate(array $aCategory) :Category {
+  /**
+   * @param array $aCategory
+   * @return $this
+   */
+  public function hydrate(array $aCategory) :self {
     $this->id = $aCategory['idCategory'];
     $this->label = $aCategory['label'];
     //fluent

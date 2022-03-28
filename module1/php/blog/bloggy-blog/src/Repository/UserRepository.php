@@ -2,8 +2,9 @@
 namespace App\Repository;
 
 use \App\Entity\User;
+use \App\Framework\AbstractModel;
 
-class UserRepository extends \App\Framework\AbstractModel {
+class UserRepository extends AbstractModel {
 
     /**
      * Insert un nouvel utilisateur dans la base de données

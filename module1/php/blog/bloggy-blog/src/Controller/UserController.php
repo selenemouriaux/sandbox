@@ -27,7 +27,7 @@ class UserController extends AbstractController
       $password_confirm = $_POST['password-confirm'];
 
       // Validation du formulaire (à faire en dernier quand ça fonctionne sans erreur)
-      $errors = validateSignupForm($firstname, $lastname, $email, $password, $password_confirm);
+      $errors = $this->validateSignupForm($firstname, $lastname, $email, $password, $password_confirm);
 
       // S'il n'y a pas d'erreur, si tout est OK
       if (empty($errors)) {
@@ -40,7 +40,7 @@ class UserController extends AbstractController
         $userModel->insertUser($firstname, $lastname, $email, $hash);
 
         // Ajout d'un message flash en session
-        addFlashMessage('Votre compte a bien été créé');
+        $this->flashBag->addFlashMessage('Votre compte a bien été créé');
 
         // On redirige l'internaute pour l'instant vers la page d'accueil
         header('Location: index.php');
@@ -69,19 +69,17 @@ class UserController extends AbstractController
       // On vérifie les identifiants ( fonction checkCredentials() )
       $userModel = new UserRepository();
       $oUser = $userModel->checkCredentials($email, $password);
-      var_dump($oUser);
 
       // Si les identifiants sont corrects
       if ($oUser) {
-
         // On enregistre les données de l'utilisateur en session ( fonction userRegister() )
-        userRegister($oUser);
+        $this->session->userRegister($oUser);
 
         // On ajoute un message flash ( fonction addFlashMessage() )
-        addFlashMessage('Bonjour ' . $oUser->getFirstname());
+        $this->flashBag->addFlashMessage('Bonjour ' . $oUser->getFirstname());
 
         // Si l'utilisateur est un administrateur, on le redirige vers le dashboard
-        if (isAdmin()) {
+        if ($this->session->isAdmin()) {
           header('Location: index.php?action=admin');
           exit;
         }
@@ -96,7 +94,7 @@ class UserController extends AbstractController
     }
 
     // On récupère le message flash le cas échéant
-    $flashMessage = getFlashMessage();
+    $flashMessage = $this->flashBag->getFlashMessage();
 
     // Affichage : inclusion du fichier de template
     $template = 'login';
@@ -109,13 +107,57 @@ class UserController extends AbstractController
   public function genLogout() :void
   {
     // On se déconnecte
-    logout();
+    $this->session->logout();
 
     // Message flash
-    addFlashMessage('Vous êtes bien déconnecté');
+    $this->flashBag->addFlashMessage('Vous êtes bien déconnecté');
 
     // Redirection vers l'accueil
     header('Location: index.php');
     exit;
+  }
+  private function validateSignupForm($firstname, $lastname, $email, $password, $password_confirm) :?array {
+    $errors = [];
+
+    // LASTNAME
+    if (!$lastname) {
+      $errors['lastname'] = 'Le champ "Nom" est obligatoire';
+    }
+
+    // FIRSTNAME
+    if (!$firstname) {
+      $errors['firstname'] = 'Le champ "Prénom" est obligatoire';
+    }
+
+    // VALIDATION EMAIL
+    if (!$email) { // ou bien if (empty($email)) { ou if (strlen($email) == 0) { ou if ($email == '') {
+      $errors['email'] = 'Le champ "Email" est obligatoire';
+    }
+
+    // Si le champ est bien rempli, on fait les autres tests
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // Si l'email n'est pas valide...
+      $errors['email'] = "Le format de l'email n'est pas correct";
+    }
+
+    // Vérification de l'existence de l'email
+    elseif((new UserRepository)->getUserByEmail($email)) {
+      $errors['email'] = "Vous êtes déjà enregistré";
+    }
+
+    // PASSWORD
+    if (!$password) {
+      $errors['password'] = 'Le champ "Mot de passe" est obligatoire';
+    }
+
+    elseif (strlen($password) < 8) {
+      $errors['password'] = 'Le champ "Mot de passe" doit comporter au moins 8 caractères';
+    }
+
+    elseif($password != $password_confirm) {
+      $errors['password-confirm'] = 'Les mots de passe ne sont pas identiques';
+    }
+
+    // Retourne le tableau d'erreurs
+    return $errors;
   }
 }

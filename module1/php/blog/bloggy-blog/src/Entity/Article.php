@@ -5,8 +5,8 @@ use \DateTimeImmutable;
 
 final class Article
 {
-
-  const DB_TABLE = 'article';
+  /** @var string */
+  public const DB_TABLE = 'article';
 
   /** @var int */
   private int $id;
@@ -137,4 +137,19 @@ final class Article
     return $this;
   }
 
+  /**
+   * @param int $iLength
+   *
+   * @return string
+   */
+  public function getSummary(int $iLength = 150): string
+  {
+    $sSummary = mb_substr($this->content, 0, $iLength);
+
+    if (mb_strlen($this->content) > $iLength) {
+      $sSummary .= '...';
+    }
+
+    return $sSummary;
+  }
 }
