@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use \App\Repository\UserRepository;
@@ -8,7 +9,7 @@ class UserController extends AbstractController
   /**
    * Contrôleur de la page de création de compte
    */
-  public function genSignup() :void
+  public function genSignup(): string
   {
     $firstname = '';
     $lastname = '';
@@ -50,14 +51,22 @@ class UserController extends AbstractController
     }
 
     // Affichage : inclusion du fichier de template
-    $template = 'signup';
-    include TEMPLATE_DIR . '/base.phtml';
+//    $template = 'signup';
+//    include TEMPLATE_DIR . '/base.phtml';
+    return $this->render('signup', [
+      'firstname' => $firstname,
+      'lastname' => $lastname,
+      'email' => $email,
+      'password' => $password,
+      'password_confirm' => $password_confirm,
+      'flashMessage' => $this->flashBag->getFlashMessage(),
+    ]);
   }
 
   /**
    * Contrôleur de la page de connexion
    */
-  public function genLogin() :void
+  public function genLogin(): string
   {
     // Si le formulaire est soumis
     if (!empty($_POST)) {
@@ -67,8 +76,8 @@ class UserController extends AbstractController
       $password = $_POST['password'];
 
       // On vérifie les identifiants ( fonction checkCredentials() )
-      $userModel = new UserRepository();
-      $oUser = $userModel->checkCredentials($email, $password);
+//      $userModel = new UserRepository();
+      $oUser = (new UserRepository)->checkCredentials($email, $password);
 
       // Si les identifiants sont corrects
       if ($oUser) {
@@ -97,14 +106,17 @@ class UserController extends AbstractController
     $flashMessage = $this->flashBag->getFlashMessage();
 
     // Affichage : inclusion du fichier de template
-    $template = 'login';
-    include TEMPLATE_DIR . '/base.phtml';
+//    $template = 'login';
+//    include TEMPLATE_DIR . '/base.phtml';
+    return $this->render('login', [
+      'flashMessage' => $flashMessage,
+    ]);
   }
 
   /**
    * Contrôleur de la déconnexion
    */
-  public function genLogout() :void
+  public function genLogout(): void
   {
     // On se déconnecte
     $this->session->logout();
@@ -116,7 +128,9 @@ class UserController extends AbstractController
     header('Location: index.php');
     exit;
   }
-  private function validateSignupForm($firstname, $lastname, $email, $password, $password_confirm) :?array {
+
+  private function validateSignupForm($firstname, $lastname, $email, $password, $password_confirm): ?array
+  {
     $errors = [];
 
     // LASTNAME
@@ -132,28 +146,20 @@ class UserController extends AbstractController
     // VALIDATION EMAIL
     if (!$email) { // ou bien if (empty($email)) { ou if (strlen($email) == 0) { ou if ($email == '') {
       $errors['email'] = 'Le champ "Email" est obligatoire';
-    }
-
-    // Si le champ est bien rempli, on fait les autres tests
+    } // Si le champ est bien rempli, on fait les autres tests
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // Si l'email n'est pas valide...
       $errors['email'] = "Le format de l'email n'est pas correct";
-    }
-
-    // Vérification de l'existence de l'email
-    elseif((new UserRepository)->getUserByEmail($email)) {
+    } // Vérification de l'existence de l'email
+    elseif ((new UserRepository)->getUserByEmail($email)) {
       $errors['email'] = "Vous êtes déjà enregistré";
     }
 
     // PASSWORD
     if (!$password) {
       $errors['password'] = 'Le champ "Mot de passe" est obligatoire';
-    }
-
-    elseif (strlen($password) < 8) {
+    } elseif (strlen($password) < 8) {
       $errors['password'] = 'Le champ "Mot de passe" doit comporter au moins 8 caractères';
-    }
-
-    elseif($password != $password_confirm) {
+    } elseif ($password != $password_confirm) {
       $errors['password-confirm'] = 'Les mots de passe ne sont pas identiques';
     }
 

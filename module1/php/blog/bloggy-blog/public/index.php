@@ -2,12 +2,12 @@
 
 // Autoload de composer
 require '../app/config.php';
-spl_autoload_register(function (string $sClass) {
-  $sFilename = PROJECT_DIR . '/' . str_replace(['\\', 'App'], ['/', 'src'], $sClass) . '.php';
-  if (file_exists($sFilename)) {
-    require $sFilename;
-  }
-});
+//spl_autoload_register(function (string $sClass) {
+//  $sFilename = PROJECT_DIR . '/' . str_replace(['\\', 'App'], ['/', 'src'], $sClass) . '.php';
+//  if (file_exists($sFilename)) {
+//    require $sFilename;
+//  }
+//});
 require '../vendor/autoload.php';
 session_start();
 require PROJECT_DIR . '/app/routes.php';
@@ -70,7 +70,7 @@ $action = $_GET['action'] ?? 'home';
 
 if (array_key_exists($action, $aRoutes)) {
   [$sControllerName, $sActionName] = explode('::', $aRoutes[$action]);
-  (new $sControllerName)->$sActionName();
+  echo (new $sControllerName)->$sActionName();
 } else {
   echo 'ERREUR 404 : Page introuvable';
 }

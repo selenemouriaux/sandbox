@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use \App\Repository\ArticleRepository;
@@ -12,7 +13,7 @@ class AdminController extends AbstractController
   /**
    * Génère la page d'accueil de l'admin (le dashboard)
    */
-  public function genDashboard() :void
+  public function genDashboard(): string
   {
     // Protection ADMIN
     if (!$this->session->isConnected()) {
@@ -27,23 +28,29 @@ class AdminController extends AbstractController
     }
 
     // Sélection des articles
-    $articleModel = new ArticleRepository();
-    $articles = $articleModel->getAllArticles();
-    $oSession = $this->session;
-    $oUtils = $this->utils;
+//    $articleModel = new ArticleRepository();
+//    $articles = (new ArticleRepository)->getAllArticles();
+//    $oSession = $this->session;
+//    $oUtils = $this->utils;
 
     // On récupère le message flash le cas échéant
-    $flashMessage = $this->flashBag->getFlashMessage();
+//    $flashMessage = $this->flashBag->getFlashMessage();
 
     // Inclusion du template
-    $template = 'dashboard';
-    include TEMPLATE_DIR . '/admin/baseAdmin.phtml';
+//    $template = 'dashboard';
+//    include TEMPLATE_DIR . '/admin/baseAdmin.phtml';
+    return $this->render('dashboard', [
+      'flashMessage' => $this->flashBag->getFlashMessage(),
+      'oSession' => $this->session,
+      'oUtils' => $this->utils,
+      'articles' => (new ArticleRepository)->getAllArticles(),
+    ], 'admin/baseAdmin.phtml');
   }
 
   /**
    * Ajout d'article
    */
-  public function genAddArticle() :void
+  public function genAddArticle(): string
   {
     // Protection ADMIN
     if (!$this->session->isConnected()) {
@@ -143,18 +150,27 @@ class AdminController extends AbstractController
     }
 
     // Sélection des catégories pour les afficher dans la liste déroulante
-    $categories = (new CategoryRepository)->findAll();
+//    $categories = (new CategoryRepository)->findAll();
 
     // Inclusion du template
-    $template = 'addArticle';
-    include TEMPLATE_DIR . '/admin/baseAdmin.phtml';
+//    $template = 'addArticle';
+//    include TEMPLATE_DIR . '/admin/baseAdmin.phtml';
+    return $this->render('addArticle', [
+      'flashMessage' => $this->flashBag->getFlashMessage(),
+      'oSession' => $this->session,
+      'oUtils' => $this->utils,
+      'title' => $title,
+      'content' => $content,
+      'categoryId' => $categoryId,
+      'categories' => (new CategoryRepository)->findAll(),
+    ], 'admin/baseAdmin.phtml');
   }
 
 
   /**
    * Modification d'article
    */
-  public function genEditArticle() :void
+  public function genEditArticle(): string
   {
     // Protection ADMIN
     if (!$this->session->isConnected()) {
@@ -284,17 +300,27 @@ class AdminController extends AbstractController
         }
       }
     }
-    $oSession = $this->session;
-    $oUtils = $this->utils;
+//    $oSession = $this->session;
+//    $oUtils = $this->utils;
     // Sélection des catégories pour les afficher dans la liste déroulante
-    $categories = (new CategoryRepository)->findAll();
+//    $categories = (new CategoryRepository)->findAll();
 
     // Inclusion du template
-    $template = 'editArticle';
-    include TEMPLATE_DIR . '/admin/baseAdmin.phtml';
+//    $template = 'editArticle';
+//    include TEMPLATE_DIR . '/admin/baseAdmin.phtml';
+    return $this->render('editArticle', [
+      'flashMessage' => $this->flashBag->getFlashMessage(),
+      'oSession' => $this->session,
+      'oUtils' => $this->utils,
+      'title' => $title,
+      'content' => $content,
+      'categoryId' => $categoryId,
+      'categories' => (new CategoryRepository)->findAll(),
+      'idArticle' => $idArticle,
+    ], 'admin/baseAdmin.phtml');
   }
 
-  public function genDeleteArticle() :void
+  public function genDeleteArticle(): void
   {
     // Protection ADMIN
     if (!$this->session->isConnected()) {

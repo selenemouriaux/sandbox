@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use \App\Repository\ArticleRepository;
@@ -10,24 +11,29 @@ class DefaultController extends AbstractController
   /**
    * Contrôleur de la page d'accueil
    */
-  public function genHome() :void
+  public function genHome(): string
   {
     // Sélection des articles
-    $articleModel = new ArticleRepository();
-    $articles = $articleModel->getAllArticles(5);
+//    $articleModel = new ArticleRepository();
+//    $aArticles = (new ArticleRepository)->getAllArticles(5);
 
     // On récupère le message flash le cas échéant
-    $flashMessage = $this->flashBag->getFlashMessage();
+//    $sFlashMessage = $this->flashBag->getFlashMessage();
 
     // Affichage : inclusion du fichier de template
-    $template = 'home';
-    include TEMPLATE_DIR . '/base.phtml';
+//    $template = 'home';
+//    include TEMPLATE_DIR . '/base.phtml';
+
+    return $this->render('home', [
+      'articles' => (new ArticleRepository)->getAllArticles(5),
+      'flashMessage' => $this->flashBag->getFlashMessage(),
+    ]);
   }
 
   /**
    * Contrôleur de la page Article
    */
-  public function genArticle() :void
+  public function genArticle(): string
   {
     // Valider le paramètre idArticle
     if (!array_key_exists('idArticle', $_GET) || !$_GET['idArticle'] || !ctype_digit($_GET['idArticle'])) {
@@ -39,8 +45,7 @@ class DefaultController extends AbstractController
     $idArticle = (int)$_GET['idArticle'];
 
     // Sélection de l'article
-    $articleModel = new ArticleRepository();
-    $article = $articleModel->getOneArticle($idArticle);
+    $article = (new ArticleRepository)->getOneArticle($idArticle);
 
     // Test pour savoir si l'article existe
     if (!$article) {
@@ -87,30 +92,36 @@ class DefaultController extends AbstractController
     }
 
     // Sélection des commentaires associésà l'article
-    $comments = $commentModel->getCommentsByArticleId($idArticle);
+//    $comments = $commentModel->getCommentsByArticleId($idArticle);
+
+    return $this->render('article', [
+      'comments' => $commentModel->getCommentsByArticleId($idArticle),
+      'oSession' => $oSession,
+      'oUtils' => $oUtils,
+      'article' => $article,
+    ]);
 
     // Affichage : inclusion du fichier de template
-    $template = 'article';
-    include TEMPLATE_DIR . '/base.phtml';
+//    $template = 'article';
+//    include TEMPLATE_DIR . '/base.phtml';
   }
 
   /**
    * Contrôleur de la page Contact
    */
-  public function genContact() :void
+  public function genContact(): string
   {
     // Affichage : inclusion du fichier de template
-    $template = 'contact';
-    include TEMPLATE_DIR . '/base.phtml';
+    return $this->render('contact');
   }
 
   /**
    * Contrôleur de la page Mentions légales
    */
-  public function genMentions() :void
+  public function genMentions(): string
   {
     // Affichage : inclusion du fichier de template
-    $template = 'mentions';
-    include TEMPLATE_DIR . '/base.phtml';
+    return $this->render('mentions');
   }
+
 }

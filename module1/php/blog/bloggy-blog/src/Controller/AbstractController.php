@@ -21,4 +21,13 @@ class AbstractController
     $this->utils = new Utils();
     $this->session = new UserSession();
   }
+
+  protected function render(string $template, array $aParams = [], string $sBase='base.phtml'):string
+  {
+    extract($aParams);
+    unset($aParams);
+    ob_start();
+    include TEMPLATE_DIR . DIRECTORY_SEPARATOR . $sBase;
+    return ob_get_clean();
+  }
 }
