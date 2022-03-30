@@ -1,0 +1,68 @@
+// Couleurs
+$firstColor:#FACC08;
+$secondColor:#F98D3E;
+$altColor:#7FB84A;
+$firstLightColor:#FDF5D6;
+$secondLightColor:#FFDEC6;
+$neutralDark:#291A10;
+
+// Typographies
+$titleFont: 'Cookie', cursive;
+$textFont: 'Neucha', cursive;
+
+//Shadows
+$strongShadow:black 4px 4px 20px;
+
+// Gestion responsive sauce sass
+//media querries
+$mobileDown:500px;
+$tabletUp:768px;
+$tabletDown:900px;
+$desktopUp:1024px;
+$desktopDown:1280px;
+$widescreenUp:1440px;
+// 
+$breakpoints: (
+    "mobileDown": 500px,
+    "tabletUp": 768px,
+    "tabletDown": 900px,
+    "desktopUp": 1025px,
+    "desktopDown": 1280px,
+    "widescreenUp": 1440px
+);
+/* mobile first... */
+@mixin mediaMin($_key) {
+    @media screen and (min-width: map-get($breakpoints, $_key)) {
+        &{ @content; }
+    }
+}
+
+
+/* desktop first... */
+@mixin mediaMax($_key) {
+    @media screen and (max-width: map-get($breakpoints, $_key) - 1) {
+        &{ @content; }
+    }
+}
+
+/* from... to... fourchette */
+@mixin mediaBetween($_keymin, $_keymax) {
+    @media screen and (min-width: map-get($breakpoints, $_keymin)) and (max-width: map-get($breakpoints, $_keymax) - 1) {
+        &{ @content; }
+    }
+}
+
+/* at... point précis */
+@mixin media($_key) {
+    @media screen and (min-width: map-get($breakpoints, $_key)) and (max-width: map-get($breakpoints, nth(map-keys($breakpoints), index(map-keys($breakpoints), $_key) + 1)) - 1) {
+        &{ @content; }
+    }
+}
+
+// Orientation, keyword: 'portrait' / 'landscape'
+
+@mixin mediaOrientation($keyO) {
+    @media screen and (orientation: $keyO) {
+        &{ @content; }
+    }
+}
